@@ -27,7 +27,7 @@
 
   /* Hero background */
   /* Replace this image if desired (rocket launch placeholder). */
-  --hero-image: url("https://images.unsplash.com/photo-1541872705-74c5e44368f9?auto=format&fit=crop&w=2200&q=80");
+  --hero-image: url("pics/Hero.jpg");
 }
 
 *,
@@ -233,12 +233,36 @@ a {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: center;
-  transform: translate3d(0, var(--parallax, 0px), 0) scale(1.06);
+  overflow: hidden;
+  transform: translate3d(0, var(--parallax, 0px), 0);
   filter: saturate(1.02) contrast(1.06);
   will-change: transform;
+}
+
+.hero__bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  filter: blur(18px) saturate(1.05) contrast(1.05);
+  opacity: 0.22;
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  background-image: var(--hero-image);
+  background-size: contain;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .hero__overlay {
@@ -892,6 +916,14 @@ a {
 
   .hero__content {
     padding: 72px 0 110px;
+  }
+
+  .hero__bg {
+    transform: translate3d(0, var(--parallax, 0px), 0);
+  }
+
+  .hero__bg::after {
+    background-position: 50% 50%;
   }
 }
 
