@@ -303,6 +303,12 @@
   // ------------------------------------------------------------
   const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
   const heroBg = $(".hero__bg");
+  const heroVideo = $(".hero__video");
+
+  if (heroVideo && typeof heroVideo.pause === "function") {
+    if (reduceMotion) heroVideo.pause();
+    else heroVideo.play?.().catch(() => {});
+  }
 
   if (!reduceMotion && heroBg) {
     let ticking = false;

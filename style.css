@@ -25,9 +25,8 @@
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --dur: 650ms;
 
-  /* Hero background */
-  /* Replace this image if desired (rocket launch placeholder). */
-  --hero-image: url("pics/hero-start.jpg");
+  /* Hero: Fallback-Poster wenn Video aus / prefers-reduced-motion (statisches JPG) */
+  --hero-image: url("pics/BoosterLandung.jpg");
 }
 
 *,
@@ -296,48 +295,37 @@ a {
   inset: 0;
   overflow: hidden;
   transform: translate3d(0, var(--parallax, 0px), 0);
-  filter: saturate(1.02) contrast(1.06);
+  background: var(--bg);
   will-change: transform;
 }
 
-.hero__bg::before {
-  content: "";
-  position: absolute;
-  inset: -20px;
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  filter: blur(18px) saturate(1.05) contrast(1.05);
-  opacity: 0.22;
-  transform: scale(1.08);
-  z-index: 0;
-}
-
-.hero__bg::after {
-  content: "";
+/* Vollflächiges Hero-Video (object-fit: cover) */
+.hero__video {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  background-image: var(--hero-image);
-  /* Komplettes Motiv sichtbar (wie zuvor — kein Cover-Beschnitt) */
-  background-size: contain;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.05);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  /* Etwas kräftiger über Video, damit Typo & CTAs lesbar bleiben */
   background:
-    radial-gradient(900px 600px at 60% 20%, rgba(86, 167, 255, 0.14), transparent 62%),
-    radial-gradient(900px 600px at 10% 10%, rgba(0, 0, 0, 0.35), transparent 60%),
-    linear-gradient(180deg, rgba(5, 7, 12, 0.55) 0%, rgba(5, 7, 12, 0.86) 55%, rgba(5, 7, 12, 0.98) 100%);
+    radial-gradient(900px 600px at 60% 18%, rgba(86, 167, 255, 0.12), transparent 62%),
+    radial-gradient(900px 600px at 10% 10%, rgba(0, 0, 0, 0.42), transparent 58%),
+    linear-gradient(180deg, rgba(5, 7, 12, 0.62) 0%, rgba(5, 7, 12, 0.88) 52%, rgba(5, 7, 12, 0.97) 100%);
+  pointer-events: none;
 }
 
 .hero__content {
   position: relative;
+  z-index: 2;
   padding: clamp(96px, 12vw, 140px) 0 clamp(120px, 14vw, 168px);
 }
 
@@ -415,6 +403,7 @@ a {
   position: absolute;
   left: 50%;
   bottom: 26px;
+  z-index: 3;
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
@@ -1092,13 +1081,144 @@ a {
 }
 
 /* =========================================================
-   Team-Grid (Premium-Karten → Lead-Modal)
+   Team: CEO zentriert (größer, ruhiger), darunter 2×2 → Lead-Modal
    ========================================================= */
+
+.teamLayout {
+  display: grid;
+  gap: clamp(36px, 5vw, 56px);
+  width: 100%;
+}
+
+.teamLayout__ceo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 0 8px;
+}
+
+/* CEO: größer, Akzent-Leiste, dezentes Glow — zieht den Blick auf die Führung */
+@keyframes teamCeoAura {
+  0%,
+  100% {
+    box-shadow:
+      0 22px 80px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+      0 0 56px rgba(86, 167, 255, 0.14);
+  }
+  50% {
+    box-shadow:
+      0 26px 96px rgba(0, 0, 0, 0.48),
+      0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+      0 0 88px rgba(86, 167, 255, 0.26);
+  }
+}
+
+.teamTile--ceo {
+  width: 100%;
+  max-width: min(640px, 96vw);
+  border-radius: 24px;
+  border: 1px solid rgba(154, 208, 255, 0.22);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.025) 38%, rgba(6, 10, 18, 0.58) 100%);
+  box-shadow:
+    0 22px 80px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+    0 0 56px rgba(86, 167, 255, 0.14);
+  animation: teamCeoAura 5.5s ease-in-out infinite;
+}
+
+.teamTile--ceo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, transparent, rgba(154, 208, 255, 0.95), rgba(86, 167, 255, 0.75), transparent);
+  opacity: 0.95;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.teamTile--ceo:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(186, 224, 255, 0.42);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.085) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(6, 10, 18, 0.65) 100%);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(0, 0, 0, 0.22) inset,
+    0 0 96px rgba(86, 167, 255, 0.22);
+  animation: none;
+}
+
+.teamTile--ceo .teamTile__media::after {
+  background: linear-gradient(180deg, rgba(5, 7, 12, 0) 55%, rgba(5, 7, 12, 0.45) 100%);
+  opacity: 0.55;
+}
+
+.teamTile--ceo:hover .teamTile__media::after {
+  opacity: 0.7;
+}
+
+.teamTile--ceo .teamTile__body {
+  margin-top: 0;
+  padding: 24px 28px 30px;
+  gap: 10px;
+  background: linear-gradient(180deg, rgba(7, 11, 20, 0.35), rgba(5, 7, 12, 0.98));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.teamTile__ceoBadge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 12px;
+  margin-bottom: 2px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(5, 8, 14, 0.92);
+  background: linear-gradient(135deg, rgba(186, 224, 255, 1), rgba(86, 167, 255, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 24px rgba(86, 167, 255, 0.35);
+}
+
+.teamTile--ceo .teamTile__name {
+  font-size: clamp(23px, 3.2vw, 32px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.18;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+}
+
+.teamTile--ceo .teamTile__role {
+  font-size: 12px;
+  letter-spacing: 0.11em;
+  color: rgba(186, 224, 255, 0.9);
+}
+
+.teamTile--ceo .teamTile__cta {
+  margin-top: 6px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.teamTile--ceo:hover .teamTile__cta {
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.14em;
+}
+
+/* Shine auf CEO dezent halten */
+.teamTile--ceo:hover .teamTile__shine {
+  opacity: 0.45;
+}
 
 .teamGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(18px, 2.2vw, 24px);
+  gap: clamp(20px, 2.5vw, 28px);
 }
 
 @media (min-width: 720px) {
@@ -1113,14 +1233,14 @@ a {
   flex-direction: column;
   text-align: left;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: calc(var(--radius) + 4px);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.03);
   overflow: hidden;
   cursor: pointer;
   color: inherit;
   font: inherit;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28) inset;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22) inset;
   transition:
     transform 320ms var(--ease),
     border-color 320ms var(--ease),
@@ -1129,16 +1249,15 @@ a {
 }
 
 .teamTile:hover {
-  transform: translateY(-6px);
-  border-color: rgba(86, 167, 255, 0.42);
-  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+  border-color: rgba(86, 167, 255, 0.32);
+  background: rgba(255, 255, 255, 0.045);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.28) inset,
-    0 28px 90px rgba(86, 167, 255, 0.14);
+    0 0 0 1px rgba(0, 0, 0, 0.22) inset,
+    0 22px 72px rgba(86, 167, 255, 0.1);
 }
 
-.teamTile:focus-visible,
-.teamCfoBand__btn:focus-visible {
+.teamTile:focus-visible {
   outline: 2px solid rgba(86, 167, 255, 0.9);
   outline-offset: 4px;
 }
@@ -1155,13 +1274,23 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 7, 12, 0) 40%, rgba(5, 7, 12, 0.75) 100%);
-  opacity: 0.85;
+  background: linear-gradient(180deg, rgba(5, 7, 12, 0) 42%, rgba(5, 7, 12, 0.68) 100%);
+  opacity: 0.78;
   transition: opacity 320ms var(--ease);
 }
 
 .teamTile:hover .teamTile__media::after {
-  opacity: 0.95;
+  opacity: 0.88;
+}
+
+/* Grid-Karten: nur leichte Vignette — Text sitzt unter dem Bild, kein Überlappen */
+.teamGrid .teamTile__media::after {
+  background: linear-gradient(180deg, rgba(5, 7, 12, 0) 55%, rgba(5, 7, 12, 0.35) 100%);
+  opacity: 0.45;
+}
+
+.teamGrid .teamTile:hover .teamTile__media::after {
+  opacity: 0.58;
 }
 
 .teamTile__media img {
@@ -1215,6 +1344,23 @@ a {
   margin-top: -72px;
 }
 
+.teamGrid .teamTile__body {
+  margin-top: 0;
+  padding: 16px 18px 18px;
+  gap: 6px;
+  background: linear-gradient(180deg, rgba(7, 11, 20, 0.28), rgba(5, 7, 12, 0.98));
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.teamGrid .teamTile__role {
+  line-height: 1.45;
+  max-width: 100%;
+}
+
+.teamGrid .teamTile__cta {
+  margin-top: 4px;
+}
+
 .teamTile__name {
   font-size: clamp(17px, 1.9vw, 20px);
   font-weight: 800;
@@ -1239,143 +1385,33 @@ a {
 }
 
 .teamTile:hover .teamTile__cta {
-  color: rgba(255, 255, 255, 0.88);
-  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.17em;
 }
 
-/* CFO-Zeile unter dem Grid — gleiches Modal wie die anderen Karten */
-.teamCfoBand {
-  margin-top: clamp(28px, 4vw, 44px);
-  display: grid;
-  gap: 14px;
-  justify-items: center;
-  text-align: center;
-}
-
-.teamCfoBand__label {
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.teamCfoBand__btn {
-  width: min(640px, 100%);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: clamp(14px, 2.5vw, 22px);
-  padding: 16px 18px 16px 16px;
-  border-radius: calc(var(--radius) + 2px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  text-align: left;
-  transition: transform 280ms var(--ease), border-color 280ms var(--ease), background 280ms var(--ease),
-    box-shadow 280ms var(--ease);
-}
-
-.teamCfoBand__btn:hover {
-  transform: translateY(-3px);
-  border-color: rgba(86, 167, 255, 0.38);
-  background: rgba(255, 255, 255, 0.055);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
-    0 20px 60px rgba(86, 167, 255, 0.12);
-}
-
-.teamCfoBand__avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 1px solid rgba(86, 167, 255, 0.35);
-  flex-shrink: 0;
-}
-
-.teamCfoBand__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.teamCfoBand__meta {
-  display: grid;
-  gap: 6px;
-  min-width: 0;
-}
-
-.teamCfoBand__name {
-  font-size: clamp(16px, 2vw, 18px);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.teamCfoBand__role {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(154, 208, 255, 0.92);
-  font-weight: 600;
-}
-
-.teamCfoBand__cta {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  white-space: nowrap;
-  transition: color 260ms var(--ease);
-}
-
-.teamCfoBand__btn:hover .teamCfoBand__cta {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@media (max-width: 520px) {
-  .teamCfoBand__btn {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    padding: 18px 16px 20px;
-  }
-
-  .teamCfoBand__meta {
-    justify-items: center;
-  }
-
-  .teamCfoBand__cta {
-    margin-top: 4px;
-  }
-}
-
-/* Dezenter Scroll-Hinweis wie im Hero — Ziel: Social / weiterer Seiteninhalt */
+/* Dezenter Scroll-Hinweis — ruhiger, luftiger */
 .teamScrollCue {
-  margin-top: clamp(20px, 3vw, 32px);
+  margin-top: clamp(28px, 4vw, 40px);
   display: flex;
   justify-content: center;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 .teamScrollCue__link {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px 6px;
-  color: rgba(255, 255, 255, 0.52);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  gap: 12px;
+  padding: 12px 24px 8px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  transition: color 260ms var(--ease);
+  transition: color 280ms var(--ease);
 }
 
 .teamScrollCue__link:hover {
-  color: rgba(154, 208, 255, 0.95);
+  color: rgba(186, 224, 255, 0.88);
 }
 
 .teamScrollCue__line {
@@ -2009,6 +2045,45 @@ a {
 
   .hero__bg {
     transform: none !important;
+  }
+
+  /* Hero: kein autoplay-Video — statisches Poster wie früher */
+  .hero__video {
+    display: none;
+  }
+
+  .hero__bg::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    filter: blur(18px) saturate(1.05) contrast(1.05);
+    opacity: 0.22;
+    transform: scale(1.08);
+    z-index: 0;
+  }
+
+  .hero__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    background-image: var(--hero-image);
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .teamTile--ceo {
+    animation: none !important;
+  }
+
+  .teamTile--ceo:hover {
+    transform: translateY(-5px);
   }
 }
 

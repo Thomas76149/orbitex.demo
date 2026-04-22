@@ -66,16 +66,21 @@
     </header>
 
     <main>
-      <!--
-        ====================================================================
-        HERO (Fullscreen)
-        - Background image is set via CSS for better overlays/animations
-        - Replace the hero image URL in style.css (search: --hero-image)
-        ====================================================================
-      -->
+      <!-- HERO: Video-Hintergrund (pics/hero.mp4), Poster + Fallback siehe style.css -->
       <section class="hero" id="home" aria-label="Orbitex Hero">
-        <!-- Optional: subtle parallax layer (JS updates) -->
-        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__bg" aria-hidden="true">
+          <video
+            class="hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="pics/BoosterLandung.jpg"
+            aria-hidden="true"
+          >
+            <source src="pics/hero.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="hero__overlay" aria-hidden="true"></div>
 
         <div class="container hero__content">
@@ -531,7 +536,7 @@
         </div>
       </section>
 
-      <!-- Team: 2×2 Grid (Desktop), 1 Spalte Mobile — Klick öffnet Lead-Modal (script.js) -->
+      <!-- Team: CEO zentriert oben, darunter 2×2 mit Co-CEO, CMO, CTO, CFO — Modal via script.js -->
       <section class="section section--stars section--showcase section--airy" id="team" aria-label="Unser Team">
         <div class="container">
           <div class="section__head reveal" data-reveal>
@@ -539,133 +544,136 @@
             <p class="section__lead">Die Gesichter hinter Orbitex</p>
           </div>
 
-          <div class="teamGrid reveal" data-reveal>
-            <button
-              type="button"
-              class="teamTile"
-              data-lead-open
-              data-lead-id="ceo"
-              aria-haspopup="dialog"
-            >
-              <span class="teamTile__media">
-                <img
-                  src="pics/team-ceo.jpg"
-                  alt="Porträt Thomas Halbach, Chief Executive Officer bei Orbitex"
-                  width="640"
-                  height="640"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  loading="lazy"
-                />
-              </span>
-              <span class="teamTile__shine" aria-hidden="true"></span>
-              <span class="teamTile__body">
-                <span class="teamTile__name">Thomas Halbach</span>
-                <span class="teamTile__role">Chief Executive Officer (CEO)</span>
-                <span class="teamTile__cta">Profil ansehen</span>
-              </span>
-            </button>
+          <div class="teamLayout">
+            <div class="teamLayout__ceo reveal" data-reveal>
+              <button
+                type="button"
+                class="teamTile teamTile--ceo"
+                data-lead-open
+                data-lead-id="ceo"
+                aria-haspopup="dialog"
+              >
+                <span class="teamTile__media">
+                  <img
+                    src="pics/team-ceo.jpg"
+                    alt="Porträt Thomas Halbach, Chief Executive Officer bei Orbitex"
+                    width="640"
+                    height="640"
+                    sizes="(max-width: 760px) 96vw, 640px"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="teamTile__shine" aria-hidden="true"></span>
+                <span class="teamTile__body">
+                  <span class="teamTile__ceoBadge">CEO</span>
+                  <span class="teamTile__name">Thomas Halbach</span>
+                  <span class="teamTile__role">Chief Executive Officer (CEO)</span>
+                  <span class="teamTile__cta">Profil ansehen</span>
+                </span>
+              </button>
+            </div>
 
-            <button
-              type="button"
-              class="teamTile"
-              data-lead-open
-              data-lead-id="coo"
-              aria-haspopup="dialog"
-            >
-              <span class="teamTile__media">
-                <img
-                  src="pics/team2.jpg"
-                  alt="Porträt Eric Giehl, Co-Chief Executive Officer bei Orbitex"
-                  width="640"
-                  height="640"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  loading="lazy"
-                />
-              </span>
-              <span class="teamTile__shine" aria-hidden="true"></span>
-              <span class="teamTile__body">
-                <span class="teamTile__name">Eric Giehl</span>
-                <span class="teamTile__role">Co-Chief Executive Officer (Co-CEO)</span>
-                <span class="teamTile__cta">Profil ansehen</span>
-              </span>
-            </button>
+            <div class="teamGrid teamGrid--rest reveal" data-reveal>
+              <button
+                type="button"
+                class="teamTile"
+                data-lead-open
+                data-lead-id="coo"
+                aria-haspopup="dialog"
+              >
+                <span class="teamTile__media">
+                  <img
+                    src="pics/team2.jpg"
+                    alt="Porträt Eric Giehl, Co-Chief Executive Officer bei Orbitex"
+                    width="640"
+                    height="640"
+                    sizes="(max-width: 760px) 100vw, 25vw"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="teamTile__shine" aria-hidden="true"></span>
+                <span class="teamTile__body">
+                  <span class="teamTile__name">Eric Giehl</span>
+                  <span class="teamTile__role">Co-Chief Executive Officer (Co-CEO)</span>
+                  <span class="teamTile__cta">Profil ansehen</span>
+                </span>
+              </button>
 
-            <button
-              type="button"
-              class="teamTile"
-              data-lead-open
-              data-lead-id="cmo"
-              aria-haspopup="dialog"
-            >
-              <span class="teamTile__media">
-                <img
-                  src="pics/team3.jpg"
-                  alt="Porträt Jonas Habermehl, Chief Marketing Officer bei Orbitex"
-                  width="640"
-                  height="640"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  loading="lazy"
-                />
-              </span>
-              <span class="teamTile__shine" aria-hidden="true"></span>
-              <span class="teamTile__body">
-                <span class="teamTile__name">Jonas Habermehl</span>
-                <span class="teamTile__role">Chief Marketing Officer (CMO)</span>
-                <span class="teamTile__cta">Profil ansehen</span>
-              </span>
-            </button>
+              <button
+                type="button"
+                class="teamTile"
+                data-lead-open
+                data-lead-id="cmo"
+                aria-haspopup="dialog"
+              >
+                <span class="teamTile__media">
+                  <img
+                    src="pics/team3.jpg"
+                    alt="Porträt Jonas Habermehl, Chief Marketing Officer bei Orbitex"
+                    width="640"
+                    height="640"
+                    sizes="(max-width: 760px) 100vw, 25vw"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="teamTile__shine" aria-hidden="true"></span>
+                <span class="teamTile__body">
+                  <span class="teamTile__name">Jonas Habermehl</span>
+                  <span class="teamTile__role">Chief Marketing Officer (CMO)</span>
+                  <span class="teamTile__cta">Profil ansehen</span>
+                </span>
+              </button>
 
-            <button
-              type="button"
-              class="teamTile"
-              data-lead-open
-              data-lead-id="cto"
-              aria-haspopup="dialog"
-            >
-              <span class="teamTile__media">
-                <img
-                  src="pics/team-leon.jpg"
-                  alt="Porträt Leon Kelmendi, Chief Engineering Officer bei Orbitex"
-                  width="640"
-                  height="640"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  loading="lazy"
-                />
-              </span>
-              <span class="teamTile__shine" aria-hidden="true"></span>
-              <span class="teamTile__body">
-                <span class="teamTile__name">Leon Kelmendi</span>
-                <span class="teamTile__role">Chief Engineering Officer (CTO)</span>
-                <span class="teamTile__cta">Profil ansehen</span>
-              </span>
-            </button>
-          </div>
+              <button
+                type="button"
+                class="teamTile"
+                data-lead-open
+                data-lead-id="cto"
+                aria-haspopup="dialog"
+              >
+                <span class="teamTile__media">
+                  <img
+                    src="pics/team-leon.jpg"
+                    alt="Porträt Leon Kelmendi, Chief Engineering Officer bei Orbitex"
+                    width="640"
+                    height="640"
+                    sizes="(max-width: 760px) 100vw, 25vw"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="teamTile__shine" aria-hidden="true"></span>
+                <span class="teamTile__body">
+                  <span class="teamTile__name">Leon Kelmendi</span>
+                  <span class="teamTile__role">Chief Engineering Officer (CTO)</span>
+                  <span class="teamTile__cta">Profil ansehen</span>
+                </span>
+              </button>
 
-          <!-- CFO außerhalb des 2×2-Grids + Scroll-Hinweis zum Rest der Seite -->
-          <div class="teamCfoBand reveal" data-reveal>
-            <p class="teamCfoBand__label">Weitere Schlüsselrolle im Leadership‑Team</p>
-            <button
-              type="button"
-              class="teamCfoBand__btn"
-              data-lead-open
-              data-lead-id="cfo"
-              aria-haspopup="dialog"
-            >
-              <span class="teamCfoBand__avatar">
-                <img
-                  src="pics/Jonathan.jpg"
-                  alt="Porträt Jonathan Weinbrecht, Chief Financial Officer bei Orbitex"
-                  width="144"
-                  height="144"
-                  loading="lazy"
-                />
-              </span>
-              <span class="teamCfoBand__meta">
-                <span class="teamCfoBand__name">Jonathan Weinbrecht</span>
-                <span class="teamCfoBand__role">Chief Financial Officer (CFO)</span>
-              </span>
-              <span class="teamCfoBand__cta">Profil ansehen</span>
-            </button>
+              <button
+                type="button"
+                class="teamTile"
+                data-lead-open
+                data-lead-id="cfo"
+                aria-haspopup="dialog"
+              >
+                <span class="teamTile__media">
+                  <img
+                    src="pics/Jonathan.jpg"
+                    alt="Porträt Jonathan Weinbrecht, Chief Financial Officer bei Orbitex"
+                    width="640"
+                    height="640"
+                    sizes="(max-width: 760px) 100vw, 25vw"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="teamTile__shine" aria-hidden="true"></span>
+                <span class="teamTile__body">
+                  <span class="teamTile__name">Jonathan Weinbrecht</span>
+                  <span class="teamTile__role">Chief Financial Officer (CFO)</span>
+                  <span class="teamTile__cta">Profil ansehen</span>
+                </span>
+              </button>
+            </div>
           </div>
 
           <div class="teamScrollCue reveal" data-reveal>
