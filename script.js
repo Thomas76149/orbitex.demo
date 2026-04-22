@@ -16,7 +16,69 @@
   const navMobile = $("#navMobile");
   const teamModal = $("#teamModal");
   const teamDialog = teamModal?.querySelector(".modal__dialog") ?? null;
-  let lastFocus = null;
+  const leadModal = $("#leadModal");
+  const leadPanel = leadModal?.querySelector(".leadModal__panel") ?? null;
+  const leadPhoto = $("#leadModalPhoto");
+  const leadName = $("#leadModalName");
+  const leadRole = $("#leadModalRole");
+  const leadBio = $("#leadModalBio");
+
+  let teamLastFocus = null;
+  let leadLastFocus = null;
+
+  /** Lange Bios — später durch finale Texte ersetzen */
+  const LEAD_DATA = {
+    ceo: {
+      img: "pics/team-ceo.jpg",
+      name: "Halbach Thomas",
+      role: "Chief Executive Officer (CEO)",
+      bio:
+        "Halbach Thomas verantwortet die Gesamtstrategie von Orbitex: Mission Design, internationale Partnerschaften und die Skalierung der Startinfrastruktur. Mit einem klaren Fokus auf Zuverlässigkeit und europäische Souveränität bündelt er Unternehmensführung, Governance und langfristige Programmplanung. Seine Priorität ist eine Organisation, die komplexe Raumfahrtprojekte mit industrieller Disziplin umsetzt — ohne Kompromisse bei Sicherheit und Qualität.\n\n" +
+        "Verantwortung: Unternehmensstrategie, Board-Kommunikation, strategische Allianzen, Risiko- und Portfolioführung.\n\n" +
+        "Vision: Orbitex als europäische Referenz für häufige, sichere und nachhaltige Zugänge zum Orbit etablieren — von der ersten Mission bis zur wiederholbaren Betriebsführung.",
+    },
+    coo: {
+      img: "pics/team2.jpg",
+      name: "Giehl Eric",
+      role: "Co-Chief Executive Officer (Co-CEO)",
+      bio:
+        "Giehl Eric steht für operative Exzellenz und skalierbare Abläufe. Er verbindet Engineering-Kultur mit unternehmerischer Geschwindigkeit und sorgt dafür, dass Entscheidungen schnell, messbar und nachvollziehbar in die Umsetzung gehen. Sein Schwerpunkt liegt auf Programmsteuerung, Lieferketten und der nahtlosen Zusammenarbeit zwischen Standorten und Partnern.\n\n" +
+        "Verantwortung: operative Programmführung, Skalierung der Startorganisation, Schnittstellenmanagement zu Schlüsselpartnern.\n\n" +
+        "Vision: Orbitex als Team zu führen, das komplexe Raumfahrtprogramme mit der Präzision eines Tech-Unternehmens und der Seriosität eines Luftfahrtkonzerns liefert.",
+    },
+    cmo: {
+      img: "pics/team3.jpg",
+      name: "Habermehl Jonas",
+      role: "Chief Marketing Officer (CMO)",
+      bio:
+        "Habermehl Jonas positioniert Orbitex am Markt: klare Markenidentität, internationale Sichtbarkeit und verständliche Kommunikation von Technologie und Mission. Er übersetzt komplexe Inhalte in starke Narrative und baut Ökosysteme aus Medien, Community und Partnern auf.\n\n" +
+        "Verantwortung: Markenführung, Kommunikation, Growth, Events &amp; digitale Präsenz.\n\n" +
+        "Vision: Orbitex als Marke wahrnehmbar machen, die Vertrauen schafft — technisch glaubwürdig, emotional inspirierend und klar europäisch.",
+    },
+    cto: {
+      img: "pics/team-leon.jpg",
+      name: "Kelmendi Leon",
+      role: "Chief Engineering Officer (CTO)",
+      bio:
+        "Kelmendi Leon führt die technische Gesamtarchitektur: Systemengineering, Avionik, Software, Strukturen und Integration. Er sorgt für eine konsistente Technologiestrategie von der Simulation bis zum Start und setzt auf nachvollziehbare Standards, Reviews und Qualitätssicherung in jeder Phase.\n\n" +
+        "Verantwortung: Engineering-Exzellenz, technische Roadmap, Systemintegration, Sicherheitskultur im Entwicklungsprozess.\n\n" +
+        "Vision: Orbitex als Engineering-Referenz — schnell iterierend, aber niemals leichtfertig; Innovation mit messbarer Zuverlässigkeit.",
+    },
+    cfo: {
+      img: "pics/Jonathan.jpg",
+      name: "Weinbrecht Jonathan",
+      role: "Chief Financial Officer (CFO)",
+      bio:
+        "Weinbrecht Jonathan steuert Finanzen, Controlling und Investorenkommunikation. Er sorgt für transparente Planung, belastbare Forecasts und eine Kapitalstruktur, die ambitionierte Raumfahrtprogramme tragfähig macht — von der ersten Entwicklungsphase bis zur Betriebsskalierung.\n\n" +
+        "Verantwortung: Finanzstrategie, Budgetierung, Reporting, Fundraising &amp; Investor Relations.\n\n" +
+        "Vision: Finanzielle Resilienz als strategischer Vorteil — damit Orbitex Wachstum und Innovation gleichzeitig verantwortungsvoll beschleunigen kann.",
+    },
+  };
+
+  const syncBodyScrollLock = () => {
+    const anyOpen = Boolean(teamModal?.classList.contains("is-open") || leadModal?.classList.contains("is-open"));
+    document.body.style.overflow = anyOpen ? "hidden" : "";
+  };
 
   // ------------------------------------------------------------
   // Footer year
@@ -46,52 +108,121 @@
     a.addEventListener("click", () => setNavOpen(false));
   });
 
-  // Close mobile nav on Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setNavOpen(false);
-  });
-
   // ------------------------------------------------------------
-  // Team modal (premium popup)
+  // Team modal (Navbar „Team“)
   // ------------------------------------------------------------
-  const setModalOpen = (open) => {
+  const setTeamModalOpen = (open) => {
     if (!teamModal) return;
+    if (open && leadModal?.classList.contains("is-open")) setLeadModalOpen(false);
+
     teamModal.classList.toggle("is-open", open);
     teamModal.setAttribute("aria-hidden", String(!open));
-    document.body.style.overflow = open ? "hidden" : "";
+    syncBodyScrollLock();
 
     if (open) {
-      lastFocus = document.activeElement;
-      // Focus the dialog for accessibility
+      teamLastFocus = document.activeElement;
       setTimeout(() => teamDialog?.focus?.(), 0);
     } else {
-      // Restore focus to opener
-      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-      lastFocus = null;
+      if (teamLastFocus && typeof teamLastFocus.focus === "function") teamLastFocus.focus();
+      teamLastFocus = null;
     }
+  };
+
+  const setLeadModalOpen = (open) => {
+    if (!leadModal) return;
+    if (open && teamModal?.classList.contains("is-open")) setTeamModalOpen(false);
+
+    leadModal.classList.toggle("is-open", open);
+    leadModal.setAttribute("aria-hidden", String(!open));
+    syncBodyScrollLock();
+
+    if (open) {
+      leadLastFocus = document.activeElement;
+      setTimeout(() => leadPanel?.focus?.(), 0);
+    } else {
+      if (leadLastFocus && typeof leadLastFocus.focus === "function") leadLastFocus.focus();
+      leadLastFocus = null;
+    }
+  };
+
+  const openLeadFromId = (id) => {
+    const data = LEAD_DATA[id];
+    if (!data || !leadPhoto || !leadName || !leadRole || !leadBio) return;
+
+    leadPhoto.src = data.img;
+    leadPhoto.alt = `Porträt: ${data.name}`;
+    leadName.textContent = data.name;
+    leadRole.textContent = data.role;
+    leadBio.innerHTML = data.bio
+      .split(/\n\n/)
+      .map((chunk) => `<p>${chunk.replace(/\n/g, "<br />")}</p>`)
+      .join("");
+
+    setLeadModalOpen(true);
   };
 
   $$('[data-modal-open="team"]').forEach((btn) => {
     btn.addEventListener("click", () => {
       setNavOpen(false);
-      setModalOpen(true);
+      setTeamModalOpen(true);
     });
   });
 
   $$('[data-modal-close="team"]').forEach((btn) => {
-    btn.addEventListener("click", () => setModalOpen(false));
+    btn.addEventListener("click", () => setTeamModalOpen(false));
   });
 
   // Close on click outside dialog
   teamModal?.addEventListener("click", (e) => {
     const target = e.target;
     if (!(target instanceof Element)) return;
-    if (target.classList.contains("modal__backdrop")) setModalOpen(false);
+    if (target.classList.contains("modal__backdrop")) setTeamModalOpen(false);
   });
 
-  // Close modal on Escape (and keep mobile menu behavior)
+  // Team-Modal: Person antippen → Detail-Modal (Leadership)
+  teamModal?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    const pick = target.closest("[data-pick-lead]");
+    if (!pick) return;
+    const id = pick.getAttribute("data-pick-lead");
+    if (!id) return;
+    setTeamModalOpen(false);
+    openLeadFromId(id);
+  });
+
+  // Leadership modal open/close
+  $$("[data-lead-open]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-lead-id");
+      if (!id) return;
+      setNavOpen(false);
+      openLeadFromId(id);
+    });
+  });
+
+  $$("[data-lead-close]").forEach((el) => {
+    el.addEventListener("click", () => setLeadModalOpen(false));
+  });
+
+  leadModal?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.classList.contains("leadModal__backdrop")) setLeadModalOpen(false);
+  });
+
+  // Escape: modals first, then mobile menu
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && teamModal?.classList.contains("is-open")) setModalOpen(false);
+    if (e.key !== "Escape") return;
+    if (leadModal?.classList.contains("is-open")) {
+      setLeadModalOpen(false);
+      return;
+    }
+    if (teamModal?.classList.contains("is-open")) {
+      setTeamModalOpen(false);
+      return;
+    }
+    setNavOpen(false);
   });
 
   // ------------------------------------------------------------

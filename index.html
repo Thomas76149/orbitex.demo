@@ -41,6 +41,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#standorte">Standorte</a>
+          <a href="#partner">Partner</a>
           <button class="nav__linkBtn" type="button" data-modal-open="team">Team</button>
           <a href="#kontakt">Kontakt</a>
         </nav>
@@ -57,6 +58,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#standorte">Standorte</a>
+          <a href="#partner">Partner</a>
           <button class="nav__mobileBtn" type="button" data-modal-open="team">Team</button>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -339,6 +341,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
             </article>
 
             <article class="location reveal" data-reveal>
@@ -364,6 +367,180 @@
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ====================================================================
+        PARTNER — starke europäische Partner (Logos optional austauschbar)
+        ====================================================================
+      -->
+      <section class="section section--alt section--stars" id="partner" aria-label="Unsere Partner">
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <h2 class="section__title">Unsere Partner</h2>
+            <p class="section__lead">
+              Gemeinsam mit den stärksten Playern Europas
+            </p>
+          </div>
+
+          <!-- Dekoratives Banner (Unsplash — bei Bedarf URL ersetzen) -->
+          <figure class="partnerBanner reveal" data-reveal>
+            <img
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80"
+              alt="Europa und Weltraum — symbolische Visualisierung für Partnerschaften"
+              loading="lazy"
+            />
+            <figcaption class="partnerBanner__cap">Bild: Unsplash — Europäische Raumfahrt &amp; Technologie</figcaption>
+          </figure>
+
+          <div class="partnerGrid">
+            <article class="partnerCard reveal" data-reveal>
+              <div class="partnerCard__logoWrap" aria-hidden="true">
+                <span class="partnerCard__logo partnerCard__logo--bw">BW</span>
+              </div>
+              <h3 class="partnerCard__name">Bundeswehr</h3>
+              <p class="partnerCard__text">
+                Sicherheits- und Integrationspartner für sensible Missionen, Range Safety und nationale
+                Raumfahrtprogramme.
+              </p>
+            </article>
+
+            <article class="partnerCard reveal" data-reveal>
+              <div class="partnerCard__logoWrap" aria-hidden="true">
+                <span class="partnerCard__logo partnerCard__logo--bw">ESA</span>
+              </div>
+              <h3 class="partnerCard__name">ESA</h3>
+              <p class="partnerCard__text">
+                Europäische Standards, Zertifizierungen und Kooperationen entlang der gesamten
+                Wertschöpfungskette im Orbit.
+              </p>
+            </article>
+
+            <article class="partnerCard reveal" data-reveal>
+              <div class="partnerCard__logoWrap" aria-hidden="true">
+                <span class="partnerCard__logo partnerCard__logo--bw">DLR</span>
+              </div>
+              <h3 class="partnerCard__name">DLR</h3>
+              <p class="partnerCard__text">
+                Forschung, Simulation und Technologietransfer — von Bodenanlagen bis zu orbitalen
+                Demonstratoren.
+              </p>
+            </article>
+
+            <article class="partnerCard reveal" data-reveal>
+              <div class="partnerCard__logoWrap" aria-hidden="true">
+                <span class="partnerCard__logo partnerCard__logo--bw">ADS</span>
+              </div>
+              <h3 class="partnerCard__name">Airbus Defence and Space</h3>
+              <p class="partnerCard__text">
+                Industrielle Skalierung, Systemintegration und Lieferketten für große
+                Raumfahrtprogramme in Europa.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ====================================================================
+        TEAM — Leadership (Karten öffnen Detail-Modal)
+        ====================================================================
+      -->
+      <section class="section section--stars" id="team" aria-label="Unser Team">
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <h2 class="section__title">Unser Team</h2>
+            <p class="section__lead">Die Gesichter hinter Orbitex</p>
+          </div>
+
+          <p class="leadStrip__hint reveal" data-reveal>
+            Nach links oder rechts scrollen, um alle Profile zu sehen.
+          </p>
+
+          <div class="leadStrip reveal" data-reveal role="region" aria-label="Team — horizontal scrollen">
+            <div class="leadStrip__scroll">
+            <button
+              type="button"
+              class="leadCard"
+              data-lead-open
+              data-lead-id="ceo"
+              aria-haspopup="dialog"
+            >
+              <span class="leadCard__media">
+                <img src="pics/team-ceo.jpg" alt="" loading="lazy" />
+              </span>
+              <span class="leadCard__body">
+                <span class="leadCard__name">Halbach Thomas</span>
+                <span class="leadCard__role">Chief Executive Officer (CEO)</span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="leadCard"
+              data-lead-open
+              data-lead-id="coo"
+              aria-haspopup="dialog"
+            >
+              <span class="leadCard__media">
+                <img src="pics/team2.jpg" alt="" loading="lazy" />
+              </span>
+              <span class="leadCard__body">
+                <span class="leadCard__name">Giehl Eric</span>
+                <span class="leadCard__role">Co-Chief Executive Officer (Co-CEO)</span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="leadCard"
+              data-lead-open
+              data-lead-id="cmo"
+              aria-haspopup="dialog"
+            >
+              <span class="leadCard__media">
+                <img src="pics/team3.jpg" alt="" loading="lazy" />
+              </span>
+              <span class="leadCard__body">
+                <span class="leadCard__name">Habermehl Jonas</span>
+                <span class="leadCard__role">Chief Marketing Officer (CMO)</span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="leadCard"
+              data-lead-open
+              data-lead-id="cto"
+              aria-haspopup="dialog"
+            >
+              <span class="leadCard__media">
+                <img src="pics/team-leon.jpg" alt="" loading="lazy" />
+              </span>
+              <span class="leadCard__body">
+                <span class="leadCard__name">Kelmendi Leon</span>
+                <span class="leadCard__role">Chief Engineering Officer (CTO)</span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="leadCard"
+              data-lead-open
+              data-lead-id="cfo"
+              aria-haspopup="dialog"
+            >
+              <span class="leadCard__media">
+                <img src="pics/Jonathan.jpg" alt="" loading="lazy" />
+              </span>
+              <span class="leadCard__body">
+                <span class="leadCard__name">Weinbrecht Jonathan</span>
+                <span class="leadCard__role">Chief Financial Officer (CFO)</span>
+              </span>
+            </button>
+            </div>
           </div>
         </div>
       </section>
@@ -471,6 +648,33 @@
 
     <!--
       ====================================================================
+      LEADERSHIP DETAIL MODAL (öffnet von #team Karten)
+      - Inhalt wird per script.js aus data-lead-id befüllt
+      ====================================================================
+    -->
+    <div class="leadModal" id="leadModal" aria-hidden="true">
+      <div class="leadModal__backdrop" data-lead-close aria-hidden="true"></div>
+      <div
+        class="leadModal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="leadModalName"
+        aria-describedby="leadModalBio"
+        tabindex="-1"
+      >
+        <div class="leadModal__watermark" aria-hidden="true">ORBITEX</div>
+        <button class="leadModal__close" type="button" data-lead-close aria-label="Schließen">×</button>
+        <div class="leadModal__scroll">
+          <img class="leadModal__photo" id="leadModalPhoto" src="" alt="" width="720" height="720" />
+          <h2 class="leadModal__name" id="leadModalName"></h2>
+          <p class="leadModal__role" id="leadModalRole"></p>
+          <div class="leadModal__bio" id="leadModalBio"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      ====================================================================
       TEAM MODAL (Popup)
       - Open via "Team" in navbar
       ====================================================================
@@ -490,7 +694,7 @@
             <p class="modal__kicker">Orbitex Leadership</p>
             <h2 class="modal__title" id="teamTitle">Team</h2>
             <p class="modal__desc" id="teamDesc">
-              Führung &amp; Schlüsselrollen — Ansprechpartner für Strategie, Technologie und Wachstum.
+              Führung &amp; Schlüsselrollen — tippe auf ein Profil für die ausführliche Vorstellung.
             </p>
           </div>
           <button class="modal__close" type="button" data-modal-close="team" aria-label="Popup schließen">
@@ -498,51 +702,55 @@
           </button>
         </div>
 
-        <div class="teamGrid">
-          <div class="teamCard">
-            <div class="teamCard__top">
-              <img class="teamCard__avatar" src="pics/Thomas.jpg" alt="Porträt: Halbach Thomas" loading="lazy" />
-              <div>
-            <div class="teamCard__role">Chief Executive Officer (CEO)</div>
-                <div class="teamCard__name">Halbach Thomas</div>
-              </div>
-            </div>
-          </div>
-          <div class="teamCard">
-            <div class="teamCard__top">
-              <img class="teamCard__avatar" src="pics/Eric.jpg" alt="Porträt: Giehl Eric" loading="lazy" />
-              <div>
-            <div class="teamCard__role">Co-Chief Executive Officer (Co-CEO)</div>
-                <div class="teamCard__name">Giehl Eric</div>
-              </div>
-            </div>
-          </div>
-          <div class="teamCard">
-            <div class="teamCard__top">
-              <img class="teamCard__avatar" src="pics/Jonas.jpg" alt="Porträt: Habermehl Jonas" loading="lazy" />
-              <div>
-            <div class="teamCard__role">Chief Marketing Officer (CMO)</div>
-                <div class="teamCard__name">Habermehl Jonas</div>
-              </div>
-            </div>
-          </div>
-          <div class="teamCard">
-            <div class="teamCard__top">
-              <img class="teamCard__avatar" src="pics/Leon.jpg" alt="Porträt: Kelmendi Leon" loading="lazy" />
-              <div>
-            <div class="teamCard__role">Chief Engineering Officer (CTO)</div>
-                <div class="teamCard__name">Kelmendi Leon</div>
-              </div>
-            </div>
-          </div>
-          <div class="teamCard">
-            <div class="teamCard__top">
-              <img class="teamCard__avatar" src="pics/Jonathan.jpg" alt="Porträt: Weinbrecht Jonathan" loading="lazy" />
-              <div>
-            <div class="teamCard__role">Chief Financial Officer (CFO)</div>
-                <div class="teamCard__name">Weinbrecht Jonathan</div>
-              </div>
-            </div>
+        <p class="teamModal__hint">Nach links oder rechts scrollen — dann auf eine Person tippen.</p>
+
+        <div class="teamModalStrip" role="region" aria-label="Teamliste — horizontal scrollen">
+          <div class="teamModalStrip__scroll">
+            <button type="button" class="teamPick" data-pick-lead="ceo">
+              <span class="teamPick__top">
+                <img class="teamPick__avatar" src="pics/Thomas.jpg" alt="" loading="lazy" />
+                <span class="teamPick__text">
+                  <span class="teamPick__role">Chief Executive Officer (CEO)</span>
+                  <span class="teamPick__name">Halbach Thomas</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="teamPick" data-pick-lead="coo">
+              <span class="teamPick__top">
+                <img class="teamPick__avatar" src="pics/Eric.jpg" alt="" loading="lazy" />
+                <span class="teamPick__text">
+                  <span class="teamPick__role">Co-Chief Executive Officer (Co-CEO)</span>
+                  <span class="teamPick__name">Giehl Eric</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="teamPick" data-pick-lead="cmo">
+              <span class="teamPick__top">
+                <img class="teamPick__avatar" src="pics/Jonas.jpg" alt="" loading="lazy" />
+                <span class="teamPick__text">
+                  <span class="teamPick__role">Chief Marketing Officer (CMO)</span>
+                  <span class="teamPick__name">Habermehl Jonas</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="teamPick" data-pick-lead="cto">
+              <span class="teamPick__top">
+                <img class="teamPick__avatar" src="pics/Leon.jpg" alt="" loading="lazy" />
+                <span class="teamPick__text">
+                  <span class="teamPick__role">Chief Engineering Officer (CTO)</span>
+                  <span class="teamPick__name">Kelmendi Leon</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="teamPick" data-pick-lead="cfo">
+              <span class="teamPick__top">
+                <img class="teamPick__avatar" src="pics/Jonathan.jpg" alt="" loading="lazy" />
+                <span class="teamPick__text">
+                  <span class="teamPick__role">Chief Financial Officer (CFO)</span>
+                  <span class="teamPick__name">Weinbrecht Jonathan</span>
+                </span>
+              </span>
+            </button>
           </div>
         </div>
       </div>

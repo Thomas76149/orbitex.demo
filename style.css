@@ -312,6 +312,7 @@ a {
   inset: 0;
   background: rgba(0, 0, 0, 0.25);
   background-image: var(--hero-image);
+  /* Komplettes Motiv sichtbar (wie zuvor — kein Cover-Beschnitt) */
   background-size: contain;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -929,6 +930,416 @@ a {
 }
 
 /* =========================================================
+   Partner + Team sections (subtle starfield)
+   ========================================================= */
+
+.section--stars {
+  position: relative;
+  overflow: hidden;
+}
+
+.section--stars::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(circle at 78% 22%, rgba(86, 167, 255, 0.12) 0, rgba(86, 167, 255, 0) 52%),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0) 45%),
+    radial-gradient(circle at 88% 78%, rgba(154, 208, 255, 0.1) 0, rgba(154, 208, 255, 0) 48%);
+  opacity: 0.55;
+}
+
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.partnerCard {
+  position: relative;
+  border-radius: var(--radius);
+  padding: 20px 18px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  transition: transform 280ms var(--ease), border-color 280ms var(--ease), background 280ms var(--ease),
+    box-shadow 280ms var(--ease);
+}
+
+.partnerCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(86, 167, 255, 0.35);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+    0 22px 70px rgba(86, 167, 255, 0.12);
+}
+
+.partnerCard__logoWrap {
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+}
+
+.partnerCard__logo {
+  display: inline-grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  transition: transform 280ms var(--ease), filter 280ms var(--ease), border-color 280ms var(--ease),
+    background 280ms var(--ease), color 280ms var(--ease), box-shadow 280ms var(--ease);
+  filter: grayscale(1) brightness(1.15) contrast(1.05);
+}
+
+.partnerCard:hover .partnerCard__logo {
+  filter: none;
+  border-color: rgba(86, 167, 255, 0.45);
+  background: linear-gradient(135deg, rgba(86, 167, 255, 0.22), rgba(154, 208, 255, 0.12));
+  color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 18px 60px rgba(86, 167, 255, 0.18);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.partnerCard__name {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.partnerCard__text {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.partnerBanner {
+  margin: 0 0 26px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+}
+
+.partnerBanner img {
+  display: block;
+  width: 100%;
+  height: min(320px, 38vw);
+  object-fit: cover;
+}
+
+.partnerBanner__cap {
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leadStrip__hint {
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.leadStrip {
+  position: relative;
+  margin: 0 -6px;
+  padding: 6px 6px 8px;
+}
+
+.leadStrip::before,
+.leadStrip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 18px;
+  width: 36px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.leadStrip::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(5, 7, 12, 0.95), transparent);
+}
+
+.leadStrip::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(5, 7, 12, 0.95), transparent);
+}
+
+.leadStrip__scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 18px;
+  scrollbar-color: rgba(86, 167, 255, 0.45) rgba(255, 255, 255, 0.06);
+  scrollbar-width: thin;
+}
+
+.leadStrip__scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.leadStrip__scroll::-webkit-scrollbar-thumb {
+  background: rgba(86, 167, 255, 0.45);
+  border-radius: 999px;
+}
+
+.leadStrip__scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.leadCard {
+  flex: 0 0 min(300px, 82vw);
+  max-width: 320px;
+  scroll-snap-align: start;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 280ms var(--ease), border-color 280ms var(--ease), background 280ms var(--ease),
+    box-shadow 280ms var(--ease);
+}
+
+.leadCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(86, 167, 255, 0.32);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 22px 70px rgba(86, 167, 255, 0.12);
+}
+
+.leadCard:focus-visible {
+  outline: 2px solid rgba(86, 167, 255, 0.85);
+  outline-offset: 3px;
+}
+
+.leadCard__media {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.leadCard__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 650ms var(--ease);
+}
+
+.leadCard:hover .leadCard__media img {
+  transform: scale(1.08);
+}
+
+.leadCard__body {
+  display: grid;
+  gap: 6px;
+  padding: 16px 16px 18px;
+}
+
+.leadCard__name {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.leadCard__role {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* =========================================================
+   Leadership detail modal (fade + scale)
+   ========================================================= */
+
+.leadModal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 320ms var(--ease), visibility 320ms var(--ease);
+}
+
+.leadModal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.leadModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.leadModal__panel {
+  position: relative;
+  width: min(980px, calc(100% - 24px));
+  max-height: min(92vh, 980px);
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(86, 167, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.75),
+    0 0 0 12px rgba(86, 167, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateY(10px) scale(0.96);
+  opacity: 0;
+  transition: transform 420ms var(--ease), opacity 420ms var(--ease);
+}
+
+.leadModal.is-open .leadModal__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.leadModal__watermark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  font-size: clamp(56px, 10vw, 120px);
+  color: rgba(255, 255, 255, 0.04);
+  user-select: none;
+  pointer-events: none;
+}
+
+.leadModal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
+}
+
+.leadModal__close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(86, 167, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.leadModal__scroll {
+  position: relative;
+  z-index: 1;
+  max-height: min(92vh, 980px);
+  overflow: auto;
+  padding: 22px 22px 26px;
+}
+
+.leadModal__photo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  /* Komplettes Motiv sichtbar (kein Beschnitt wie bei cover) */
+  max-height: min(62vh, 680px);
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  background: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.25));
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.55);
+}
+
+.leadModal__name {
+  margin: 16px 0 0;
+  font-size: clamp(22px, 3vw, 34px);
+  letter-spacing: 0.04em;
+}
+
+.leadModal__role {
+  margin: 8px 0 0;
+  color: rgba(86, 167, 255, 0.95);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.leadModal__bio {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 980px) {
+  .partnerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .partnerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnerBanner img {
+    height: 220px;
+  }
+
+  .leadCard {
+    flex-basis: min(280px, 86vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leadModal,
+  .leadModal__panel {
+    transition: none !important;
+  }
+
+  .leadModal__panel {
+    transform: none !important;
+  }
+}
+
+/* =========================================================
    Modal (Team popup)
    ========================================================= */
 
@@ -953,16 +1364,16 @@ a {
 
 .modal__dialog {
   position: relative;
-  width: min(1100px, calc(100% - 24px));
-  margin: 86px auto 24px;
+  width: min(96vw, 1240px);
+  margin: 72px auto 16px;
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(86, 167, 255, 0.18);
   box-shadow:
     0 30px 110px rgba(0, 0, 0, 0.75),
     0 0 0 12px rgba(86, 167, 255, 0.06);
-  padding: 26px 26px 28px;
-  max-height: min(86vh, 900px);
+  padding: 28px 28px 30px;
+  max-height: min(92vh, 980px);
   overflow: auto;
 }
 
@@ -1014,77 +1425,110 @@ a {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.teamGrid {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: 1fr;
+.teamModal__hint {
+  margin: 12px 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.teamModalStrip {
+  position: relative;
+  margin: 0 -8px;
+  padding: 4px 8px 6px;
+}
+
+.teamModalStrip__scroll {
+  display: flex;
   gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 14px;
+  scrollbar-color: rgba(86, 167, 255, 0.45) rgba(255, 255, 255, 0.06);
+  scrollbar-width: thin;
 }
 
-.teamCard {
+.teamPick {
+  flex: 0 0 min(300px, 85vw);
+  max-width: 340px;
+  scroll-snap-align: start;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
   border-radius: 18px;
-  padding: 22px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.035);
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+  padding: 16px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease),
+    box-shadow 260ms var(--ease);
 }
 
-.teamCard__top {
+.teamPick:hover {
+  transform: translateY(-2px);
+  border-color: rgba(86, 167, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 55px rgba(86, 167, 255, 0.12);
+}
+
+.teamPick:focus-visible {
+  outline: 2px solid rgba(86, 167, 255, 0.85);
+  outline-offset: 3px;
+}
+
+.teamPick__top {
   display: grid;
-  grid-template-columns: 132px 1fr;
-  gap: 18px;
+  grid-template-columns: 100px 1fr;
+  gap: 14px;
   align-items: center;
 }
 
-.teamCard__avatar {
-  width: 132px;
-  height: 132px;
+.teamPick__avatar {
+  width: 100px;
+  height: 100px;
   border-radius: 999px;
   object-fit: cover;
   border: 1px solid rgba(86, 167, 255, 0.28);
-  box-shadow:
-    0 18px 55px rgba(0, 0, 0, 0.55),
-    0 0 0 10px rgba(86, 167, 255, 0.06);
 }
 
-.teamCard__avatar--placeholder {
-  background:
-    radial-gradient(circle at 30% 30%, rgba(86, 167, 255, 0.35), rgba(255, 255, 255, 0.06)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+.teamPick__text {
+  display: grid;
+  gap: 6px;
 }
 
-.teamCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(86, 167, 255, 0.26);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.teamCard__role {
-  font-size: 13px;
+.teamPick__role {
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.teamCard__name {
-  margin-top: 8px;
-  font-size: 22px;
-  font-weight: 700;
+.teamPick__name {
+  font-size: 17px;
+  font-weight: 800;
   letter-spacing: 0.02em;
 }
 
 @media (max-width: 760px) {
   .modal__dialog {
-    margin-top: 78px;
-    max-height: 88vh;
-    padding: 20px 18px 20px;
+    margin-top: 72px;
+    max-height: 92vh;
+    padding: 20px 16px 20px;
+    width: calc(100% - 20px);
   }
-  .teamCard__top {
-    grid-template-columns: 104px 1fr;
+
+  .teamPick {
+    flex-basis: min(280px, 88vw);
   }
-  .teamCard__avatar {
-    width: 104px;
-    height: 104px;
+
+  .teamPick__top {
+    grid-template-columns: 88px 1fr;
+  }
+
+  .teamPick__avatar {
+    width: 88px;
+    height: 88px;
   }
 }
 
@@ -1144,10 +1588,6 @@ a {
 
   .hero__bg {
     transform: translate3d(0, var(--parallax, 0px), 0);
-  }
-
-  .hero__bg::after {
-    background-position: 50% 50%;
   }
 }
 
