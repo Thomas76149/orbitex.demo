@@ -346,5 +346,36 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
+
+  // ------------------------------------------------------------
+  // Mission Control: reduced motion + tab visibility (pause animations)
+  // ------------------------------------------------------------
+  const missionSection = $("#mission-control");
+  if (missionSection) {
+    const mcSvg = missionSection.querySelector(".missionControl__svg");
+    const mcReduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const syncMcSvgSmil = () => {
+      if (!mcSvg || typeof mcSvg.pauseAnimations !== "function" || typeof mcSvg.unpauseAnimations !== "function") {
+        return;
+      }
+      const freeze = document.hidden || mcReduceMq.matches;
+      if (freeze) mcSvg.pauseAnimations();
+      else mcSvg.unpauseAnimations();
+    };
+
+    const syncMcReduce = () => {
+      missionSection.classList.toggle("missionControl--reduced", mcReduceMq.matches);
+      syncMcSvgSmil();
+    };
+    syncMcReduce();
+    mcReduceMq.addEventListener("change", syncMcReduce);
+
+    document.addEventListener("visibilitychange", () => {
+      missionSection.classList.toggle("missionControl--paused", document.hidden);
+      syncMcSvgSmil();
+    });
+    syncMcSvgSmil();
+  }
 })();
 

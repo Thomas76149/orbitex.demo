@@ -41,6 +41,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#roadmap">Roadmap</a>
+          <a href="#mission-control">Mission Control</a>
           <a href="#standorte">Standorte</a>
           <a href="#partner">Partner</a>
           <button class="nav__linkBtn" type="button" data-modal-open="team">Team</button>
@@ -59,6 +60,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#roadmap">Roadmap</a>
+          <a href="#mission-control">Mission Control</a>
           <a href="#standorte">Standorte</a>
           <a href="#partner">Partner</a>
           <button class="nav__mobileBtn" type="button" data-modal-open="team">Team</button>
@@ -416,6 +418,234 @@
               </div>
             </li>
           </ol>
+        </div>
+      </section>
+
+      <!-- Mission Control — Live-Überblick (Erdball, Orbits, Peenemünde) -->
+      <section
+        class="section section--airy section--alt section--stars missionControl"
+        id="mission-control"
+        aria-label="Mission Control"
+      >
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <h2 class="section__title">Mission Control</h2>
+            <p class="section__lead missionControl__lead">
+              Live-Überblick über unsere Aktivitäten im All
+            </p>
+          </div>
+
+          <div class="missionControl__layout reveal" data-reveal>
+            <div class="missionControl__viz">
+              <div class="missionControl__globeShell">
+                <svg
+                  class="missionControl__svg"
+                  viewBox="0 0 640 400"
+                  role="img"
+                  aria-label="Stilisierter Erdball aus dem All mit Orbitex-Satellitenbahnen und Startbogen von Peenemünde"
+                >
+                  <defs>
+                    <radialGradient id="mcEarthOcean" cx="38%" cy="35%" r="72%">
+                      <stop offset="0%" stop-color="#1a4a7a" />
+                      <stop offset="45%" stop-color="#0d2844" />
+                      <stop offset="100%" stop-color="#050c18" />
+                    </radialGradient>
+                    <radialGradient id="mcEarthHaze" cx="50%" cy="50%" r="50%">
+                      <stop offset="70%" stop-color="rgba(0,0,0,0)" />
+                      <stop offset="100%" stop-color="rgba(0,0,0,0.45)" />
+                    </radialGradient>
+                    <linearGradient id="mcLimb" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="rgba(120,190,255,0.35)" />
+                      <stop offset="40%" stop-color="rgba(120,190,255,0)" />
+                      <stop offset="100%" stop-color="rgba(0,0,0,0.5)" />
+                    </linearGradient>
+                    <filter id="mcGlow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b" />
+                      <feMerge>
+                        <feMergeNode in="b" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <filter id="mcGlowSoft" x="-80%" y="-80%" width="260%" height="260%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b" />
+                      <feMerge>
+                        <feMergeNode in="b" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <clipPath id="mcEarthClip">
+                      <circle cx="320" cy="200" r="118" />
+                    </clipPath>
+                  </defs>
+
+                  <rect class="mcSky" width="640" height="400" rx="0" />
+
+                  <circle class="mcStar mcStar--1" cx="52" cy="48" r="1.2" fill="#fff" />
+                  <circle class="mcStar mcStar--2" cx="120" cy="92" r="0.9" fill="#cfe8ff" />
+                  <circle class="mcStar mcStar--3" cx="588" cy="56" r="1" fill="#fff" />
+                  <circle class="mcStar mcStar--4" cx="520" cy="118" r="0.8" fill="#9ad0ff" />
+                  <circle class="mcStar mcStar--5" cx="96" cy="312" r="1" fill="#fff" />
+                  <circle class="mcStar mcStar--6" cx="602" cy="280" r="0.9" fill="#cfe8ff" />
+                  <circle class="mcStar mcStar--7" cx="180" cy="360" r="0.7" fill="#fff" />
+                  <circle class="mcStar mcStar--8" cx="420" cy="28" r="0.8" fill="#9ad0ff" />
+
+                  <g clip-path="url(#mcEarthClip)">
+                    <circle cx="320" cy="200" r="120" fill="url(#mcEarthOcean)" />
+                    <g class="mcEarthSpin">
+                      <ellipse
+                        cx="268"
+                        cy="175"
+                        rx="52"
+                        ry="30"
+                        fill="rgba(36, 110, 72, 0.55)"
+                        transform="rotate(-18 268 175)"
+                      />
+                      <ellipse cx="348" cy="218" rx="38" ry="24" fill="rgba(32, 92, 62, 0.5)" />
+                      <ellipse
+                        cx="310"
+                        cy="232"
+                        rx="28"
+                        ry="16"
+                        fill="rgba(28, 80, 55, 0.42)"
+                        transform="rotate(12 310 232)"
+                      />
+                    </g>
+                    <circle cx="320" cy="200" r="120" fill="url(#mcEarthHaze)" />
+                  </g>
+
+                  <circle
+                    cx="320"
+                    cy="200"
+                    r="119"
+                    fill="none"
+                    stroke="rgba(120, 190, 255, 0.35)"
+                    stroke-width="1.4"
+                    filter="url(#mcGlowSoft)"
+                  />
+                  <circle
+                    cx="320"
+                    cy="200"
+                    r="119"
+                    fill="url(#mcLimb)"
+                    opacity="0.85"
+                    pointer-events="none"
+                  />
+
+                  <path
+                    class="mcTraj"
+                    d="M 232 156 Q 300 52 468 38 Q 540 32 598 68"
+                    fill="none"
+                    stroke="rgba(154, 208, 255, 0.85)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    filter="url(#mcGlow)"
+                  />
+
+                  <!-- Feste Orbitlinien; Punkte per animateMotion entlang derselben Pfade (SMIL) -->
+                  <g transform="translate(320,200)">
+                    <g transform="rotate(-12)">
+                      <path
+                        id="mcOrbitPathA"
+                        d="M 152 0 A 152 50 0 1 1 -152 0 A 152 50 0 1 1 152 0"
+                        fill="none"
+                        stroke="rgba(120, 180, 255, 0.32)"
+                        stroke-width="1.1"
+                      />
+                      <g class="mcSat">
+                        <circle r="5.5" fill="#e8f4ff" stroke="rgba(86, 167, 255, 0.9)" stroke-width="1.2" filter="url(#mcGlow)">
+                          <animateMotion dur="88s" repeatCount="indefinite" rotate="0" calcMode="linear">
+                            <mpath href="#mcOrbitPathA" />
+                          </animateMotion>
+                        </circle>
+                      </g>
+                    </g>
+                    <g transform="rotate(8)">
+                      <path
+                        id="mcOrbitPathB"
+                        d="M 178 0 A 178 58 0 1 1 -178 0 A 178 58 0 1 1 178 0"
+                        fill="none"
+                        stroke="rgba(154, 208, 255, 0.22)"
+                        stroke-width="1"
+                      />
+                      <g class="mcSat mcSat--dim">
+                        <circle r="4.5" fill="#cfe8ff" stroke="rgba(86, 167, 255, 0.75)" stroke-width="1" filter="url(#mcGlow)">
+                          <animateMotion
+                            dur="118s"
+                            repeatCount="indefinite"
+                            rotate="0"
+                            calcMode="linear"
+                            keyPoints="1;0"
+                            keyTimes="0;1"
+                          >
+                            <mpath href="#mcOrbitPathB" />
+                          </animateMotion>
+                        </circle>
+                      </g>
+                    </g>
+                    <g transform="rotate(22)">
+                      <path
+                        id="mcOrbitPathC"
+                        d="M 128 0 A 128 42 0 1 1 -128 0 A 128 42 0 1 1 128 0"
+                        fill="none"
+                        stroke="rgba(120, 180, 255, 0.26)"
+                        stroke-width="1"
+                      />
+                      <g class="mcSat">
+                        <circle r="4.2" fill="#fff" stroke="rgba(154, 208, 255, 0.95)" stroke-width="1" filter="url(#mcGlow)">
+                          <animateMotion dur="64s" repeatCount="indefinite" rotate="0" calcMode="linear">
+                            <mpath href="#mcOrbitPathC" />
+                          </animateMotion>
+                        </circle>
+                      </g>
+                    </g>
+                  </g>
+
+                  <g class="mcPad" transform="translate(232,156)">
+                    <circle class="mcPad__ring" r="10" fill="none" stroke="rgba(86,167,255,0.55)" stroke-width="1.2" />
+                    <circle r="4" fill="#56a7ff" filter="url(#mcGlow)" />
+                  </g>
+
+                  <text class="mcPad__label" x="248" y="172" fill="rgba(255,255,255,0.55)" font-size="10" font-family="Montserrat, system-ui, sans-serif" letter-spacing="0.14em">PEENEMÜNDE</text>
+                </svg>
+              </div>
+            </div>
+
+            <aside class="missionControl__panel" aria-label="Live Status">
+              <div class="missionControl__panelHead">
+                <span class="missionControl__live" aria-hidden="true">
+                  <span class="missionControl__liveDot"></span>
+                  LIVE
+                </span>
+                <span class="missionControl__panelMeta">Ground link · nominal</span>
+              </div>
+              <ul class="missionControl__cards">
+                <li class="missionControl__card">
+                  <span class="missionControl__cardLabel">Aktuelle Satelliten im Orbit</span>
+                  <span class="missionControl__cardValue">12</span>
+                  <span class="missionControl__cardHint">aktive Nutzlasten</span>
+                </li>
+                <li class="missionControl__card">
+                  <span class="missionControl__cardLabel">Nächster Start</span>
+                  <span class="missionControl__cardValue missionControl__cardValue--sm">15. Mai 2026 · 14:30 Uhr</span>
+                  <span class="missionControl__cardHint">Lunar-Heavy</span>
+                </li>
+                <li class="missionControl__card">
+                  <span class="missionControl__cardLabel">Booster-Status</span>
+                  <span class="missionControl__cardValue missionControl__cardValue--sm">3 bereit · 1 in Wartung</span>
+                  <span class="missionControl__cardHint">Flotte &amp; Turnaround</span>
+                </li>
+                <li class="missionControl__card">
+                  <span class="missionControl__cardLabel">Aktuelle Mission</span>
+                  <span class="missionControl__cardValue missionControl__cardValue--sm">2 Satelliten in Low Earth Orbit</span>
+                  <span class="missionControl__cardHint">Deployment Phase</span>
+                </li>
+              </ul>
+            </aside>
+          </div>
+
+          <p class="missionControl__footnote reveal" data-reveal>
+            Echtzeit-Daten · Orbitex Ground Station Peenemünde
+          </p>
         </div>
       </section>
 
