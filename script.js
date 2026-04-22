@@ -14,6 +14,9 @@
   const nav = $(".nav");
   const navToggle = $(".nav__toggle");
   const navMobile = $("#navMobile");
+  const teamModal = $("#teamModal");
+  const teamDialog = teamModal?.querySelector(".modal__dialog") ?? null;
+  let lastFocus = null;
 
   // ------------------------------------------------------------
   // Footer year
@@ -49,6 +52,49 @@
   });
 
   // ------------------------------------------------------------
+  // Team modal (premium popup)
+  // ------------------------------------------------------------
+  const setModalOpen = (open) => {
+    if (!teamModal) return;
+    teamModal.classList.toggle("is-open", open);
+    teamModal.setAttribute("aria-hidden", String(!open));
+    document.body.style.overflow = open ? "hidden" : "";
+
+    if (open) {
+      lastFocus = document.activeElement;
+      // Focus the dialog for accessibility
+      setTimeout(() => teamDialog?.focus?.(), 0);
+    } else {
+      // Restore focus to opener
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+      lastFocus = null;
+    }
+  };
+
+  $$('[data-modal-open="team"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setNavOpen(false);
+      setModalOpen(true);
+    });
+  });
+
+  $$('[data-modal-close="team"]').forEach((btn) => {
+    btn.addEventListener("click", () => setModalOpen(false));
+  });
+
+  // Close on click outside dialog
+  teamModal?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.classList.contains("modal__backdrop")) setModalOpen(false);
+  });
+
+  // Close modal on Escape (and keep mobile menu behavior)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && teamModal?.classList.contains("is-open")) setModalOpen(false);
+  });
+
+  // ------------------------------------------------------------
   // Smooth anchor scrolling with fixed navbar offset
   // (CSS scroll-behavior already helps; this adds correct offset)
   // ------------------------------------------------------------
@@ -60,6 +106,10 @@
   const scrollToHash = (hash) => {
     if (!hash || hash === "#") return;
     const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    if (id === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const target = document.getElementById(id);
     if (!target) return;
 

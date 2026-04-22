@@ -41,6 +41,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#standorte">Standorte</a>
+          <button class="nav__linkBtn" type="button" data-modal-open="team">Team</button>
           <a href="#kontakt">Kontakt</a>
         </nav>
 
@@ -56,6 +57,7 @@
           <a href="#missionen">Missionen</a>
           <a href="#technologie">Technologie</a>
           <a href="#standorte">Standorte</a>
+          <button class="nav__mobileBtn" type="button" data-modal-open="team">Team</button>
           <a href="#kontakt">Kontakt</a>
         </div>
       </div>
@@ -279,10 +281,11 @@
 
           <div class="tech__media reveal" data-reveal>
             <figure class="mediaFrame">
-              <img src="pics/Technologie.jpg" alt="Orbitex Raketentechnologie und Triebwerke" loading="lazy" />
-              <figcaption class="mediaFrame__caption">
-                <strong>Replace this image:</strong> Technologie‑Detail / Render / Teststand
-              </figcaption>
+              <img
+                src="pics/technologie-detail.jpg"
+                alt="Orbitex Raketentechnologie und Triebwerke"
+                loading="lazy"
+              />
             </figure>
           </div>
         </div>
@@ -323,7 +326,7 @@
                   </div>
                   <div class="fact">
                     <div class="fact__label">Status</div>
-                    <div class="fact__value">In Planung <span class="muted">(Platzhalter)</span></div>
+                    <div class="fact__value">In Bau – Erster Start 2027</div>
                   </div>
                 </div>
               </div>
@@ -331,7 +334,7 @@
 
             <article class="location reveal" data-reveal>
               <div class="location__media">
-                <img src="pics/Hannover.jpg" alt="Orbitex Headquarters Hannover" loading="lazy" />
+                <img src="pics/hannover-headquarters.jpg" alt="Orbitex Headquarters Hannover" loading="lazy" />
               </div>
               <div class="location__body">
                 <h3 class="location__title">Hannover</h3>
@@ -347,7 +350,7 @@
                   </div>
                   <div class="fact">
                     <div class="fact__label">Kapazität</div>
-                    <div class="fact__value">Insert text <span class="muted">(Platzhalter)</span></div>
+                    <div class="fact__value">Über 180 Mitarbeiter in Avionik, Software &amp; Strukturen</div>
                   </div>
                 </div>
               </div>
@@ -367,8 +370,7 @@
           <div class="social__copy reveal" data-reveal>
             <h2 class="section__title">Follow our journey</h2>
             <p class="section__lead">
-              <strong>Platzhalter:</strong> Insert text here. Behind‑the‑scenes aus Entwicklung,
-              Tests und Starts — direkt aus dem Orbitex‑Team.
+              Einblicke aus Entwicklung, Tests und Starts — direkt aus dem Orbitex‑Team.
             </p>
           </div>
 
@@ -441,10 +443,10 @@
               >
                 <span aria-hidden="true">IG</span>
               </a>
-              <a class="iconBtn" href="#" aria-label="X / Twitter (Platzhalterlink)">
+              <a class="iconBtn" href="#" aria-label="X">
                 <span aria-hidden="true">X</span>
               </a>
-              <a class="iconBtn" href="#" aria-label="LinkedIn (Platzhalterlink)">
+              <a class="iconBtn" href="#" aria-label="LinkedIn">
                 <span aria-hidden="true">in</span>
               </a>
             </div>
@@ -457,6 +459,60 @@
         </div>
       </footer>
     </main>
+
+    <!--
+      ====================================================================
+      TEAM MODAL (Popup)
+      - Open via "Team" in navbar
+      ====================================================================
+    -->
+    <div class="modal" id="teamModal" aria-hidden="true">
+      <div class="modal__backdrop" data-modal-close="team" aria-hidden="true"></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="teamTitle"
+        aria-describedby="teamDesc"
+        tabindex="-1"
+      >
+        <div class="modal__head">
+          <div>
+            <p class="modal__kicker">Orbitex Leadership</p>
+            <h2 class="modal__title" id="teamTitle">Team</h2>
+            <p class="modal__desc" id="teamDesc">
+              Führung &amp; Schlüsselrollen — Ansprechpartner für Strategie, Technologie und Wachstum.
+            </p>
+          </div>
+          <button class="modal__close" type="button" data-modal-close="team" aria-label="Popup schließen">
+            ×
+          </button>
+        </div>
+
+        <div class="teamGrid">
+          <div class="teamCard">
+            <div class="teamCard__role">Chief Executive Officer (CEO)</div>
+            <div class="teamCard__name">Thomas Halbach</div>
+          </div>
+          <div class="teamCard">
+            <div class="teamCard__role">Co-Chief Executive Officer (Co-CEO)</div>
+            <div class="teamCard__name">Eric Giehl</div>
+          </div>
+          <div class="teamCard">
+            <div class="teamCard__role">Chief Marketing Officer (CMO)</div>
+            <div class="teamCard__name">Jonas Habermehl</div>
+          </div>
+          <div class="teamCard">
+            <div class="teamCard__role">Chief Engineering Officer (CTO)</div>
+            <div class="teamCard__name">Leon Kelmendi</div>
+          </div>
+          <div class="teamCard">
+            <div class="teamCard__role">Chief Financial Officer (CFO)</div>
+            <div class="teamCard__name">Jonathan Weinbrecht</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- JS -->
     <script src="script.js"></script>
