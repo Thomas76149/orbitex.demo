@@ -953,15 +953,17 @@ a {
 
 .modal__dialog {
   position: relative;
-  width: min(860px, calc(100% - 32px));
-  margin: 96px auto 24px;
+  width: min(1100px, calc(100% - 24px));
+  margin: 86px auto 24px;
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(86, 167, 255, 0.18);
   box-shadow:
     0 30px 110px rgba(0, 0, 0, 0.75),
     0 0 0 12px rgba(86, 167, 255, 0.06);
-  padding: 20px 20px 22px;
+  padding: 26px 26px 28px;
+  max-height: min(86vh, 900px);
+  overflow: auto;
 }
 
 .modal__head {
@@ -1015,16 +1017,40 @@ a {
 .teamGrid {
   margin-top: 16px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 .teamCard {
   border-radius: 18px;
-  padding: 16px 16px;
+  padding: 22px 22px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.035);
   transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+}
+
+.teamCard__top {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.teamCard__avatar {
+  width: 132px;
+  height: 132px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(86, 167, 255, 0.28);
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.55),
+    0 0 0 10px rgba(86, 167, 255, 0.06);
+}
+
+.teamCard__avatar--placeholder {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(86, 167, 255, 0.35), rgba(255, 255, 255, 0.06)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
 }
 
 .teamCard:hover {
@@ -1034,25 +1060,31 @@ a {
 }
 
 .teamCard__role {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.68);
 }
 
 .teamCard__name {
-  margin-top: 10px;
-  font-size: 16px;
+  margin-top: 8px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 @media (max-width: 760px) {
   .modal__dialog {
-    margin-top: 84px;
+    margin-top: 78px;
+    max-height: 88vh;
+    padding: 20px 18px 20px;
   }
-  .teamGrid {
-    grid-template-columns: 1fr;
+  .teamCard__top {
+    grid-template-columns: 104px 1fr;
+  }
+  .teamCard__avatar {
+    width: 104px;
+    height: 104px;
   }
 }
 
