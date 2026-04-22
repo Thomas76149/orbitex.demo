@@ -305,12 +305,12 @@
   const heroBg = $(".hero__bg");
   const heroVideo = $(".hero__video");
 
-  /** Hero-Video langsamer (0.25×) — nach Metadaten erneut setzen, manche Browser setzen beim Start zurück */
+  /** Hero-Video langsamer (0.5×) — nach Metadaten erneut setzen, manche Browser setzen beim Start zurück */
   const setHeroVideoPlaybackRate = () => {
     if (!heroVideo || reduceMotion) return;
     try {
-      heroVideo.defaultPlaybackRate = 0.25;
-      heroVideo.playbackRate = 0.25;
+      heroVideo.defaultPlaybackRate = 0.5;
+      heroVideo.playbackRate = 0.5;
     } catch {
       /* ältere Engines */
     }
@@ -323,7 +323,7 @@
       setHeroVideoPlaybackRate();
       heroVideo.addEventListener("loadedmetadata", setHeroVideoPlaybackRate, { once: true });
       heroVideo.addEventListener("ratechange", () => {
-        if (heroVideo.playbackRate !== 0.25) setHeroVideoPlaybackRate();
+        if (heroVideo.playbackRate !== 0.5) setHeroVideoPlaybackRate();
       });
       heroVideo.play?.().then(() => setHeroVideoPlaybackRate()).catch(() => {});
     }
