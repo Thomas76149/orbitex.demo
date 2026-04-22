@@ -305,9 +305,28 @@
   const heroBg = $(".hero__bg");
   const heroVideo = $(".hero__video");
 
+  /** Hero-Video langsamer (0.25×) — nach Metadaten erneut setzen, manche Browser setzen beim Start zurück */
+  const setHeroVideoPlaybackRate = () => {
+    if (!heroVideo || reduceMotion) return;
+    try {
+      heroVideo.defaultPlaybackRate = 0.25;
+      heroVideo.playbackRate = 0.25;
+    } catch {
+      /* ältere Engines */
+    }
+  };
+
   if (heroVideo && typeof heroVideo.pause === "function") {
-    if (reduceMotion) heroVideo.pause();
-    else heroVideo.play?.().catch(() => {});
+    if (reduceMotion) {
+      heroVideo.pause();
+    } else {
+      setHeroVideoPlaybackRate();
+      heroVideo.addEventListener("loadedmetadata", setHeroVideoPlaybackRate, { once: true });
+      heroVideo.addEventListener("ratechange", () => {
+        if (heroVideo.playbackRate !== 0.25) setHeroVideoPlaybackRate();
+      });
+      heroVideo.play?.().then(() => setHeroVideoPlaybackRate()).catch(() => {});
+    }
   }
 
   if (!reduceMotion && heroBg) {
