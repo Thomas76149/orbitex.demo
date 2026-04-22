@@ -30,48 +30,53 @@
   const LEAD_DATA = {
     ceo: {
       img: "pics/team-ceo.jpg",
-      name: "Halbach Thomas",
+      name: "Thomas Halbach",
       role: "Chief Executive Officer (CEO)",
       bio:
-        "Halbach Thomas verantwortet die Gesamtstrategie von Orbitex: Mission Design, internationale Partnerschaften und die Skalierung der Startinfrastruktur. Mit einem klaren Fokus auf Zuverlässigkeit und europäische Souveränität bündelt er Unternehmensführung, Governance und langfristige Programmplanung. Seine Priorität ist eine Organisation, die komplexe Raumfahrtprojekte mit industrieller Disziplin umsetzt — ohne Kompromisse bei Sicherheit und Qualität.\n\n" +
+        "Thomas Halbach verantwortet die Gesamtstrategie von Orbitex: Mission Design, internationale Partnerschaften und die Skalierung der Startinfrastruktur. Mit einem klaren Fokus auf Zuverlässigkeit und europäische Souveränität bündelt er Unternehmensführung, Governance und langfristige Programmplanung. Seine Priorität ist eine Organisation, die komplexe Raumfahrtprojekte mit industrieller Disziplin umsetzt — ohne Kompromisse bei Sicherheit und Qualität.\n\n" +
         "Verantwortung: Unternehmensstrategie, Board-Kommunikation, strategische Allianzen, Risiko- und Portfolioführung.\n\n" +
-        "Vision: Orbitex als europäische Referenz für häufige, sichere und nachhaltige Zugänge zum Orbit etablieren — von der ersten Mission bis zur wiederholbaren Betriebsführung.",
+        "Vision: Orbitex als europäische Referenz für häufige, sichere und nachhaltige Zugänge zum Orbit etablieren — von der ersten Mission bis zur wiederholbaren Betriebsführung.\n\n" +
+        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
     },
     coo: {
       img: "pics/team2.jpg",
-      name: "Giehl Eric",
+      name: "Eric Giehl",
       role: "Co-Chief Executive Officer (Co-CEO)",
       bio:
-        "Giehl Eric steht für operative Exzellenz und skalierbare Abläufe. Er verbindet Engineering-Kultur mit unternehmerischer Geschwindigkeit und sorgt dafür, dass Entscheidungen schnell, messbar und nachvollziehbar in die Umsetzung gehen. Sein Schwerpunkt liegt auf Programmsteuerung, Lieferketten und der nahtlosen Zusammenarbeit zwischen Standorten und Partnern.\n\n" +
+        "Eric Giehl steht für operative Exzellenz und skalierbare Abläufe. Er verbindet Engineering-Kultur mit unternehmerischer Geschwindigkeit und sorgt dafür, dass Entscheidungen schnell, messbar und nachvollziehbar in die Umsetzung gehen. Sein Schwerpunkt liegt auf Programmsteuerung, Lieferketten und der nahtlosen Zusammenarbeit zwischen Standorten und Partnern.\n\n" +
         "Verantwortung: operative Programmführung, Skalierung der Startorganisation, Schnittstellenmanagement zu Schlüsselpartnern.\n\n" +
-        "Vision: Orbitex als Team zu führen, das komplexe Raumfahrtprogramme mit der Präzision eines Tech-Unternehmens und der Seriosität eines Luftfahrtkonzerns liefert.",
+        "Vision: Orbitex als Team zu führen, das komplexe Raumfahrtprogramme mit der Präzision eines Tech-Unternehmens und der Seriosität eines Luftfahrtkonzerns liefert.\n\n" +
+        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
     },
     cmo: {
       img: "pics/team3.jpg",
-      name: "Habermehl Jonas",
+      name: "Jonas Habermehl",
       role: "Chief Marketing Officer (CMO)",
       bio:
-        "Habermehl Jonas positioniert Orbitex am Markt: klare Markenidentität, internationale Sichtbarkeit und verständliche Kommunikation von Technologie und Mission. Er übersetzt komplexe Inhalte in starke Narrative und baut Ökosysteme aus Medien, Community und Partnern auf.\n\n" +
+        "Jonas Habermehl positioniert Orbitex am Markt: klare Markenidentität, internationale Sichtbarkeit und verständliche Kommunikation von Technologie und Mission. Er übersetzt komplexe Inhalte in starke Narrative und baut Ökosysteme aus Medien, Community und Partnern auf.\n\n" +
         "Verantwortung: Markenführung, Kommunikation, Growth, Events &amp; digitale Präsenz.\n\n" +
-        "Vision: Orbitex als Marke wahrnehmbar machen, die Vertrauen schafft — technisch glaubwürdig, emotional inspirierend und klar europäisch.",
+        "Vision: Orbitex als Marke wahrnehmbar machen, die Vertrauen schafft — technisch glaubwürdig, emotional inspirierend und klar europäisch.\n\n" +
+        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
     },
     cto: {
       img: "pics/team-leon.jpg",
-      name: "Kelmendi Leon",
+      name: "Leon Kelmendi",
       role: "Chief Engineering Officer (CTO)",
       bio:
-        "Kelmendi Leon führt die technische Gesamtarchitektur: Systemengineering, Avionik, Software, Strukturen und Integration. Er sorgt für eine konsistente Technologiestrategie von der Simulation bis zum Start und setzt auf nachvollziehbare Standards, Reviews und Qualitätssicherung in jeder Phase.\n\n" +
+        "Leon Kelmendi führt die technische Gesamtarchitektur: Systemengineering, Avionik, Software, Strukturen und Integration. Er sorgt für eine konsistente Technologiestrategie von der Simulation bis zum Start und setzt auf nachvollziehbare Standards, Reviews und Qualitätssicherung in jeder Phase.\n\n" +
         "Verantwortung: Engineering-Exzellenz, technische Roadmap, Systemintegration, Sicherheitskultur im Entwicklungsprozess.\n\n" +
-        "Vision: Orbitex als Engineering-Referenz — schnell iterierend, aber niemals leichtfertig; Innovation mit messbarer Zuverlässigkeit.",
+        "Vision: Orbitex als Engineering-Referenz — schnell iterierend, aber niemals leichtfertig; Innovation mit messbarer Zuverlässigkeit.\n\n" +
+        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
     },
     cfo: {
       img: "pics/Jonathan.jpg",
-      name: "Weinbrecht Jonathan",
+      name: "Jonathan Weinbrecht",
       role: "Chief Financial Officer (CFO)",
       bio:
-        "Weinbrecht Jonathan steuert Finanzen, Controlling und Investorenkommunikation. Er sorgt für transparente Planung, belastbare Forecasts und eine Kapitalstruktur, die ambitionierte Raumfahrtprogramme tragfähig macht — von der ersten Entwicklungsphase bis zur Betriebsskalierung.\n\n" +
+        "Jonathan Weinbrecht steuert Finanzen, Controlling und Investorenkommunikation. Er sorgt für transparente Planung, belastbare Forecasts und eine Kapitalstruktur, die ambitionierte Raumfahrtprogramme tragfähig macht — von der ersten Entwicklungsphase bis zur Betriebsskalierung.\n\n" +
         "Verantwortung: Finanzstrategie, Budgetierung, Reporting, Fundraising &amp; Investor Relations.\n\n" +
-        "Vision: Finanzielle Resilienz als strategischer Vorteil — damit Orbitex Wachstum und Innovation gleichzeitig verantwortungsvoll beschleunigen kann.",
+        "Vision: Finanzielle Resilienz als strategischer Vorteil — damit Orbitex Wachstum und Innovation gleichzeitig verantwortungsvoll beschleunigen kann.\n\n" +
+        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
     },
   };
 

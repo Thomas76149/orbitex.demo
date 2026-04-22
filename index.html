@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -88,8 +88,8 @@
           </p>
 
           <div class="hero__actions reveal" data-reveal>
-            <a class="btn btn--primary" href="#missionen">Missionen entdecken</a>
-            <a class="btn btn--ghost" href="#technologie">Technologie ansehen</a>
+            <a class="btn btn--primary btn--lg" href="#missionen">Missionen entdecken</a>
+            <a class="btn btn--ghost btn--lg" href="#technologie">Technologie ansehen</a>
           </div>
 
           <div class="hero__meta reveal" data-reveal>
@@ -120,7 +120,7 @@
         - Replace images with your own
         ====================================================================
       -->
-      <section class="section" id="missionen" aria-label="Missionen">
+      <section class="section section--airy" id="missionen" aria-label="Missionen">
         <div class="container">
           <div class="section__head reveal" data-reveal>
             <h2 class="section__title">Missionen</h2>
@@ -134,7 +134,14 @@
           <div class="cards">
             <article class="card reveal" data-reveal>
               <div class="card__media">
-                <img src="pics/Satelit.avif" alt="Orbitex Satellitenstart und Deployment" loading="lazy" />
+                <img
+                  src="pics/Satelit.avif"
+                  alt="Orbitex-Rakete beim Satellitenstart: Nutzlastverglasung und Orbit-Deployment"
+                  width="800"
+                  height="450"
+                  sizes="(max-width: 980px) 100vw, 33vw"
+                  loading="lazy"
+                />
               </div>
               <div class="card__body">
                 <div class="card__icon" aria-hidden="true">
@@ -166,7 +173,14 @@
 
             <article class="card reveal" data-reveal>
               <div class="card__media">
-                <img src="pics/BoosterLandung.jpg" alt="Orbitex Booster-Landung" loading="lazy" />
+                <img
+                  src="pics/BoosterLandung.jpg"
+                  alt="Wiederverwendbarer Orbitex-Booster bei präziser Landung auf der Plattform"
+                  width="800"
+                  height="450"
+                  sizes="(max-width: 980px) 100vw, 33vw"
+                  loading="lazy"
+                />
               </div>
               <div class="card__body">
                 <div class="card__icon" aria-hidden="true">
@@ -195,7 +209,14 @@
 
             <article class="card reveal" data-reveal>
               <div class="card__media">
-                <img src="pics/Moon.jpg" alt="Orbitex Rakete auf dem Weg zum Mond" loading="lazy" />
+                <img
+                  src="pics/Moon.jpg"
+                  alt="Orbitex-Trägersystem auf interplanetarer Bahn Richtung Mond"
+                  width="800"
+                  height="450"
+                  sizes="(max-width: 980px) 100vw, 33vw"
+                  loading="lazy"
+                />
               </div>
               <div class="card__body">
                 <div class="card__icon" aria-hidden="true">
@@ -233,7 +254,7 @@
         - Two-column layout with premium "feature list" styling
         ====================================================================
       -->
-      <section class="section section--alt" id="technologie" aria-label="Technologie">
+      <section class="section section--alt section--airy" id="technologie" aria-label="Technologie">
         <div class="container tech">
           <div class="tech__copy">
             <div class="section__head reveal" data-reveal>
@@ -285,7 +306,10 @@
             <figure class="mediaFrame">
               <img
                 src="pics/technologie-detail.jpg"
-                alt="Orbitex Raketentechnologie und Triebwerke"
+                alt="Detailansicht Orbitex-Triebwerk und Strukturkomponenten in der Integrationshalle"
+                width="900"
+                height="920"
+                sizes="(max-width: 980px) 100vw, 45vw"
                 loading="lazy"
               />
             </figure>
@@ -299,7 +323,7 @@
         - Two location blocks
         ====================================================================
       -->
-      <section class="section" id="standorte" aria-label="Standorte">
+      <section class="section section--airy" id="standorte" aria-label="Standorte">
         <div class="container">
           <div class="section__head reveal" data-reveal>
             <h2 class="section__title">Standorte</h2>
@@ -312,7 +336,14 @@
           <div class="locations">
             <article class="location reveal" data-reveal>
               <div class="location__media">
-                <img src="./pics/peenemuende-launch.jpg" alt="Orbitex Launch Site Peenemünde" loading="lazy" />
+                <img
+                  src="./pics/peenemuende-launch.jpg"
+                  alt="Orbitex Launch Site Peenemünde: Startturm und Küstenrange über der Ostsee"
+                  width="960"
+                  height="640"
+                  sizes="(max-width: 980px) 100vw, 48vw"
+                  loading="lazy"
+                />
               </div>
               <div class="location__body">
                 <h3 class="location__title">Peenemünde</h3>
@@ -346,7 +377,14 @@
 
             <article class="location reveal" data-reveal>
               <div class="location__media">
-                <img src="pics/hannover-headquarters.jpg" alt="Orbitex Headquarters Hannover" loading="lazy" />
+                <img
+                  src="pics/hannover-headquarters.jpg"
+                  alt="Orbitex Headquarters Hannover: Büro- und Entwicklungsgebäude"
+                  width="960"
+                  height="640"
+                  sizes="(max-width: 980px) 100vw, 48vw"
+                  loading="lazy"
+                />
               </div>
               <div class="location__body">
                 <h3 class="location__title">Hannover</h3>
@@ -371,32 +409,18 @@
         </div>
       </section>
 
-      <!--
-        ====================================================================
-        PARTNER — starke europäische Partner (Logos optional austauschbar)
-        ====================================================================
-      -->
-      <section class="section section--alt section--stars" id="partner" aria-label="Unsere Partner">
+      <!-- Partner: 2×2 Grid (Desktop), 1 Spalte Mobile — Logos Graustufen → Farbe bei Hover -->
+      <section class="section section--alt section--stars section--showcase" id="partner" aria-label="Unsere Partner">
         <div class="container">
           <div class="section__head reveal" data-reveal>
             <h2 class="section__title">Unsere Partner</h2>
             <p class="section__lead">
-              Gemeinsam mit den stärksten Playern Europas
+              Gemeinsam mit den stärksten Playern der europäischen Raumfahrt
             </p>
           </div>
 
-          <!-- Dekoratives Banner (Unsplash — bei Bedarf URL ersetzen) -->
-          <figure class="partnerBanner reveal" data-reveal>
-            <img
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80"
-              alt="Europa und Weltraum — symbolische Visualisierung für Partnerschaften"
-              loading="lazy"
-            />
-            <figcaption class="partnerBanner__cap">Bild: Unsplash — Europäische Raumfahrt &amp; Technologie</figcaption>
-          </figure>
-
-          <div class="partnerGrid">
-            <article class="partnerCard reveal" data-reveal>
+          <div class="partnerGrid reveal" data-reveal>
+            <article class="partnerCard">
               <a
                 class="partnerCard__surface"
                 href="https://www.bundeswehr.de"
@@ -408,7 +432,10 @@
                   <img
                     class="partnerCard__logoImg"
                     src="pics/partner-bundeswehr.png"
-                    alt="Logo Bundeswehr"
+                    alt="Bundeswehr — Partnerlogo (monochrom, bei Hover farbig)"
+                    width="200"
+                    height="56"
+                    sizes="(max-width: 760px) 70vw, 28vw"
                     loading="lazy"
                   />
                 </div>
@@ -420,7 +447,7 @@
               </a>
             </article>
 
-            <article class="partnerCard reveal" data-reveal>
+            <article class="partnerCard">
               <a
                 class="partnerCard__surface"
                 href="https://www.esa.int"
@@ -432,7 +459,10 @@
                   <img
                     class="partnerCard__logoImg"
                     src="pics/partner-esa.png"
-                    alt="Logo European Space Agency (ESA)"
+                    alt="ESA European Space Agency — Partnerlogo"
+                    width="200"
+                    height="56"
+                    sizes="(max-width: 760px) 70vw, 28vw"
                     loading="lazy"
                   />
                 </div>
@@ -444,7 +474,7 @@
               </a>
             </article>
 
-            <article class="partnerCard reveal" data-reveal>
+            <article class="partnerCard">
               <a
                 class="partnerCard__surface"
                 href="https://www.dlr.de"
@@ -456,7 +486,10 @@
                   <img
                     class="partnerCard__logoImg"
                     src="pics/partner-dlr.png"
-                    alt="Logo DLR"
+                    alt="DLR Deutsches Zentrum für Luft- und Raumfahrt — Partnerlogo"
+                    width="200"
+                    height="56"
+                    sizes="(max-width: 760px) 70vw, 28vw"
                     loading="lazy"
                   />
                 </div>
@@ -468,7 +501,7 @@
               </a>
             </article>
 
-            <article class="partnerCard reveal" data-reveal>
+            <article class="partnerCard">
               <a
                 class="partnerCard__surface"
                 href="https://www.airbus.com/defence-and-space.html"
@@ -480,7 +513,10 @@
                   <img
                     class="partnerCard__logoImg"
                     src="pics/partner-airbus.png"
-                    alt="Logo Airbus Defence and Space"
+                    alt="Airbus Defence and Space — Partnerlogo"
+                    width="200"
+                    height="56"
+                    sizes="(max-width: 760px) 70vw, 28vw"
                     loading="lazy"
                   />
                 </div>
@@ -495,104 +531,149 @@
         </div>
       </section>
 
-      <!--
-        ====================================================================
-        TEAM — Leadership (Karten öffnen Detail-Modal)
-        ====================================================================
-      -->
-      <section class="section section--stars" id="team" aria-label="Unser Team">
+      <!-- Team: 2×2 Grid (Desktop), 1 Spalte Mobile — Klick öffnet Lead-Modal (script.js) -->
+      <section class="section section--stars section--showcase section--airy" id="team" aria-label="Unser Team">
         <div class="container">
           <div class="section__head reveal" data-reveal>
             <h2 class="section__title">Unser Team</h2>
             <p class="section__lead">Die Gesichter hinter Orbitex</p>
           </div>
 
-          <p class="leadStrip__hint reveal" data-reveal>
-            Nach links oder rechts scrollen, um alle Profile zu sehen.
-          </p>
-
-          <div class="leadStrip reveal" data-reveal role="region" aria-label="Team — horizontal scrollen">
-            <div class="leadStrip__scroll">
+          <div class="teamGrid reveal" data-reveal>
             <button
               type="button"
-              class="leadCard"
+              class="teamTile"
               data-lead-open
               data-lead-id="ceo"
               aria-haspopup="dialog"
             >
-              <span class="leadCard__media">
-                <img src="pics/team-ceo.jpg" alt="" loading="lazy" />
+              <span class="teamTile__media">
+                <img
+                  src="pics/team-ceo.jpg"
+                  alt="Porträt Thomas Halbach, Chief Executive Officer bei Orbitex"
+                  width="640"
+                  height="640"
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </span>
-              <span class="leadCard__body">
-                <span class="leadCard__name">Halbach Thomas</span>
-                <span class="leadCard__role">Chief Executive Officer (CEO)</span>
+              <span class="teamTile__shine" aria-hidden="true"></span>
+              <span class="teamTile__body">
+                <span class="teamTile__name">Thomas Halbach</span>
+                <span class="teamTile__role">Chief Executive Officer (CEO)</span>
+                <span class="teamTile__cta">Profil ansehen</span>
               </span>
             </button>
 
             <button
               type="button"
-              class="leadCard"
+              class="teamTile"
               data-lead-open
               data-lead-id="coo"
               aria-haspopup="dialog"
             >
-              <span class="leadCard__media">
-                <img src="pics/team2.jpg" alt="" loading="lazy" />
+              <span class="teamTile__media">
+                <img
+                  src="pics/team2.jpg"
+                  alt="Porträt Eric Giehl, Co-Chief Executive Officer bei Orbitex"
+                  width="640"
+                  height="640"
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </span>
-              <span class="leadCard__body">
-                <span class="leadCard__name">Giehl Eric</span>
-                <span class="leadCard__role">Co-Chief Executive Officer (Co-CEO)</span>
+              <span class="teamTile__shine" aria-hidden="true"></span>
+              <span class="teamTile__body">
+                <span class="teamTile__name">Eric Giehl</span>
+                <span class="teamTile__role">Co-Chief Executive Officer (Co-CEO)</span>
+                <span class="teamTile__cta">Profil ansehen</span>
               </span>
             </button>
 
             <button
               type="button"
-              class="leadCard"
+              class="teamTile"
               data-lead-open
               data-lead-id="cmo"
               aria-haspopup="dialog"
             >
-              <span class="leadCard__media">
-                <img src="pics/team3.jpg" alt="" loading="lazy" />
+              <span class="teamTile__media">
+                <img
+                  src="pics/team3.jpg"
+                  alt="Porträt Jonas Habermehl, Chief Marketing Officer bei Orbitex"
+                  width="640"
+                  height="640"
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </span>
-              <span class="leadCard__body">
-                <span class="leadCard__name">Habermehl Jonas</span>
-                <span class="leadCard__role">Chief Marketing Officer (CMO)</span>
+              <span class="teamTile__shine" aria-hidden="true"></span>
+              <span class="teamTile__body">
+                <span class="teamTile__name">Jonas Habermehl</span>
+                <span class="teamTile__role">Chief Marketing Officer (CMO)</span>
+                <span class="teamTile__cta">Profil ansehen</span>
               </span>
             </button>
 
             <button
               type="button"
-              class="leadCard"
+              class="teamTile"
               data-lead-open
               data-lead-id="cto"
               aria-haspopup="dialog"
             >
-              <span class="leadCard__media">
-                <img src="pics/team-leon.jpg" alt="" loading="lazy" />
+              <span class="teamTile__media">
+                <img
+                  src="pics/team-leon.jpg"
+                  alt="Porträt Leon Kelmendi, Chief Engineering Officer bei Orbitex"
+                  width="640"
+                  height="640"
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </span>
-              <span class="leadCard__body">
-                <span class="leadCard__name">Kelmendi Leon</span>
-                <span class="leadCard__role">Chief Engineering Officer (CTO)</span>
+              <span class="teamTile__shine" aria-hidden="true"></span>
+              <span class="teamTile__body">
+                <span class="teamTile__name">Leon Kelmendi</span>
+                <span class="teamTile__role">Chief Engineering Officer (CTO)</span>
+                <span class="teamTile__cta">Profil ansehen</span>
               </span>
             </button>
+          </div>
 
+          <!-- CFO außerhalb des 2×2-Grids + Scroll-Hinweis zum Rest der Seite -->
+          <div class="teamCfoBand reveal" data-reveal>
+            <p class="teamCfoBand__label">Weitere Schlüsselrolle im Leadership‑Team</p>
             <button
               type="button"
-              class="leadCard"
+              class="teamCfoBand__btn"
               data-lead-open
               data-lead-id="cfo"
               aria-haspopup="dialog"
             >
-              <span class="leadCard__media">
-                <img src="pics/Jonathan.jpg" alt="" loading="lazy" />
+              <span class="teamCfoBand__avatar">
+                <img
+                  src="pics/Jonathan.jpg"
+                  alt="Porträt Jonathan Weinbrecht, Chief Financial Officer bei Orbitex"
+                  width="144"
+                  height="144"
+                  loading="lazy"
+                />
               </span>
-              <span class="leadCard__body">
-                <span class="leadCard__name">Weinbrecht Jonathan</span>
-                <span class="leadCard__role">Chief Financial Officer (CFO)</span>
+              <span class="teamCfoBand__meta">
+                <span class="teamCfoBand__name">Jonathan Weinbrecht</span>
+                <span class="teamCfoBand__role">Chief Financial Officer (CFO)</span>
               </span>
+              <span class="teamCfoBand__cta">Profil ansehen</span>
             </button>
-            </div>
+          </div>
+
+          <div class="teamScrollCue reveal" data-reveal>
+            <a class="teamScrollCue__link" href="#social" aria-label="Weiter zum Bereich Social und Kontakt scrollen">
+              <span class="teamScrollCue__line" aria-hidden="true"></span>
+              <span class="teamScrollCue__text">Weiter scrollen</span>
+              <span class="teamScrollCue__chev" aria-hidden="true">↓</span>
+            </a>
           </div>
         </div>
       </section>
@@ -614,7 +695,7 @@
 
           <div class="social__actions reveal" data-reveal>
             <a
-              class="btn btn--primary btn--icon"
+              class="btn btn--primary btn--lg btn--icon"
               href="https://www.instagram.com/orbi.texgmbh"
               target="_blank"
               rel="noreferrer"
@@ -714,7 +795,10 @@
         aria-describedby="leadModalBio"
         tabindex="-1"
       >
-        <div class="leadModal__watermark" aria-hidden="true">ORBITEX</div>
+        <div class="leadModal__watermark" aria-hidden="true">
+          <span class="leadModal__watermarkMark"></span>
+          <span class="leadModal__watermarkText">ORBITEX</span>
+        </div>
         <button class="leadModal__close" type="button" data-lead-close aria-label="Schließen">×</button>
         <div class="leadModal__scroll">
           <img class="leadModal__photo" id="leadModalPhoto" src="" alt="" width="720" height="720" />
@@ -760,46 +844,81 @@
           <div class="teamModalStrip__scroll">
             <button type="button" class="teamPick" data-pick-lead="ceo">
               <span class="teamPick__top">
-                <img class="teamPick__avatar" src="pics/Thomas.jpg" alt="" loading="lazy" />
+                <img
+                  class="teamPick__avatar"
+                  src="pics/team-ceo.jpg"
+                  alt="Thomas Halbach"
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                />
                 <span class="teamPick__text">
                   <span class="teamPick__role">Chief Executive Officer (CEO)</span>
-                  <span class="teamPick__name">Halbach Thomas</span>
+                  <span class="teamPick__name">Thomas Halbach</span>
                 </span>
               </span>
             </button>
             <button type="button" class="teamPick" data-pick-lead="coo">
               <span class="teamPick__top">
-                <img class="teamPick__avatar" src="pics/Eric.jpg" alt="" loading="lazy" />
+                <img
+                  class="teamPick__avatar"
+                  src="pics/team2.jpg"
+                  alt="Eric Giehl"
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                />
                 <span class="teamPick__text">
                   <span class="teamPick__role">Co-Chief Executive Officer (Co-CEO)</span>
-                  <span class="teamPick__name">Giehl Eric</span>
+                  <span class="teamPick__name">Eric Giehl</span>
                 </span>
               </span>
             </button>
             <button type="button" class="teamPick" data-pick-lead="cmo">
               <span class="teamPick__top">
-                <img class="teamPick__avatar" src="pics/Jonas.jpg" alt="" loading="lazy" />
+                <img
+                  class="teamPick__avatar"
+                  src="pics/team3.jpg"
+                  alt="Jonas Habermehl"
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                />
                 <span class="teamPick__text">
                   <span class="teamPick__role">Chief Marketing Officer (CMO)</span>
-                  <span class="teamPick__name">Habermehl Jonas</span>
+                  <span class="teamPick__name">Jonas Habermehl</span>
                 </span>
               </span>
             </button>
             <button type="button" class="teamPick" data-pick-lead="cto">
               <span class="teamPick__top">
-                <img class="teamPick__avatar" src="pics/Leon.jpg" alt="" loading="lazy" />
+                <img
+                  class="teamPick__avatar"
+                  src="pics/team-leon.jpg"
+                  alt="Leon Kelmendi"
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                />
                 <span class="teamPick__text">
                   <span class="teamPick__role">Chief Engineering Officer (CTO)</span>
-                  <span class="teamPick__name">Kelmendi Leon</span>
+                  <span class="teamPick__name">Leon Kelmendi</span>
                 </span>
               </span>
             </button>
             <button type="button" class="teamPick" data-pick-lead="cfo">
               <span class="teamPick__top">
-                <img class="teamPick__avatar" src="pics/Jonathan.jpg" alt="" loading="lazy" />
+                <img
+                  class="teamPick__avatar"
+                  src="pics/Jonathan.jpg"
+                  alt="Jonathan Weinbrecht"
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                />
                 <span class="teamPick__text">
                   <span class="teamPick__role">Chief Financial Officer (CFO)</span>
-                  <span class="teamPick__name">Weinbrecht Jonathan</span>
+                  <span class="teamPick__name">Jonathan Weinbrecht</span>
                 </span>
               </span>
             </button>

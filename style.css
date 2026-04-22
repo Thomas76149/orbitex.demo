@@ -52,6 +52,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Am Seitenende etwas Luft (Mobile / Safe Area), damit der letzte Inhalt nicht „klebt“ */
+main {
+  padding-bottom: max(28px, env(safe-area-inset-bottom, 0px));
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -169,8 +174,11 @@ a {
 .nav__mobile a:focus-visible,
 .nav__mobileBtn:focus-visible,
 .btn:focus-visible,
+.teamTile:focus-visible,
 .iconBtn:focus-visible,
-.footer__backToTop:focus-visible {
+.footer__backToTop:focus-visible,
+.leadModal__close:focus-visible,
+.teamScrollCue__link:focus-visible {
   outline: 2px solid rgba(86, 167, 255, 0.8);
   outline-offset: 3px;
 }
@@ -330,7 +338,7 @@ a {
 
 .hero__content {
   position: relative;
-  padding: 110px 0 130px;
+  padding: clamp(96px, 12vw, 140px) 0 clamp(120px, 14vw, 168px);
 }
 
 .hero__kicker {
@@ -363,14 +371,14 @@ a {
 }
 
 .hero__actions {
-  margin-top: 24px;
+  margin-top: 32px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .hero__meta {
-  margin-top: 36px;
+  margin-top: 44px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
@@ -466,13 +474,29 @@ a {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, rgba(86, 167, 255, 0.95), rgba(86, 167, 255, 0.65));
-  border-color: rgba(86, 167, 255, 0.65);
-  box-shadow: 0 14px 45px rgba(86, 167, 255, 0.18);
+  background: linear-gradient(135deg, rgba(110, 184, 255, 1), rgba(86, 167, 255, 0.72) 55%, rgba(70, 140, 230, 0.95));
+  border-color: rgba(154, 208, 255, 0.55);
+  color: rgba(5, 7, 12, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 18px 50px rgba(86, 167, 255, 0.35),
+    0 0 48px rgba(86, 167, 255, 0.22);
 }
 
 .btn--primary:hover {
-  box-shadow: 0 18px 60px rgba(86, 167, 255, 0.26);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset,
+    0 22px 70px rgba(86, 167, 255, 0.45),
+    0 0 64px rgba(86, 167, 255, 0.28);
+  border-color: rgba(186, 224, 255, 0.75);
+}
+
+/* Größere CTAs (Hero, Social) */
+.btn--lg {
+  padding: 15px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 
 .btn:active {
@@ -518,6 +542,31 @@ a {
   padding: 70px 0;
 }
 
+/* Mehr vertikaler Rhythmus in Kernsektionen (Missionen, Technologie, Standorte, Team) */
+.section--airy {
+  padding: clamp(88px, 10vw, 120px) 0 clamp(96px, 11vw, 132px);
+}
+
+/* Partner & Team: stärkere Typo-Hierarchie, mehr Luft unter der Headline */
+.section--showcase .section__head {
+  gap: 16px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+  max-width: 52rem;
+}
+
+.section--showcase .section__title {
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.12;
+}
+
+.section--showcase .section__lead {
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.65;
+  max-width: 48rem;
+}
+
 .section__head {
   display: grid;
   gap: 10px;
@@ -544,7 +593,8 @@ a {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: clamp(20px, 2.2vw, 28px);
+  margin-top: 8px;
 }
 
 .card {
@@ -648,14 +698,15 @@ a {
 .tech {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 28px;
+  gap: clamp(28px, 3.5vw, 44px);
   align-items: start;
+  padding-top: 6px;
 }
 
 .featureList {
-  margin-top: 20px;
+  margin-top: 28px;
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 .feature {
@@ -721,7 +772,8 @@ a {
 
 .locations {
   display: grid;
-  gap: 18px;
+  gap: clamp(20px, 2.5vw, 28px);
+  margin-top: 8px;
 }
 
 .location {
@@ -951,10 +1003,17 @@ a {
   opacity: 0.55;
 }
 
+/* Partner: Mobile zuerst — 1 Spalte, ab ~720px 2 Spalten (2×2) */
 .partnerGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2vw, 22px);
+}
+
+@media (min-width: 720px) {
+  .partnerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .partnerCard {
@@ -1032,29 +1091,339 @@ a {
   font-size: 13px;
 }
 
-.partnerBanner {
-  margin: 0 0 26px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+/* =========================================================
+   Team-Grid (Premium-Karten → Lead-Modal)
+   ========================================================= */
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2.2vw, 24px);
 }
 
-.partnerBanner img {
+@media (min-width: 720px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.teamTile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: calc(var(--radius) + 4px);
+  background: rgba(255, 255, 255, 0.035);
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28) inset;
+  transition:
+    transform 320ms var(--ease),
+    border-color 320ms var(--ease),
+    background 320ms var(--ease),
+    box-shadow 320ms var(--ease);
+}
+
+.teamTile:hover {
+  transform: translateY(-6px);
+  border-color: rgba(86, 167, 255, 0.42);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.28) inset,
+    0 28px 90px rgba(86, 167, 255, 0.14);
+}
+
+.teamTile:focus-visible,
+.teamCfoBand__btn:focus-visible {
+  outline: 2px solid rgba(86, 167, 255, 0.9);
+  outline-offset: 4px;
+}
+
+.teamTile__media {
   display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.teamTile__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 7, 12, 0) 40%, rgba(5, 7, 12, 0.75) 100%);
+  opacity: 0.85;
+  transition: opacity 320ms var(--ease);
+}
+
+.teamTile:hover .teamTile__media::after {
+  opacity: 0.95;
+}
+
+.teamTile__media img {
   width: 100%;
-  height: min(320px, 38vw);
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: transform 720ms var(--ease);
+}
+
+.teamTile:hover .teamTile__media img {
+  transform: scale(1.09);
+}
+
+.teamTile__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 360ms var(--ease);
+}
+
+.teamTile__shine::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -45%;
+  width: 55%;
+  height: 140%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  transform: skewX(-18deg) translateX(-120%);
+  transition: transform 780ms var(--ease);
+}
+
+.teamTile:hover .teamTile__shine {
+  opacity: 1;
+}
+
+.teamTile:hover .teamTile__shine::after {
+  transform: skewX(-18deg) translateX(320%);
+}
+
+.teamTile__body {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 8px;
+  padding: 20px 20px 22px;
+  margin-top: -72px;
+}
+
+.teamTile__name {
+  font-size: clamp(17px, 1.9vw, 20px);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.teamTile__role {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(154, 208, 255, 0.92);
+  font-weight: 600;
+}
+
+.teamTile__cta {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 260ms var(--ease), letter-spacing 260ms var(--ease);
+}
+
+.teamTile:hover .teamTile__cta {
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.2em;
+}
+
+/* CFO-Zeile unter dem Grid — gleiches Modal wie die anderen Karten */
+.teamCfoBand {
+  margin-top: clamp(28px, 4vw, 44px);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+}
+
+.teamCfoBand__label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.teamCfoBand__btn {
+  width: min(640px, 100%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 22px);
+  padding: 16px 18px 16px 16px;
+  border-radius: calc(var(--radius) + 2px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 280ms var(--ease), border-color 280ms var(--ease), background 280ms var(--ease),
+    box-shadow 280ms var(--ease);
+}
+
+.teamCfoBand__btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(86, 167, 255, 0.38);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+    0 20px 60px rgba(86, 167, 255, 0.12);
+}
+
+.teamCfoBand__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(86, 167, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.teamCfoBand__avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.partnerBanner__cap {
-  margin: 0;
-  padding: 10px 14px;
+.teamCfoBand__meta {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.teamCfoBand__name {
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.teamCfoBand__role {
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(154, 208, 255, 0.92);
+  font-weight: 600;
+}
+
+.teamCfoBand__cta {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  transition: color 260ms var(--ease);
+}
+
+.teamCfoBand__btn:hover .teamCfoBand__cta {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 520px) {
+  .teamCfoBand__btn {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 18px 16px 20px;
+  }
+
+  .teamCfoBand__meta {
+    justify-items: center;
+  }
+
+  .teamCfoBand__cta {
+    margin-top: 4px;
+  }
+}
+
+/* Dezenter Scroll-Hinweis wie im Hero — Ziel: Social / weiterer Seiteninhalt */
+.teamScrollCue {
+  margin-top: clamp(20px, 3vw, 32px);
+  display: flex;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.teamScrollCue__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 6px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 260ms var(--ease);
+}
+
+.teamScrollCue__link:hover {
+  color: rgba(154, 208, 255, 0.95);
+}
+
+.teamScrollCue__line {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(86, 167, 255, 0.55),
+    rgba(255, 255, 255, 0)
+  );
+  animation: teamScrollCuePulse 2s var(--ease) infinite;
+}
+
+.teamScrollCue__chev {
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.75;
+  animation: teamScrollCueBounce 2.2s var(--ease) infinite;
+}
+
+@keyframes teamScrollCuePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes teamScrollCueBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teamScrollCue__line,
+  .teamScrollCue__chev {
+    animation: none !important;
+  }
 }
 
 .leadStrip__hint {
@@ -1209,9 +1578,9 @@ a {
 .leadModal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(2, 4, 10, 0.82);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
 }
 
 .leadModal__panel {
@@ -1220,16 +1589,17 @@ a {
   max-height: min(92vh, 980px);
   overflow: hidden;
   border-radius: 22px;
-  border: 1px solid rgba(86, 167, 255, 0.22);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(154, 208, 255, 0.22);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 42%, rgba(7, 12, 22, 0.55) 100%);
   box-shadow:
-    0 40px 120px rgba(0, 0, 0, 0.75),
-    0 0 0 12px rgba(86, 167, 255, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transform: translateY(10px) scale(0.96);
+    0 40px 120px rgba(0, 0, 0, 0.78),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 12px rgba(86, 167, 255, 0.05);
+  backdrop-filter: blur(22px) saturate(1.15);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+  transform: translateY(14px) scale(0.94);
   opacity: 0;
-  transition: transform 420ms var(--ease), opacity 420ms var(--ease);
+  transition: transform 460ms var(--ease), opacity 460ms var(--ease);
 }
 
 .leadModal.is-open .leadModal__panel {
@@ -1240,14 +1610,31 @@ a {
 .leadModal__watermark {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  letter-spacing: 0.35em;
-  font-size: clamp(56px, 10vw, 120px);
-  color: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 22px);
   user-select: none;
   pointer-events: none;
+}
+
+.leadModal__watermarkMark {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+  opacity: 0.14;
+  box-shadow: 0 0 60px rgba(86, 167, 255, 0.35);
+}
+
+.leadModal__watermarkText {
+  font-weight: 900;
+  letter-spacing: 0.38em;
+  font-size: clamp(52px, 9vw, 112px);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.038);
+  text-transform: uppercase;
 }
 
 .leadModal__close {
@@ -1285,55 +1672,43 @@ a {
   display: block;
   width: 100%;
   max-width: 100%;
-  /* Komplettes Motiv sichtbar (kein Beschnitt wie bei cover) */
-  max-height: min(62vh, 680px);
+  /* Großes Profilbild, Motiv möglichst vollständig sichtbar */
+  max-height: min(68vh, 720px);
   height: auto;
   object-fit: contain;
   object-position: center;
   margin: 0 auto;
-  background: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.25));
+  background: radial-gradient(circle at 50% 38%, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.22));
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.58);
 }
 
 .leadModal__name {
-  margin: 16px 0 0;
-  font-size: clamp(22px, 3vw, 34px);
+  margin: 20px 0 0;
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 800;
   letter-spacing: 0.04em;
+  line-height: 1.15;
 }
 
 .leadModal__role {
-  margin: 8px 0 0;
-  color: rgba(86, 167, 255, 0.95);
+  margin: 10px 0 0;
+  color: rgba(154, 208, 255, 0.98);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .leadModal__bio {
-  margin-top: 14px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 14px;
-  line-height: 1.75;
-}
-
-@media (max-width: 980px) {
-  .partnerGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  line-height: 1.78;
 }
 
 @media (max-width: 760px) {
-  .partnerGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .partnerBanner img {
-    height: 220px;
-  }
-
   .leadCard {
     flex-basis: min(280px, 86vw);
   }
@@ -1347,6 +1722,21 @@ a {
 
   .leadModal__panel {
     transform: none !important;
+  }
+
+  .teamTile,
+  .teamTile__media img,
+  .teamTile__shine,
+  .teamTile__shine::after {
+    transition: none !important;
+  }
+
+  .teamTile:hover {
+    transform: none;
+  }
+
+  .teamTile:hover .teamTile__media img {
+    transform: scale(1.03);
   }
 }
 
