@@ -544,10 +544,10 @@ a {
 }
 
 .section--showcase .section__title {
-  font-size: clamp(30px, 3.6vw, 48px);
+  font-size: clamp(32px, 3.9vw, 52px);
   font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1.12;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
 }
 
 .section--showcase .section__lead {
@@ -565,14 +565,119 @@ a {
 
 .section__title {
   margin: 0;
-  font-size: clamp(26px, 3.1vw, 40px);
-  letter-spacing: 0.06em;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  line-height: 1.12;
 }
 
 .section__lead {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
+}
+
+/* =========================================================
+   Roadmap / Zeitstrahl (bis 2040)
+   ========================================================= */
+
+.timeline {
+  list-style: none;
+  margin: clamp(8px, 2vw, 20px) auto 0;
+  padding: 0;
+  position: relative;
+  max-width: 52rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(86, 167, 255, 0.55),
+    rgba(86, 167, 255, 0.18) 45%,
+    rgba(154, 208, 255, 0.12) 100%
+  );
+}
+
+.timeline__item {
+  position: relative;
+  margin: 0;
+  padding: 0 0 clamp(22px, 3.5vw, 32px) clamp(44px, 6vw, 52px);
+}
+
+.timeline__item--last {
+  padding-bottom: 0;
+}
+
+.timeline__marker {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 30%, var(--accent-2), var(--accent));
+  box-shadow:
+    0 0 0 4px rgba(5, 7, 12, 0.95),
+    0 0 22px rgba(86, 167, 255, 0.45);
+}
+
+.timeline__content {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: clamp(16px, 2.2vw, 22px) clamp(18px, 2.5vw, 24px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  transition: border-color 280ms var(--ease), background 280ms var(--ease), box-shadow 280ms var(--ease);
+}
+
+.timeline__content:hover {
+  border-color: rgba(86, 167, 255, 0.28);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+    0 16px 48px rgba(86, 167, 255, 0.08);
+}
+
+.timeline__year {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(154, 208, 255, 0.95);
+  margin-bottom: 8px;
+}
+
+.timeline__title {
+  margin: 0 0 10px;
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.timeline__text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+@media (min-width: 900px) {
+  .timeline {
+    max-width: 56rem;
+  }
+
+  .timeline__item {
+    padding-left: clamp(52px, 7vw, 64px);
+  }
 }
 
 /* =========================================================
@@ -876,7 +981,7 @@ a {
    ========================================================= */
 
 .footer {
-  padding: 70px 0 26px;
+  padding: clamp(88px, 10vw, 112px) 0 clamp(32px, 4vw, 40px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.0));
 }
@@ -884,7 +989,7 @@ a {
 .footer__grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 0.8fr;
-  gap: 18px;
+  gap: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 28px);
   align-items: start;
 }
 
@@ -902,9 +1007,11 @@ a {
 }
 
 .footer__text {
-  margin: 12px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.65;
+  max-width: 52ch;
 }
 
 .footer a {
@@ -912,33 +1019,43 @@ a {
 }
 
 .footer__social {
-  margin-top: 12px;
+  margin-top: 18px;
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .iconBtn {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   display: grid;
   place-items: center;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 700;
-  transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease);
+  transition:
+    transform 280ms var(--ease),
+    background 280ms var(--ease),
+    border-color 280ms var(--ease),
+    color 280ms var(--ease),
+    box-shadow 280ms var(--ease);
 }
 
 .iconBtn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(86, 167, 255, 0.32);
+  transform: translateY(-3px);
+  color: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(160deg, rgba(86, 167, 255, 0.22), rgba(255, 255, 255, 0.06));
+  border-color: rgba(154, 208, 255, 0.45);
+  box-shadow:
+    0 12px 36px rgba(86, 167, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
 }
 
 .footer__bottom {
-  margin-top: 24px;
-  padding-top: 16px;
+  margin-top: clamp(32px, 4vw, 44px);
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
@@ -1092,7 +1209,7 @@ a {
 .teamCardGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(20px, 3vw, 28px);
+  gap: clamp(24px, 3.5vw, 36px);
 }
 
 @media (min-width: 560px) {
@@ -1120,28 +1237,46 @@ a {
   align-items: stretch;
   text-align: center;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: calc(var(--radius) + 6px);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02) 50%, rgba(6, 10, 18, 0.55));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: calc(var(--radius) + 8px);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02) 50%, rgba(6, 10, 18, 0.55));
   overflow: hidden;
   cursor: pointer;
   color: inherit;
   font: inherit;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+  isolation: isolate;
   transition:
-    transform 320ms var(--ease),
-    border-color 320ms var(--ease),
-    background 320ms var(--ease),
-    box-shadow 320ms var(--ease);
+    transform 420ms var(--ease),
+    border-color 420ms var(--ease),
+    background 420ms var(--ease),
+    box-shadow 420ms var(--ease);
+}
+
+.teamCard::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(120% 80% at 50% 0%, rgba(86, 167, 255, 0.15), transparent 55%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 420ms var(--ease);
 }
 
 .teamCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(86, 167, 255, 0.38);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03) 48%, rgba(6, 10, 18, 0.62));
+  transform: translateY(-8px);
+  border-color: rgba(154, 208, 255, 0.42);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03) 48%, rgba(6, 10, 18, 0.65));
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
-    0 24px 70px rgba(86, 167, 255, 0.12);
+    0 0 0 1px rgba(0, 0, 0, 0.22) inset,
+    0 28px 90px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(86, 167, 255, 0.14);
+}
+
+.teamCard:hover::after {
+  opacity: 1;
 }
 
 .teamCard:focus-visible {
@@ -1150,15 +1285,28 @@ a {
 }
 
 .teamCard__avatarWrap {
+  position: relative;
+  z-index: 1;
   display: block;
-  margin: 18px auto 0;
-  width: min(168px, 52vw);
+  margin: 22px auto 0;
+  width: min(196px, 58vw);
   aspect-ratio: 1 / 1;
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(154, 208, 255, 0.28);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(154, 208, 255, 0.32);
+  box-shadow:
+    0 14px 48px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  background: rgba(0, 0, 0, 0.28);
+  transition: border-color 420ms var(--ease), box-shadow 420ms var(--ease);
+}
+
+.teamCard:hover .teamCard__avatarWrap {
+  border-color: rgba(186, 224, 255, 0.5);
+  box-shadow:
+    0 18px 56px rgba(0, 0, 0, 0.42),
+    0 0 40px rgba(86, 167, 255, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
 
 .teamCard__avatar {
@@ -1166,23 +1314,25 @@ a {
   height: 100%;
   object-fit: cover;
   transform: scale(1.02);
-  transition: transform 640ms var(--ease);
+  transition: transform 720ms var(--ease);
 }
 
 .teamCard:hover .teamCard__avatar {
-  transform: scale(1.08);
+  transform: scale(1.09);
 }
 
 .teamCard__body {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 8px;
+  gap: 10px;
   justify-items: center;
-  padding: 18px 16px 20px;
+  padding: 22px 18px 24px;
 }
 
 .teamCard__name {
   margin: 0;
-  font-size: clamp(16px, 1.8vw, 18px);
+  font-size: clamp(17px, 1.95vw, 20px);
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1.25;
@@ -1223,7 +1373,7 @@ a {
 
 @media (min-width: 1240px) {
   .teamCard__avatarWrap {
-    width: min(148px, 90%);
+    width: min(172px, 92%);
   }
 }
 
@@ -1539,7 +1689,7 @@ a {
   z-index: 1;
   max-height: min(92vh, 980px);
   overflow: auto;
-  padding: 22px 22px 26px;
+  padding: clamp(22px, 3vw, 32px) clamp(22px, 3.5vw, 36px) clamp(28px, 4vw, 40px);
 }
 
 .leadModal__photo {
@@ -1559,7 +1709,7 @@ a {
 }
 
 .leadModal__name {
-  margin: 20px 0 0;
+  margin: 22px 0 0;
   font-size: clamp(26px, 3.4vw, 40px);
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -1567,16 +1717,17 @@ a {
 }
 
 .leadModal__role {
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   color: rgba(154, 208, 255, 0.98);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 13px;
+  line-height: 1.45;
 }
 
 .leadModal__age {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -1584,10 +1735,23 @@ a {
 }
 
 .leadModal__bio {
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 15px;
-  line-height: 1.78;
+  margin-top: 26px;
+  padding-top: 4px;
+  max-width: 58ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 16px;
+  line-height: 1.82;
+  letter-spacing: 0.01em;
+}
+
+.leadModal__bio p {
+  margin: 0 0 1.2em;
+}
+
+.leadModal__bio p:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 760px) {
@@ -1607,12 +1771,17 @@ a {
   }
 
   .teamCard,
-  .teamCard__avatar {
+  .teamCard__avatar,
+  .teamCard::after {
     transition: none !important;
   }
 
   .teamCard:hover {
     transform: none;
+  }
+
+  .teamCard:hover::after {
+    opacity: 0;
   }
 
   .teamCard:hover .teamCard__avatar {
