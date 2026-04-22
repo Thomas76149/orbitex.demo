@@ -536,141 +536,145 @@
         </div>
       </section>
 
-      <!-- Team: CEO zentriert oben, darunter 2×2 mit Co-CEO, CMO, CTO, CFO — Modal via script.js -->
+      <!-- Team: 5 interaktive Karten → Lead-Modal (script.js / LEAD_DATA) -->
       <section class="section section--stars section--showcase section--airy" id="team" aria-label="Unser Team">
         <div class="container">
           <div class="section__head reveal" data-reveal>
             <h2 class="section__title">Unser Team</h2>
-            <p class="section__lead">Die Gesichter hinter Orbitex</p>
+            <p class="section__lead">
+              Die jungen Köpfe hinter der Zukunft der europäischen Raumfahrt
+            </p>
           </div>
 
-          <div class="teamLayout">
-            <div class="teamLayout__ceo reveal" data-reveal>
+          <div class="teamPanel reveal" data-reveal>
+            <div class="teamCardGrid">
               <button
                 type="button"
-                class="teamTile teamTile--ceo"
+                class="teamCard"
                 data-lead-open
                 data-lead-id="ceo"
                 aria-haspopup="dialog"
               >
-                <span class="teamTile__media">
+                <span class="teamCard__avatarWrap">
                   <img
+                    class="teamCard__avatar"
                     src="pics/team-ceo.jpg"
-                    alt="Porträt Thomas Halbach, Chief Executive Officer bei Orbitex"
-                    width="640"
-                    height="640"
-                    sizes="(max-width: 760px) 96vw, 640px"
+                    alt="Thomas Halbach"
+                    width="400"
+                    height="400"
+                    sizes="(max-width: 560px) 88vw, (max-width: 900px) 33vw, 20vw"
                     loading="lazy"
                   />
                 </span>
-                <span class="teamTile__shine" aria-hidden="true"></span>
-                <span class="teamTile__body">
-                  <span class="teamTile__ceoBadge">CEO</span>
-                  <span class="teamTile__name">Thomas Halbach</span>
-                  <span class="teamTile__role">Chief Executive Officer (CEO)</span>
-                  <span class="teamTile__cta">Profil ansehen</span>
+                <span class="teamCard__body">
+                  <span class="teamCard__name">Thomas Halbach</span>
+                  <span class="teamCard__role">Chief Executive Officer (CEO)</span>
+                  <span class="teamCard__age">15 Jahre</span>
+                  <span class="teamCard__hint">Profil öffnen</span>
                 </span>
               </button>
-            </div>
 
-            <div class="teamGrid teamGrid--rest reveal" data-reveal>
               <button
                 type="button"
-                class="teamTile"
+                class="teamCard"
                 data-lead-open
                 data-lead-id="coo"
                 aria-haspopup="dialog"
               >
-                <span class="teamTile__media">
+                <span class="teamCard__avatarWrap">
                   <img
+                    class="teamCard__avatar"
                     src="pics/team2.jpg"
-                    alt="Porträt Eric Giehl, Co-Chief Executive Officer bei Orbitex"
-                    width="640"
-                    height="640"
-                    sizes="(max-width: 760px) 100vw, 25vw"
+                    alt="Eric Giehl"
+                    width="400"
+                    height="400"
+                    sizes="(max-width: 560px) 88vw, (max-width: 900px) 33vw, 20vw"
                     loading="lazy"
                   />
                 </span>
-                <span class="teamTile__shine" aria-hidden="true"></span>
-                <span class="teamTile__body">
-                  <span class="teamTile__name">Eric Giehl</span>
-                  <span class="teamTile__role">Co-Chief Executive Officer (Co-CEO)</span>
-                  <span class="teamTile__cta">Profil ansehen</span>
+                <span class="teamCard__body">
+                  <span class="teamCard__name">Eric Giehl</span>
+                  <span class="teamCard__role">Co-Chief Executive Officer (Co-CEO)</span>
+                  <span class="teamCard__age">16 Jahre</span>
+                  <span class="teamCard__hint">Profil öffnen</span>
                 </span>
               </button>
 
               <button
                 type="button"
-                class="teamTile"
+                class="teamCard"
                 data-lead-open
                 data-lead-id="cmo"
                 aria-haspopup="dialog"
               >
-                <span class="teamTile__media">
+                <span class="teamCard__avatarWrap">
                   <img
+                    class="teamCard__avatar"
                     src="pics/team3.jpg"
-                    alt="Porträt Jonas Habermehl, Chief Marketing Officer bei Orbitex"
-                    width="640"
-                    height="640"
-                    sizes="(max-width: 760px) 100vw, 25vw"
+                    alt="Jonas Habermehl"
+                    width="400"
+                    height="400"
+                    sizes="(max-width: 560px) 88vw, (max-width: 900px) 33vw, 20vw"
                     loading="lazy"
                   />
                 </span>
-                <span class="teamTile__shine" aria-hidden="true"></span>
-                <span class="teamTile__body">
-                  <span class="teamTile__name">Jonas Habermehl</span>
-                  <span class="teamTile__role">Chief Marketing Officer (CMO)</span>
-                  <span class="teamTile__cta">Profil ansehen</span>
+                <span class="teamCard__body">
+                  <span class="teamCard__name">Jonas Habermehl</span>
+                  <span class="teamCard__role">Chief Marketing Officer (CMO)</span>
+                  <span class="teamCard__age">15 Jahre</span>
+                  <span class="teamCard__hint">Profil öffnen</span>
                 </span>
               </button>
 
               <button
                 type="button"
-                class="teamTile"
+                class="teamCard"
                 data-lead-open
                 data-lead-id="cto"
                 aria-haspopup="dialog"
               >
-                <span class="teamTile__media">
+                <span class="teamCard__avatarWrap">
                   <img
+                    class="teamCard__avatar"
                     src="pics/team-leon.jpg"
-                    alt="Porträt Leon Kelmendi, Chief Engineering Officer bei Orbitex"
-                    width="640"
-                    height="640"
-                    sizes="(max-width: 760px) 100vw, 25vw"
+                    alt="Leon Kelmendi"
+                    width="400"
+                    height="400"
+                    sizes="(max-width: 560px) 88vw, (max-width: 900px) 33vw, 20vw"
                     loading="lazy"
                   />
                 </span>
-                <span class="teamTile__shine" aria-hidden="true"></span>
-                <span class="teamTile__body">
-                  <span class="teamTile__name">Leon Kelmendi</span>
-                  <span class="teamTile__role">Chief Engineering Officer (CTO)</span>
-                  <span class="teamTile__cta">Profil ansehen</span>
+                <span class="teamCard__body">
+                  <span class="teamCard__name">Leon Kelmendi</span>
+                  <span class="teamCard__role">Chief Technology Officer (CTO)</span>
+                  <span class="teamCard__age">16 Jahre</span>
+                  <span class="teamCard__hint">Profil öffnen</span>
                 </span>
               </button>
 
               <button
                 type="button"
-                class="teamTile"
+                class="teamCard"
                 data-lead-open
                 data-lead-id="cfo"
                 aria-haspopup="dialog"
               >
-                <span class="teamTile__media">
+                <span class="teamCard__avatarWrap">
                   <img
-                    src="pics/Jonathan.jpg"
-                    alt="Porträt Jonathan Weinbrecht, Chief Financial Officer bei Orbitex"
-                    width="640"
-                    height="640"
-                    sizes="(max-width: 760px) 100vw, 25vw"
+                    class="teamCard__avatar"
+                    src="pics/team-jonathan.jpg"
+                    alt="Jonathan Weinbrecht"
+                    width="400"
+                    height="400"
+                    sizes="(max-width: 560px) 88vw, (max-width: 900px) 33vw, 20vw"
                     loading="lazy"
                   />
                 </span>
-                <span class="teamTile__shine" aria-hidden="true"></span>
-                <span class="teamTile__body">
-                  <span class="teamTile__name">Jonathan Weinbrecht</span>
-                  <span class="teamTile__role">Chief Financial Officer (CFO)</span>
-                  <span class="teamTile__cta">Profil ansehen</span>
+                <span class="teamCard__body">
+                  <span class="teamCard__name">Jonathan Weinbrecht</span>
+                  <span class="teamCard__role">Chief Financial Officer (CFO)</span>
+                  <span class="teamCard__age">16 Jahre</span>
+                  <span class="teamCard__hint">Profil öffnen</span>
                 </span>
               </button>
             </div>
@@ -800,7 +804,7 @@
         role="dialog"
         aria-modal="true"
         aria-labelledby="leadModalName"
-        aria-describedby="leadModalBio"
+        aria-describedby="leadModalAge leadModalBio"
         tabindex="-1"
       >
         <div class="leadModal__watermark" aria-hidden="true">
@@ -812,6 +816,7 @@
           <img class="leadModal__photo" id="leadModalPhoto" src="" alt="" width="720" height="720" />
           <h2 class="leadModal__name" id="leadModalName"></h2>
           <p class="leadModal__role" id="leadModalRole"></p>
+          <p class="leadModal__age" id="leadModalAge" aria-live="polite"></p>
           <div class="leadModal__bio" id="leadModalBio"></div>
         </div>
       </div>
@@ -909,7 +914,7 @@
                   loading="lazy"
                 />
                 <span class="teamPick__text">
-                  <span class="teamPick__role">Chief Engineering Officer (CTO)</span>
+                  <span class="teamPick__role">Chief Technology Officer (CTO)</span>
                   <span class="teamPick__name">Leon Kelmendi</span>
                 </span>
               </span>
@@ -918,7 +923,7 @@
               <span class="teamPick__top">
                 <img
                   class="teamPick__avatar"
-                  src="pics/Jonathan.jpg"
+                  src="pics/team-jonathan.jpg"
                   alt="Jonathan Weinbrecht"
                   width="100"
                   height="100"

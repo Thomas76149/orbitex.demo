@@ -21,62 +21,58 @@
   const leadPhoto = $("#leadModalPhoto");
   const leadName = $("#leadModalName");
   const leadRole = $("#leadModalRole");
+  const leadAge = $("#leadModalAge");
   const leadBio = $("#leadModalBio");
 
   let teamLastFocus = null;
   let leadLastFocus = null;
 
-  /** Lange Bios — später durch finale Texte ersetzen */
+  /** Team-Profile: Bios für Lead-Modal (ca. 100–130 Wörter), Alter in Jahren */
   const LEAD_DATA = {
     ceo: {
       img: "pics/team-ceo.jpg",
       name: "Thomas Halbach",
       role: "Chief Executive Officer (CEO)",
+      ageYears: 15,
       bio:
-        "Thomas Halbach verantwortet die Gesamtstrategie von Orbitex: Mission Design, internationale Partnerschaften und die Skalierung der Startinfrastruktur. Mit einem klaren Fokus auf Zuverlässigkeit und europäische Souveränität bündelt er Unternehmensführung, Governance und langfristige Programmplanung. Seine Priorität ist eine Organisation, die komplexe Raumfahrtprojekte mit industrieller Disziplin umsetzt — ohne Kompromisse bei Sicherheit und Qualität.\n\n" +
-        "Verantwortung: Unternehmensstrategie, Board-Kommunikation, strategische Allianzen, Risiko- und Portfolioführung.\n\n" +
-        "Vision: Orbitex als europäische Referenz für häufige, sichere und nachhaltige Zugänge zum Orbit etablieren — von der ersten Mission bis zur wiederholbaren Betriebsführung.\n\n" +
-        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
+        "Thomas Halbach ist Gründer und Chief Executive Officer von Orbitex. Mit fünfzehn Jahren prägt er das Fundament des Unternehmens und treibt eine klare Vision voran: die Menschheit langfristig und verantwortungsvoll ins All auszuweiten. Er verbindet strategische Weitsicht mit technischer Tiefe — besonders in Softwareentwicklung, Logik, Technik und Physik — und übernimmt die Gesamtleitung von Strategie, Prioritäten und Partnernetzwerken. Thomas sorgt dafür, dass Vision und operative Realität zusammenfinden, gibt Orientierung in komplexen Entscheidungen und stellt Qualität vor Tempo, ohne Fortschritt aus dem Blick zu verlieren.\n\n" +
+        "Neben der Arbeit ist er sportlich aktiv und spielt leidenschaftlich Tennis; körperliche Balance und Fokus helfen ihm, auch unter hoher Komplexität klare Entscheidungen zu treffen und das Team motiviert an eine gemeinsame Zielrichtung zu führen.",
     },
     coo: {
       img: "pics/team2.jpg",
       name: "Eric Giehl",
       role: "Co-Chief Executive Officer (Co-CEO)",
+      ageYears: 16,
       bio:
-        "Eric Giehl steht für operative Exzellenz und skalierbare Abläufe. Er verbindet Engineering-Kultur mit unternehmerischer Geschwindigkeit und sorgt dafür, dass Entscheidungen schnell, messbar und nachvollziehbar in die Umsetzung gehen. Sein Schwerpunkt liegt auf Programmsteuerung, Lieferketten und der nahtlosen Zusammenarbeit zwischen Standorten und Partnern.\n\n" +
-        "Verantwortung: operative Programmführung, Skalierung der Startorganisation, Schnittstellenmanagement zu Schlüsselpartnern.\n\n" +
-        "Vision: Orbitex als Team zu führen, das komplexe Raumfahrtprogramme mit der Präzision eines Tech-Unternehmens und der Seriosität eines Luftfahrtkonzerns liefert.\n\n" +
-        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
+        "Eric Giehl ist Co-Chief Executive Officer von Orbitex und verbindet operative Koordination mit strategischem Blick. Mit sechzehn Jahren bringt er Struktur in den Alltag: Er managt Aufgaben, synchronisiert Workstreams und sorgt dafür, dass Teams reibungslos zusammenarbeiten. Eric behält den Überblick über laufende Prozesse, erkennt Engpässe frühzeitig und übersetzt Ziele in konkrete nächste Schritte. Er zeichnet sich durch analytische Stärke, ruhige Entscheidungsfindung und die Fähigkeit aus, viele Informationen gleichzeitig sinnvoll zu gewichten — ein entscheidender Vorteil in einem schnell wachsenden Raumfahrtumfeld.\n\n" +
+        "Neben der Arbeit zockt er gerne und denkt in großen Bildern: Er träumt davon, mit Orbitex die Welt nachhaltig zu revolutionieren — mit Pragmatismus, Teamgeist und dem Anspruch, Versprechen auch wirklich einzuhalten.",
     },
     cmo: {
       img: "pics/team3.jpg",
       name: "Jonas Habermehl",
       role: "Chief Marketing Officer (CMO)",
+      ageYears: 15,
       bio:
-        "Jonas Habermehl positioniert Orbitex am Markt: klare Markenidentität, internationale Sichtbarkeit und verständliche Kommunikation von Technologie und Mission. Er übersetzt komplexe Inhalte in starke Narrative und baut Ökosysteme aus Medien, Community und Partnern auf.\n\n" +
-        "Verantwortung: Markenführung, Kommunikation, Growth, Events &amp; digitale Präsenz.\n\n" +
-        "Vision: Orbitex als Marke wahrnehmbar machen, die Vertrauen schafft — technisch glaubwürdig, emotional inspirierend und klar europäisch.\n\n" +
-        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
+        "Jonas Habermehl ist Chief Marketing Officer von Orbitex. Mit fünfzehn Jahren bringt er Energie in Branding, Kampagnen und Community: Er betreut den Instagram-Kanal, entwickelt kreative Marketing-Strategien und sorgt dafür, dass komplexe Themen verständlich und inspirierend erzählt werden. Jonas besitzt ein feines Gespür für soziale Medien, visuelle Sprache und Timing in der Öffentlichkeitsarbeit. Er verbindet Emotion mit Substanz, damit Orbitex glaubwürdig wächst und gleichzeitig technisch seriös bleibt — eine Balance, die in der Raumfahrtkommunikation entscheidend ist.\n\n" +
+        "In der Freizeit spielt er Basketball und zockt gerne; Teamplay und schnelle Reaktion überträgt er nahtlos in die Zusammenarbeit mit dem Team. Orbitex ist für ihn mehr als ein Projekt: eine Mission, die er mit voller Energie sichtbar machen will.",
     },
     cto: {
       img: "pics/team-leon.jpg",
       name: "Leon Kelmendi",
-      role: "Chief Engineering Officer (CTO)",
+      role: "Chief Technology Officer (CTO)",
+      ageYears: 16,
       bio:
-        "Leon Kelmendi führt die technische Gesamtarchitektur: Systemengineering, Avionik, Software, Strukturen und Integration. Er sorgt für eine konsistente Technologiestrategie von der Simulation bis zum Start und setzt auf nachvollziehbare Standards, Reviews und Qualitätssicherung in jeder Phase.\n\n" +
-        "Verantwortung: Engineering-Exzellenz, technische Roadmap, Systemintegration, Sicherheitskultur im Entwicklungsprozess.\n\n" +
-        "Vision: Orbitex als Engineering-Referenz — schnell iterierend, aber niemals leichtfertig; Innovation mit messbarer Zuverlässigkeit.\n\n" +
-        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
+        "Leon Kelmendi ist Chief Technology Officer von Orbitex und leitet die technische Entwicklung. Mit sechzehn Jahren bringt er Präzision in Ingenieurfragen, Systemarchitektur und die Koordination der technischen Teams ein. Er ist verantwortlich für die Entwicklungsrichtung unserer Systeme, achtet auf Machbarkeit, Sicherheit und iterative Qualität und bringt seine Stärken in Raketentechnik und Konstruktion ein. Leon treibt Meilensteine mit Ruhe und Detailbewusstsein voran und schafft Klarheit, wenn technische Entscheidungen viele Schnittstellen berühren.\n\n" +
+        "Raumfahrt fasziniert ihn seit langem; in der Freizeit betreibt er viel Sport und bringt dieselbe Disziplin in die technische Arbeit ein — mit dem Ziel, Systeme zu bauen, die im echten Betrieb verlässlich funktionieren.",
     },
     cfo: {
-      img: "pics/Jonathan.jpg",
+      img: "pics/team-jonathan.jpg",
       name: "Jonathan Weinbrecht",
       role: "Chief Financial Officer (CFO)",
+      ageYears: 16,
       bio:
-        "Jonathan Weinbrecht steuert Finanzen, Controlling und Investorenkommunikation. Er sorgt für transparente Planung, belastbare Forecasts und eine Kapitalstruktur, die ambitionierte Raumfahrtprogramme tragfähig macht — von der ersten Entwicklungsphase bis zur Betriebsskalierung.\n\n" +
-        "Verantwortung: Finanzstrategie, Budgetierung, Reporting, Fundraising &amp; Investor Relations.\n\n" +
-        "Vision: Finanzielle Resilienz als strategischer Vorteil — damit Orbitex Wachstum und Innovation gleichzeitig verantwortungsvoll beschleunigen kann.\n\n" +
-        "[Platzhalter-Biografie — dieser Absatz kann später durch den finalen Langtext ersetzt werden.]",
+        "Jonathan Weinbrecht ist Chief Financial Officer von Orbitex und verantwortet Finanzen, Budget und wirtschaftliche Planung. Mit sechzehn Jahren sorgt er für belastbare Zahlen, transparente Kostenstrukturen und eine solide Basis für Investitionsentscheidungen. Er behält den Überblick über Kosten und Ressourcen, moderiert wirtschaftliche Risiken und arbeitet eng mit dem Leadership-Team zusammen, damit Wachstum finanziell tragfähig bleibt. Jonathan ist zuverlässig, strukturiert und kommuniziert komplexe Finanzthemen so, dass sie für alle Beteiligten handhabbar werden — ohne an Genauigkeit zu verlieren.\n\n" +
+        "In seiner Freizeit spielt er gerne Tennis; Fokus und Ausdauer, die er dort trainiert, nutzt er auch im Controlling und bei der langfristigen finanziellen Steuerung von Orbitex.",
     },
   };
 
@@ -158,6 +154,10 @@
     leadPhoto.alt = `Porträt: ${data.name}`;
     leadName.textContent = data.name;
     leadRole.textContent = data.role;
+    if (leadAge) {
+      const y = typeof data.ageYears === "number" ? data.ageYears : null;
+      leadAge.textContent = y != null ? `${y} Jahre` : "";
+    }
     leadBio.innerHTML = data.bio
       .split(/\n\n/)
       .map((chunk) => `<p>${chunk.replace(/\n/g, "<br />")}</p>`)
