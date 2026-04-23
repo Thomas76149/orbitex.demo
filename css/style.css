@@ -3251,6 +3251,17 @@ a {
   margin-bottom: 0;
 }
 
+.leadModal__bio a {
+  color: rgba(154, 208, 255, 0.95);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.leadModal__bio a:hover {
+  color: rgba(86, 167, 255, 1);
+}
+
 @media (max-width: 760px) {
   .leadCard {
     flex-basis: min(280px, 86vw);
