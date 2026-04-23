@@ -45,6 +45,7 @@
       ageYears: 15,
       bio:
         "Thomas Halbach ist Gründer und Chief Executive Officer von Orbitex. Mit fünfzehn Jahren prägt er das Fundament des Unternehmens und treibt eine klare Vision voran: die Menschheit langfristig und verantwortungsvoll ins All auszuweiten. Er verbindet strategische Weitsicht mit technischer Tiefe — besonders in Softwareentwicklung, Logik, Technik und Physik — und übernimmt die Gesamtleitung von Strategie, Prioritäten und Partnernetzwerken. Thomas sorgt dafür, dass Vision und operative Realität zusammenfinden, gibt Orientierung in komplexen Entscheidungen und stellt Qualität vor Tempo, ohne Fortschritt aus dem Blick zu verlieren.\n\n" +
+        'Mehr über Thomas: <a href="https://thomaswebsite.thomaso-halbach.workers.dev" target="_blank" rel="noreferrer">thomaswebsite.thomaso-halbach.workers.dev</a>\n\n' +
         "Neben der Arbeit ist er sportlich aktiv und spielt leidenschaftlich Tennis; körperliche Balance und Fokus helfen ihm, auch unter hoher Komplexität klare Entscheidungen zu treffen und das Team motiviert an eine gemeinsame Zielrichtung zu führen.",
     },
     coo: {
