@@ -694,395 +694,17 @@
                   <span class="missionControl__cardHint">Deployment Phase</span>
                 </li>
               </ul>
+
+              <div class="missionControl__actions" aria-label="Mission Control Aktionen">
+                <button class="btn btn--primary missionControl__cta" type="button" data-sat-open>
+                  Live Satelliten-Feed
+                </button>
+                <p class="missionControl__ctaHint">
+                  Öffnet Live‑Video &amp; Kurzinfos zu aktiven Satelliten.
+                </p>
+              </div>
             </aside>
           </div>
-
-          <div class="mcBoosterStrip reveal" data-reveal>
-            <p class="mcBoosterStrip__kicker">
-              Twin Booster RTL · Freifall · transonisch · Landebrenns · kontinuierlicher Staubstrom
-            </p>
-            <div class="mcBoosterStrip__canvas">
-            <svg
-              class="mcBoosterStrip__svg"
-              viewBox="0 0 720 380"
-              role="img"
-              aria-label="Zwillingslandung: schlanke Booster, Landebrenns mit Flamme und Staubstrom"
-            >
-              <defs>
-                <linearGradient id="mcBSky" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#0a1528" />
-                  <stop offset="50%" stop-color="#071018" />
-                  <stop offset="100%" stop-color="#03060c" />
-                </linearGradient>
-                <linearGradient id="mcBFlame" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#fffef5" />
-                  <stop offset="30%" stop-color="#ffd78a" />
-                  <stop offset="100%" stop-color="#d94a18" />
-                </linearGradient>
-                <linearGradient id="mcBSilver" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#7a8a9c" />
-                  <stop offset="18%" stop-color="#c5d2e2" />
-                  <stop offset="42%" stop-color="#aab8c8" />
-                  <stop offset="78%" stop-color="#5c6674" />
-                  <stop offset="100%" stop-color="#3a424e" />
-                </linearGradient>
-                <linearGradient id="mcBRimLit" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="rgba(255, 255, 255, 0.5)" />
-                  <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
-                </linearGradient>
-                <linearGradient id="mcBRimShade" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="rgba(0, 0, 0, 0)" />
-                  <stop offset="100%" stop-color="rgba(0, 0, 0, 0.42)" />
-                </linearGradient>
-                <linearGradient id="mcBSheetL" x1="1" y1="0" x2="0" y2="0" gradientUnits="objectBoundingBox">
-                  <stop offset="0%" stop-color="rgba(255, 248, 220, 0.9)" />
-                  <stop offset="25%" stop-color="rgba(255, 170, 80, 0.55)" />
-                  <stop offset="100%" stop-color="rgba(210, 80, 20, 0)" />
-                </linearGradient>
-                <linearGradient id="mcBSheetR" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
-                  <stop offset="0%" stop-color="rgba(255, 248, 220, 0.9)" />
-                  <stop offset="25%" stop-color="rgba(255, 170, 80, 0.55)" />
-                  <stop offset="100%" stop-color="rgba(210, 80, 20, 0)" />
-                </linearGradient>
-                <radialGradient id="mcBVapor" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="rgba(220, 240, 255, 0.5)" />
-                  <stop offset="65%" stop-color="rgba(130, 175, 220, 0.14)" />
-                  <stop offset="100%" stop-color="rgba(80, 120, 180, 0)" />
-                </radialGradient>
-                <radialGradient id="mcBGlowPad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="rgba(255, 200, 120, 0.5)" />
-                  <stop offset="45%" stop-color="rgba(255, 130, 60, 0.22)" />
-                  <stop offset="100%" stop-color="rgba(255, 90, 30, 0)" />
-                </radialGradient>
-              </defs>
-              <rect width="720" height="380" fill="url(#mcBSky)" />
-              <rect x="0" y="330" width="720" height="50" fill="rgba(0, 0, 0, 0.5)" />
-              <line x1="28" y1="330" x2="692" y2="330" stroke="rgba(140, 200, 255, 0.55)" stroke-width="2.5" />
-
-              <!-- Booster 1: Ursprung am Rumpfboden; Flammenspitze y=+40 → 290+40=330 = Landelinie -->
-              <g transform="translate(198,290)">
-                <ellipse class="mcBoost__padGlow mcBoost__padGlow--a" cx="0" cy="41" rx="56" ry="7" fill="url(#mcBGlowPad)" />
-                <g class="mcBoost__rig mcBoost__rig--a">
-                <ellipse class="mcBoost__shadow mcBoost__shadow--a" cx="0" cy="5" rx="36" ry="8" fill="rgba(0, 0, 0, 0.58)" />
-                <g class="mcBoost__stage mcBoost__stage--a">
-                  <g class="mcBoost__fx" aria-hidden="true">
-                    <path
-                      class="mcBoost__vapor mcBoost__vaporL"
-                      d="M -62 -168 L -28 -42 L -14,-2 L -42,-4 Z"
-                      fill="url(#mcBVapor)"
-                      opacity="0"
-                    />
-                    <path
-                      class="mcBoost__vapor mcBoost__vaporR"
-                      d="M 62 -168 L 28 -42 L 14,-2 L 42,-4 Z"
-                      fill="url(#mcBVapor)"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockRing"
-                      cx="0"
-                      cy="-72"
-                      rx="11"
-                      ry="40"
-                      fill="none"
-                      stroke="rgba(210, 240, 255, 0.7)"
-                      stroke-width="2.4"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockSide mcBoost__shockSideL"
-                      cx="-26"
-                      cy="-58"
-                      rx="9"
-                      ry="26"
-                      fill="none"
-                      stroke="rgba(180, 220, 255, 0.45)"
-                      stroke-width="1.6"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockSide mcBoost__shockSideR"
-                      cx="26"
-                      cy="-58"
-                      rx="9"
-                      ry="26"
-                      fill="none"
-                      stroke="rgba(180, 220, 255, 0.45)"
-                      stroke-width="1.6"
-                      opacity="0"
-                    />
-                  </g>
-                  <g class="mcBoost__airframe">
-                    <!-- Landebeine (breit) -->
-                    <polygon points="-7,0 -44,4 -40,12 -7,4" fill="#2c3542" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
-                    <polygon points="7,0 44,4 40,12 7,4" fill="#2c3542" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
-                    <polygon points="-7,0 -32,10 -28,14 -7,6" fill="#252d38" />
-                    <polygon points="7,0 32,10 28,14 7,6" fill="#252d38" />
-                    <!-- Schwarzer unterer Rumpf -->
-                    <rect x="-8" y="-48" width="16" height="48" rx="2.5" fill="#1a1e26" stroke="rgba(255,255,255,0.06)" stroke-width="0.6" />
-                    <!-- Silberner Hauptkörper + Zylinder-Licht -->
-                    <rect x="-8" y="-156" width="16" height="108" rx="2.5" fill="url(#mcBSilver)" stroke="rgba(255,255,255,0.14)" stroke-width="0.7" />
-                    <rect x="-8" y="-156" width="5" height="108" rx="2" fill="url(#mcBRimLit)" opacity="0.55" />
-                    <rect x="1" y="-156" width="7" height="108" rx="1.5" fill="url(#mcBRimShade)" opacity="0.85" />
-                    <polygon points="-7,-156 7,-156 0,-172" fill="#7a8798" stroke="rgba(255,255,255,0.12)" stroke-width="0.6" />
-                    <!-- Gitterflossen -->
-                    <rect x="-9" y="-168" width="6" height="14" rx="0.8" fill="#1e2430" stroke="rgba(255,255,255,0.08)" stroke-width="0.4" />
-                    <rect x="3" y="-168" width="6" height="14" rx="0.8" fill="#1e2430" stroke="rgba(255,255,255,0.08)" stroke-width="0.4" />
-                    <rect x="-9" y="-168" width="6" height="14" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="0.5" />
-                    <rect x="3" y="-168" width="6" height="14" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="0.5" />
-                    <!-- DE-Badge -->
-                    <rect x="-7" y="-118" width="14" height="12" rx="1.5" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5" />
-                    <rect x="-6" y="-117" width="12" height="3.2" fill="#1a1a1a" />
-                    <rect x="-6" y="-113.8" width="12" height="3.2" fill="#cc0000" />
-                    <rect x="-6" y="-110.6" width="12" height="3.2" fill="#ffce00" />
-                    <ellipse class="mcBoost__smoke" cx="-10" cy="2" rx="16" ry="5.5" fill="rgba(210, 225, 240, 0.2)" />
-                    <ellipse class="mcBoost__smoke mcBoost__smoke--2" cx="10" cy="3" rx="20" ry="6.5" fill="rgba(185, 200, 218, 0.16)" />
-                    <ellipse class="mcBoost__smoke mcBoost__smoke--3" cx="0" cy="5" rx="24" ry="7.5" fill="rgba(165, 182, 200, 0.12)" />
-                    <path
-                      class="mcBoost__flame mcBoost__flame--a"
-                      d="M -5.2 0 L 5.2 0 L 4 32 L 0 40 L -4 32 Z"
-                      fill="url(#mcBFlame)"
-                      opacity="0"
-                    />
-                    <path
-                      class="mcBoost__flameInner mcBoost__flameInner--a"
-                      d="M -2.2 0 L 2.2 0 L 1.6 18 L 0 22 L -1.6 18 Z"
-                      fill="rgba(255, 252, 240, 0.85)"
-                      opacity="0"
-                    />
-                    <g class="mcBoost__groundShear" aria-hidden="true">
-                      <path
-                        class="mcBoost__sheet mcBoost__sheet--l"
-                        d="M 0 0 L -6 2 L -72 14 L -78 22 L -10 8 Z"
-                        fill="url(#mcBSheetL)"
-                        opacity="0"
-                      />
-                      <path
-                        class="mcBoost__sheet mcBoost__sheet--r"
-                        d="M 0 0 L 6 2 L 72 14 L 78 22 L 10 8 Z"
-                        fill="url(#mcBSheetR)"
-                        opacity="0"
-                      />
-                    </g>
-                  </g>
-                </g>
-                <g class="mcBoost__dust mcBoost__dust--a" aria-hidden="true">
-                  <g class="mcBoost__dustGate mcBoost__dustGate--a">
-                  <g transform="translate(0,2)">
-                    <g class="mcBoost__dustPt" style="--tx: 52; --ty: -58; --ad: 0ms">
-                      <circle r="2.1" fill="rgba(235, 210, 175, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 38; --ty: -68; --ad: 24ms">
-                      <circle r="1.8" fill="rgba(225, 195, 155, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 22; --ty: -62; --ad: 48ms">
-                      <circle r="1.6" fill="rgba(245, 225, 195, 0.85)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 6; --ty: -74; --ad: 72ms">
-                      <circle r="1.9" fill="rgba(220, 188, 150, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -10; --ty: -70; --ad: 96ms">
-                      <circle r="1.7" fill="rgba(210, 178, 138, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -28; --ty: -64; --ad: 118ms">
-                      <circle r="2" fill="rgba(230, 200, 160, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -46; --ty: -52; --ad: 142ms">
-                      <circle r="1.8" fill="rgba(200, 168, 125, 0.86)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -54; --ty: -36; --ad: 166ms">
-                      <circle r="1.5" fill="rgba(215, 182, 140, 0.84)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -42; --ty: -22; --ad: 190ms">
-                      <circle r="1.4" fill="rgba(238, 215, 185, 0.82)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -24; --ty: -14; --ad: 214ms">
-                      <circle r="1.3" fill="rgba(250, 230, 200, 0.8)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 26; --ty: -18; --ad: 238ms">
-                      <circle r="1.35" fill="rgba(205, 172, 130, 0.83)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 44; --ty: -28; --ad: 262ms">
-                      <circle r="1.45" fill="rgba(218, 185, 142, 0.85)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 58; --ty: -42; --ad: 286ms">
-                      <circle r="1.55" fill="rgba(195, 162, 118, 0.82)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 0; --ty: -78; --ad: 310ms">
-                      <circle r="1.7" fill="rgba(240, 220, 195, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -58; --ty: -24; --ad: 334ms">
-                      <circle r="1.5" fill="rgba(188, 155, 118, 0.8)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 14; --ty: -48; --ad: 358ms">
-                      <circle r="1.25" fill="rgba(248, 228, 205, 0.82)" />
-                    </g>
-                  </g>
-                  </g>
-                </g>
-                </g>
-              </g>
-
-              <!-- Booster 2 (leicht versetzt wie in der Referenz) -->
-              <g transform="translate(522,290)">
-                <ellipse class="mcBoost__padGlow mcBoost__padGlow--b" cx="0" cy="41" rx="56" ry="7" fill="url(#mcBGlowPad)" />
-                <g class="mcBoost__rig mcBoost__rig--b">
-                <ellipse class="mcBoost__shadow mcBoost__shadow--b" cx="0" cy="5" rx="36" ry="8" fill="rgba(0, 0, 0, 0.58)" />
-                <g class="mcBoost__stage mcBoost__stage--b">
-                  <g class="mcBoost__fx" aria-hidden="true">
-                    <path
-                      class="mcBoost__vapor mcBoost__vaporL"
-                      d="M -62 -168 L -28 -42 L -14,-2 L -42,-4 Z"
-                      fill="url(#mcBVapor)"
-                      opacity="0"
-                    />
-                    <path
-                      class="mcBoost__vapor mcBoost__vaporR"
-                      d="M 62 -168 L 28 -42 L 14,-2 L 42,-4 Z"
-                      fill="url(#mcBVapor)"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockRing"
-                      cx="0"
-                      cy="-72"
-                      rx="11"
-                      ry="40"
-                      fill="none"
-                      stroke="rgba(210, 240, 255, 0.7)"
-                      stroke-width="2.4"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockSide mcBoost__shockSideL"
-                      cx="-26"
-                      cy="-58"
-                      rx="9"
-                      ry="26"
-                      fill="none"
-                      stroke="rgba(180, 220, 255, 0.45)"
-                      stroke-width="1.6"
-                      opacity="0"
-                    />
-                    <ellipse
-                      class="mcBoost__shockSide mcBoost__shockSideR"
-                      cx="26"
-                      cy="-58"
-                      rx="9"
-                      ry="26"
-                      fill="none"
-                      stroke="rgba(180, 220, 255, 0.45)"
-                      stroke-width="1.6"
-                      opacity="0"
-                    />
-                  </g>
-                  <g class="mcBoost__airframe">
-                    <polygon points="-7,0 -44,4 -40,12 -7,4" fill="#2c3542" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
-                    <polygon points="7,0 44,4 40,12 7,4" fill="#2c3542" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
-                    <polygon points="-7,0 -32,10 -28,14 -7,6" fill="#252d38" />
-                    <polygon points="7,0 32,10 28,14 7,6" fill="#252d38" />
-                    <rect x="-8" y="-48" width="16" height="48" rx="2.5" fill="#1a1e26" stroke="rgba(255,255,255,0.06)" stroke-width="0.6" />
-                    <rect x="-8" y="-156" width="16" height="108" rx="2.5" fill="url(#mcBSilver)" stroke="rgba(255,255,255,0.14)" stroke-width="0.7" />
-                    <rect x="-8" y="-156" width="5" height="108" rx="2" fill="url(#mcBRimLit)" opacity="0.55" />
-                    <rect x="1" y="-156" width="7" height="108" rx="1.5" fill="url(#mcBRimShade)" opacity="0.85" />
-                    <polygon points="-7,-156 7,-156 0,-172" fill="#7a8798" stroke="rgba(255,255,255,0.12)" stroke-width="0.6" />
-                    <rect x="-9" y="-168" width="6" height="14" rx="0.8" fill="#1e2430" stroke="rgba(255,255,255,0.08)" stroke-width="0.4" />
-                    <rect x="3" y="-168" width="6" height="14" rx="0.8" fill="#1e2430" stroke="rgba(255,255,255,0.08)" stroke-width="0.4" />
-                    <rect x="-9" y="-168" width="6" height="14" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="0.5" />
-                    <rect x="3" y="-168" width="6" height="14" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="0.5" />
-                    <rect x="-7" y="-118" width="14" height="12" rx="1.5" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5" />
-                    <rect x="-6" y="-117" width="12" height="3.2" fill="#1a1a1a" />
-                    <rect x="-6" y="-113.8" width="12" height="3.2" fill="#cc0000" />
-                    <rect x="-6" y="-110.6" width="12" height="3.2" fill="#ffce00" />
-                    <ellipse class="mcBoost__smoke" cx="-10" cy="2" rx="16" ry="5.5" fill="rgba(210, 225, 240, 0.2)" />
-                    <ellipse class="mcBoost__smoke mcBoost__smoke--2" cx="10" cy="3" rx="20" ry="6.5" fill="rgba(185, 200, 218, 0.16)" />
-                    <ellipse class="mcBoost__smoke mcBoost__smoke--3" cx="0" cy="5" rx="24" ry="7.5" fill="rgba(165, 182, 200, 0.12)" />
-                    <path
-                      class="mcBoost__flame mcBoost__flame--b"
-                      d="M -5.2 0 L 5.2 0 L 4 32 L 0 40 L -4 32 Z"
-                      fill="url(#mcBFlame)"
-                      opacity="0"
-                    />
-                    <path
-                      class="mcBoost__flameInner mcBoost__flameInner--b"
-                      d="M -2.2 0 L 2.2 0 L 1.6 18 L 0 22 L -1.6 18 Z"
-                      fill="rgba(255, 252, 240, 0.85)"
-                      opacity="0"
-                    />
-                    <g class="mcBoost__groundShear" aria-hidden="true">
-                      <path
-                        class="mcBoost__sheet mcBoost__sheet--l"
-                        d="M 0 0 L -6 2 L -72 14 L -78 22 L -10 8 Z"
-                        fill="url(#mcBSheetL)"
-                        opacity="0"
-                      />
-                      <path
-                        class="mcBoost__sheet mcBoost__sheet--r"
-                        d="M 0 0 L 6 2 L 72 14 L 78 22 L 10 8 Z"
-                        fill="url(#mcBSheetR)"
-                        opacity="0"
-                      />
-                    </g>
-                  </g>
-                </g>
-                <g class="mcBoost__dust mcBoost__dust--b" aria-hidden="true">
-                  <g class="mcBoost__dustGate mcBoost__dustGate--b">
-                  <g transform="translate(0,2)">
-                    <g class="mcBoost__dustPt" style="--tx: 52; --ty: -58; --ad: 0ms">
-                      <circle r="2.1" fill="rgba(235, 210, 175, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 38; --ty: -68; --ad: 24ms">
-                      <circle r="1.8" fill="rgba(225, 195, 155, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 22; --ty: -62; --ad: 48ms">
-                      <circle r="1.6" fill="rgba(245, 225, 195, 0.85)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 6; --ty: -74; --ad: 72ms">
-                      <circle r="1.9" fill="rgba(220, 188, 150, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -10; --ty: -70; --ad: 96ms">
-                      <circle r="1.7" fill="rgba(210, 178, 138, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -28; --ty: -64; --ad: 118ms">
-                      <circle r="2" fill="rgba(230, 200, 160, 0.9)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -46; --ty: -52; --ad: 142ms">
-                      <circle r="1.8" fill="rgba(200, 168, 125, 0.86)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -54; --ty: -36; --ad: 166ms">
-                      <circle r="1.5" fill="rgba(215, 182, 140, 0.84)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -42; --ty: -22; --ad: 190ms">
-                      <circle r="1.4" fill="rgba(238, 215, 185, 0.82)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -24; --ty: -14; --ad: 214ms">
-                      <circle r="1.3" fill="rgba(250, 230, 200, 0.8)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 26; --ty: -18; --ad: 238ms">
-                      <circle r="1.35" fill="rgba(205, 172, 130, 0.83)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 44; --ty: -28; --ad: 262ms">
-                      <circle r="1.45" fill="rgba(218, 185, 142, 0.85)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 58; --ty: -42; --ad: 286ms">
-                      <circle r="1.55" fill="rgba(195, 162, 118, 0.82)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 0; --ty: -78; --ad: 310ms">
-                      <circle r="1.7" fill="rgba(240, 220, 195, 0.88)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: -58; --ty: -24; --ad: 334ms">
-                      <circle r="1.5" fill="rgba(188, 155, 118, 0.8)" />
-                    </g>
-                    <g class="mcBoost__dustPt" style="--tx: 14; --ty: -48; --ad: 358ms">
-                      <circle r="1.25" fill="rgba(248, 228, 205, 0.82)" />
-                    </g>
-                  </g>
-                  </g>
-                </g>
-                </g>
-              </g>
-            </svg>
-            </div>
 
           <p class="missionControl__footnote reveal" data-reveal>
             Echtzeit-Daten · Orbitex Ground Station Peenemünde
@@ -1704,6 +1326,111 @@
               </span>
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      ====================================================================
+      SATELLITE LIVE MODAL (Mission Control)
+      - Opens via button in Mission Control panel
+      ====================================================================
+    -->
+    <div class="satModal" id="satModal" aria-hidden="true">
+      <div class="satModal__backdrop" data-sat-close aria-hidden="true"></div>
+      <div
+        class="satModal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="satModalTitle"
+        aria-describedby="satModalDesc"
+        tabindex="-1"
+      >
+        <div class="satModal__head">
+          <div>
+            <p class="satModal__kicker">Mission Control</p>
+            <h2 class="satModal__title" id="satModalTitle">Live Satelliten-Feed</h2>
+            <p class="satModal__desc" id="satModalDesc">
+              Kurze Clips &amp; Visualisierungen — tippe eine Karte an, um das Video groß zu öffnen.
+            </p>
+          </div>
+          <button class="satModal__close" type="button" data-sat-close aria-label="Schließen">×</button>
+        </div>
+
+        <div class="satModal__grid" role="region" aria-label="Satelliten-Videos">
+          <article class="satCard" data-sat-play>
+            <div class="satCard__top">
+              <h3 class="satCard__name">ISS · Live Earth View</h3>
+              <p class="satCard__meta">LEO · ~400 km · NASA</p>
+            </div>
+            <div class="satCard__video">
+              <video class="satCard__videoEl" autoplay muted loop playsinline preload="metadata">
+                <source src="pics/sat_earth_360p.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <ul class="satCard__facts">
+              <li><strong>Feed:</strong> Offizieller NASA‑Stream</li>
+              <li><strong>Inhalt:</strong> Erde, Station‑Cam, Audio/Comms (variabel)</li>
+              <li><strong>Hinweis:</strong> Bei Orbitalnacht kann das Bild dunkel sein</li>
+            </ul>
+          </article>
+
+          <article class="satCard" data-sat-play>
+            <div class="satCard__top">
+              <h3 class="satCard__name">Earth Observing Fleet · Orbit-Überblick</h3>
+              <p class="satCard__meta">LEO · Multi-Sat · NASA SVS</p>
+            </div>
+            <div class="satCard__video">
+              <video class="satCard__videoEl" style="--zoom: 1.22" autoplay muted loop playsinline preload="metadata">
+                <source src="pics/sat_fleet_sq.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <ul class="satCard__facts">
+              <li><strong>Inhalt:</strong> Orbits vieler Erdbeobachtungssatelliten in Echtzeit‑Optik</li>
+              <li><strong>Nutzen:</strong> Überblick über Flugbahnen, Inklinationen &amp; relative Positionen</li>
+              <li><strong>Quelle:</strong> NASA Scientific Visualization Studio (SVS)</li>
+            </ul>
+          </article>
+
+          <article class="satCard" data-sat-play>
+            <div class="satCard__top">
+              <h3 class="satCard__name">Artemis II · Lunar Flyby (Simulation)</h3>
+              <p class="satCard__meta">Cislunar · Trajektorie · NASA SVS</p>
+            </div>
+            <div class="satCard__video">
+              <video
+                class="satCard__videoEl"
+                style="--zoom: 1.18"
+                data-rate="1.4"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              >
+                <source src="pics/sat_artemis_flyby_short.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <ul class="satCard__facts">
+              <li><strong>Inhalt:</strong> Sicht aus dem Fenster entlang der Flyby‑Trajektorie</li>
+              <li><strong>Kontext:</strong> Realistische Flugbahn‑Visualisierung (geplant für 2026)</li>
+              <li><strong>Quelle:</strong> NASA Scientific Visualization Studio (SVS)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Single video player modal (tap a card) -->
+    <div class="satPlayer" id="satPlayer" aria-hidden="true">
+      <div class="satPlayer__backdrop" data-sat-player-close aria-hidden="true"></div>
+      <div class="satPlayer__panel" role="dialog" aria-modal="true" aria-labelledby="satPlayerTitle" tabindex="-1">
+        <div class="satPlayer__head">
+          <h2 class="satPlayer__title" id="satPlayerTitle"></h2>
+          <button class="satPlayer__close" type="button" data-sat-player-close aria-label="Schließen">×</button>
+        </div>
+        <div class="satPlayer__video">
+          <video class="satPlayer__videoEl" controls autoplay muted loop playsinline preload="metadata"></video>
         </div>
       </div>
     </div>

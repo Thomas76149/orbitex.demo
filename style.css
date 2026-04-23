@@ -1016,6 +1016,27 @@ a {
   gap: 16px;
 }
 
+.missionControl__actions {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 10px;
+}
+
+.missionControl__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.missionControl__ctaHint {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.55;
+}
+
 .missionControl__panelHead {
   display: flex;
   flex-wrap: wrap;
@@ -1143,616 +1164,6 @@ a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.38);
-}
-
-/* Zwillings-Booster RTL (2D, CSS) — Phasen: Fall → Schall/Dampf → Bremsen+Flamme → Staub → Landung */
-.mcBoosterStrip {
-  margin-top: clamp(18px, 3vw, 26px);
-  border-radius: 14px;
-  border: 1px solid rgba(120, 180, 255, 0.2);
-  overflow: hidden;
-  background: rgba(4, 10, 22, 0.55);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) inset;
-}
-
-.mcBoosterStrip__kicker {
-  margin: 0;
-  padding: 11px 16px 6px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.mcBoosterStrip__canvas {
-  perspective: 780px;
-  perspective-origin: 50% 68%;
-  transform-style: preserve-3d;
-}
-
-.mcBoosterStrip__svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: min(58vh, 440px);
-  min-height: 260px;
-  transform: rotateX(4.2deg);
-  transform-origin: 50% 92%;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
-}
-
-.mcBoost__rig {
-  transform-box: fill-box;
-  transform-origin: 0 38px;
-}
-
-.mcBoost__rig--a {
-  transform: skewX(-4deg);
-}
-
-.mcBoost__rig--b {
-  transform: skewX(4deg);
-}
-
-.mcBoost__padGlow {
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-  transform-origin: 0 41px;
-  transform-box: fill-box;
-  animation: mcBoostPadGlow 6.5s ease-out infinite;
-}
-
-.mcBoost__padGlow--b {
-  animation-delay: 0.45s;
-}
-
-@keyframes mcBoostPadGlow {
-  0%,
-  38% {
-    opacity: 0;
-    transform: scale(0.65, 0.5);
-  }
-  46% {
-    opacity: 0.85;
-    transform: scale(1, 0.85);
-  }
-  58%,
-  88% {
-    opacity: 0.95;
-    transform: scale(1.08, 1) translateY(1px);
-  }
-  100% {
-    opacity: 0.35;
-    transform: scale(1.02, 0.92);
-  }
-}
-
-.mcBoost__sheet {
-  transform-origin: 0 0;
-  transform-box: fill-box;
-}
-
-.mcBoost__sheet--l {
-  animation: mcBoostSheetL 6.5s ease-out infinite;
-}
-
-.mcBoost__sheet--r {
-  animation: mcBoostSheetR 6.5s ease-out infinite;
-}
-
-.mcBoost__stage--b .mcBoost__sheet--l,
-.mcBoost__stage--b .mcBoost__sheet--r {
-  animation-delay: 0.45s;
-}
-
-@keyframes mcBoostSheetL {
-  0%,
-  40% {
-    opacity: 0;
-    transform: scale(0.15, 0.25) translate(4px, 0);
-  }
-  48% {
-    opacity: 0.55;
-    transform: scale(0.75, 0.65) translate(0, 2px);
-  }
-  62% {
-    opacity: 0.62;
-    transform: scale(1.15, 0.88) translate(-6px, 5px);
-  }
-  82% {
-    opacity: 0.38;
-    transform: scale(1.55, 0.58) translate(-14px, 8px);
-  }
-  100% {
-    opacity: 0.12;
-    transform: scale(1.75, 0.42) translate(-18px, 10px);
-  }
-}
-
-@keyframes mcBoostSheetR {
-  0%,
-  40% {
-    opacity: 0;
-    transform: scale(0.15, 0.25) translate(-4px, 0);
-  }
-  48% {
-    opacity: 0.55;
-    transform: scale(0.75, 0.65) translate(0, 2px);
-  }
-  62% {
-    opacity: 0.62;
-    transform: scale(1.15, 0.88) translate(6px, 5px);
-  }
-  82% {
-    opacity: 0.38;
-    transform: scale(1.55, 0.58) translate(14px, 8px);
-  }
-  100% {
-    opacity: 0.12;
-    transform: scale(1.75, 0.42) translate(18px, 10px);
-  }
-}
-
-.mcBoost__stage {
-  transform-origin: 0 0;
-}
-
-.mcBoost__stage--a {
-  animation: mcBoostStage 6.5s linear infinite;
-}
-
-/* Zweite Stufe etwas höher in der Luft (wie Referenz), gleicher Ablauf */
-.mcBoost__stage--b {
-  animation: mcBoostStageB 6.5s linear 0.45s infinite;
-}
-
-/* Schnellerer freier Fall, dann Bremsen / Flamme / Staub / Landung */
-@keyframes mcBoostStage {
-  0% {
-    transform: translateY(-268px);
-  }
-  5% {
-    transform: translateY(-210px);
-  }
-  10% {
-    transform: translateY(-158px);
-  }
-  16% {
-    transform: translateY(-118px);
-  }
-  22% {
-    transform: translateY(-88px);
-  }
-  28% {
-    transform: translateY(-66px);
-  }
-  34% {
-    transform: translateY(-50px);
-  }
-  42% {
-    transform: translateY(-34px);
-  }
-  50% {
-    transform: translateY(-22px);
-  }
-  58% {
-    transform: translateY(-12px);
-  }
-  66% {
-    transform: translateY(-5px);
-  }
-  73% {
-    transform: translateY(-1.2px);
-  }
-  78%,
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes mcBoostStageB {
-  0% {
-    transform: translateY(-248px);
-  }
-  5% {
-    transform: translateY(-192px);
-  }
-  10% {
-    transform: translateY(-144px);
-  }
-  16% {
-    transform: translateY(-108px);
-  }
-  22% {
-    transform: translateY(-80px);
-  }
-  28% {
-    transform: translateY(-60px);
-  }
-  34% {
-    transform: translateY(-46px);
-  }
-  42% {
-    transform: translateY(-31px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  58% {
-    transform: translateY(-11px);
-  }
-  66% {
-    transform: translateY(-4px);
-  }
-  73% {
-    transform: translateY(-1px);
-  }
-  78%,
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.mcBoost__shadow {
-  transform-origin: center;
-  transform-box: fill-box;
-}
-
-.mcBoost__shadow--a {
-  animation: mcBoostShadow 6.5s ease-out infinite;
-}
-
-.mcBoost__shadow--b {
-  animation: mcBoostShadow 6.5s ease-out 0.45s infinite;
-}
-
-@keyframes mcBoostShadow {
-  0%,
-  22% {
-    opacity: 0.1;
-    transform: scale(0.38, 0.52);
-  }
-  34%,
-  52% {
-    opacity: 0.42;
-    transform: scale(0.68, 0.78);
-  }
-  64%,
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-}
-
-.mcBoost__vapor {
-  animation: mcBoostVapor 6.5s ease-out infinite;
-}
-
-.mcBoost__vaporL {
-  transform-origin: 22% 82%;
-}
-
-.mcBoost__vaporR {
-  transform-origin: 78% 82%;
-}
-
-.mcBoost__stage--b .mcBoost__vapor {
-  animation-delay: 0.45s;
-}
-
-.mcBoost__stage--b .mcBoost__shockRing,
-.mcBoost__stage--b .mcBoost__shockSide {
-  animation-delay: 0.45s;
-}
-
-@keyframes mcBoostVapor {
-  0%,
-  14% {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-  20%,
-  32% {
-    opacity: 0.78;
-    transform: scale(1);
-  }
-  40%,
-  100% {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-}
-
-.mcBoost__shockRing {
-  transform-origin: 0 -72px;
-  animation: mcBoostShock 6.5s ease-out infinite;
-}
-
-.mcBoost__shockSide {
-  animation: mcBoostShockSide 6.5s ease-out infinite;
-}
-
-.mcBoost__shockSideL {
-  transform-origin: -26px -58px;
-}
-
-.mcBoost__shockSideR {
-  transform-origin: 26px -58px;
-}
-
-@keyframes mcBoostShock {
-  0%,
-  16% {
-    opacity: 0;
-    transform: scale(0.32);
-  }
-  22%,
-  31% {
-    opacity: 0.92;
-    transform: scale(1.12);
-  }
-  38%,
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-}
-
-@keyframes mcBoostShockSide {
-  0%,
-  17% {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-  23%,
-  33% {
-    opacity: 0.65;
-    transform: scale(1.05);
-  }
-  40%,
-  100% {
-    opacity: 0;
-    transform: scale(1.35);
-  }
-}
-
-.mcBoost__dust {
-  pointer-events: none;
-}
-
-/* Staub nur bei laufenden Triebwerken; Partikel in kurzer Schleife = kontinuierlicher Strom */
-.mcBoost__dustGate {
-  opacity: 0;
-  animation: mcBoostDustGate 6.5s ease-out infinite;
-}
-
-.mcBoost__dustGate--b {
-  animation-delay: 0.45s;
-}
-
-@keyframes mcBoostDustGate {
-  0%,
-  31% {
-    opacity: 0;
-  }
-  33%,
-  99.5% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.mcBoost__dustPt {
-  transform-origin: 0 0;
-  animation: mcBoostDustStream 0.38s linear infinite;
-  animation-delay: var(--ad, 0s);
-}
-
-.mcBoost__dust--b .mcBoost__dustPt {
-  animation-delay: calc(0.45s + var(--ad, 0s));
-}
-
-@keyframes mcBoostDustStream {
-  0% {
-    opacity: 0;
-    transform: translate(0, 1px) scale(0.2);
-  }
-  12% {
-    opacity: 0.92;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(var(--tx) * 1px), calc(var(--ty) * 1px)) scale(0.42);
-  }
-}
-
-.mcBoost__flame {
-  transform-origin: 0 0;
-}
-
-.mcBoost__flame--a {
-  animation: mcBoostFlame 6.5s ease-out infinite;
-}
-
-.mcBoost__flame--b {
-  animation: mcBoostFlame 6.5s ease-out 0.45s infinite;
-}
-
-.mcBoost__flameInner {
-  transform-origin: 0 0;
-}
-
-.mcBoost__flameInner--a {
-  animation: mcBoostFlameInner 6.5s ease-out infinite;
-}
-
-.mcBoost__flameInner--b {
-  animation: mcBoostFlameInner 6.5s ease-out 0.45s infinite;
-}
-
-.mcBoost__smoke {
-  transform-origin: 0 0;
-  opacity: 0;
-  animation: mcBoostSmoke 6.5s ease-out infinite;
-}
-
-.mcBoost__smoke--2 {
-  animation-name: mcBoostSmokeDrift;
-  animation-delay: 45ms;
-}
-
-.mcBoost__smoke--3 {
-  animation-name: mcBoostSmokeDriftB;
-  animation-delay: 90ms;
-}
-
-.mcBoost__stage--b .mcBoost__smoke {
-  animation-delay: 0.45s;
-}
-
-.mcBoost__stage--b .mcBoost__smoke--2 {
-  animation-delay: calc(0.45s + 45ms);
-}
-
-.mcBoost__stage--b .mcBoost__smoke--3 {
-  animation-delay: calc(0.45s + 90ms);
-}
-
-/* Flamme: Bremsphase → Bodenkontakt: seitlich abflachen wie reale Ablenkung */
-@keyframes mcBoostFlame {
-  0%,
-  30% {
-    opacity: 0;
-    transform: scaleY(0.08) scaleX(0.92);
-  }
-  34% {
-    opacity: 0.45;
-    transform: scaleY(0.52) scaleX(0.96);
-  }
-  40% {
-    opacity: 0.95;
-    transform: scaleY(1.06) scaleX(1.02);
-  }
-  48% {
-    opacity: 0.86;
-    transform: scaleY(0.98) scaleX(1.08) translateY(0);
-  }
-  56% {
-    opacity: 0.84;
-    transform: scaleY(0.82) scaleX(1.55) translateY(4px);
-  }
-  68% {
-    opacity: 0.78;
-    transform: scaleY(0.58) scaleX(2.05) translateY(9px);
-  }
-  82% {
-    opacity: 0.72;
-    transform: scaleY(0.48) scaleX(2.35) translateY(11px);
-  }
-  100% {
-    opacity: 0.64;
-    transform: scaleY(0.44) scaleX(2.45) translateY(12px);
-  }
-}
-
-@keyframes mcBoostFlameInner {
-  0%,
-  30% {
-    opacity: 0;
-    transform: scaleY(0.06) scaleX(0.95);
-  }
-  36% {
-    opacity: 0.55;
-    transform: scaleY(0.72) scaleX(1);
-  }
-  44% {
-    opacity: 0.95;
-    transform: scaleY(1) scaleX(1.02);
-  }
-  54% {
-    opacity: 0.9;
-    transform: scaleY(0.78) scaleX(1.35) translateY(3px);
-  }
-  70% {
-    opacity: 0.82;
-    transform: scaleY(0.52) scaleX(1.85) translateY(8px);
-  }
-  100% {
-    opacity: 0.72;
-    transform: scaleY(0.42) scaleX(2.05) translateY(11px);
-  }
-}
-
-@keyframes mcBoostSmoke {
-  0%,
-  29% {
-    opacity: 0;
-    transform: translate(0, 2px) scale(0.6, 0.45);
-  }
-  34% {
-    opacity: 0.55;
-    transform: translate(0, 0) scale(1, 0.85);
-  }
-  52% {
-    opacity: 0.48;
-    transform: translate(0, -4px) scale(1.12, 0.95);
-  }
-  65% {
-    opacity: 0.38;
-    transform: translate(0, 3px) scale(1.45, 0.62);
-  }
-  82% {
-    opacity: 0.22;
-    transform: translate(0, 6px) scale(1.85, 0.48);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0, 8px) scale(2.1, 0.38);
-  }
-}
-
-@keyframes mcBoostSmokeDrift {
-  0%,
-  29% {
-    opacity: 0;
-    transform: translate(0, 2px) scale(0.55, 0.42);
-  }
-  36% {
-    opacity: 0.5;
-    transform: translate(-6px, 0) scale(1, 0.82);
-  }
-  58% {
-    opacity: 0.42;
-    transform: translate(-22px, 5px) scale(1.35, 0.55);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-34px, 9px) scale(1.75, 0.4);
-  }
-}
-
-@keyframes mcBoostSmokeDriftB {
-  0%,
-  29% {
-    opacity: 0;
-    transform: translate(0, 2px) scale(0.55, 0.42);
-  }
-  36% {
-    opacity: 0.48;
-    transform: translate(5px, 0) scale(1, 0.8);
-  }
-  58% {
-    opacity: 0.4;
-    transform: translate(20px, 6px) scale(1.4, 0.52);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(32px, 10px) scale(1.85, 0.38);
-  }
 }
 
 .missionControl--paused .mcEarthSpin,
@@ -2878,6 +2289,350 @@ a {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 320ms var(--ease), visibility 320ms var(--ease);
+}
+
+/* =========================================================
+   Satellite Live modal (Mission Control)
+   ========================================================= */
+
+.satModal {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 320ms var(--ease), visibility 320ms var(--ease);
+}
+
+.satModal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.satModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 4, 10, 0.82);
+  backdrop-filter: blur(14px) saturate(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.satModal__panel {
+  position: relative;
+  width: min(1180px, calc(100% - 24px));
+  max-height: min(92vh, 980px);
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(154, 208, 255, 0.22);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.035) 42%, rgba(7, 12, 22, 0.62) 100%);
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.78),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 12px rgba(86, 167, 255, 0.05);
+  backdrop-filter: blur(22px) saturate(1.12);
+  -webkit-backdrop-filter: blur(22px) saturate(1.12);
+  transform: translateY(14px) scale(0.96);
+  opacity: 0;
+  transition: transform 460ms var(--ease), opacity 460ms var(--ease);
+}
+
+.satModal.is-open .satModal__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.satModal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 26px 26px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.satModal__kicker {
+  margin: 0;
+  color: rgba(86, 167, 255, 0.9);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.satModal__title {
+  margin: 10px 0 0;
+  letter-spacing: 0.06em;
+  font-size: clamp(22px, 2.6vw, 30px);
+}
+
+.satModal__desc {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.satModal__close {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
+}
+
+.satModal__close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(86, 167, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.satModal__grid {
+  padding: 22px 26px 26px;
+  max-height: min(92vh, 980px);
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 980px) {
+  .satModal__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.satCard {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025) 55%, rgba(0, 0, 0, 0.18));
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.24) inset;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+  cursor: pointer;
+}
+
+.satCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(154, 208, 255, 0.34);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03) 55%, rgba(0, 0, 0, 0.18));
+}
+
+.satCard__top {
+  padding: 18px 18px 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.satCard__name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+
+.satCard__meta {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(154, 208, 255, 0.78);
+  line-height: 1.35;
+}
+
+.satCard__video {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.32);
+  aspect-ratio: 16 / 9;
+}
+
+.satCard__video iframe,
+.satCard__video video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.satCard__video video {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(var(--zoom, 1.12));
+}
+
+.satCard__facts {
+  margin: 0;
+  padding: 16px 18px 18px;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  line-height: 1.65;
+  min-width: 0;
+}
+
+.satCard__facts li {
+  display: grid;
+  grid-template-columns: minmax(6.5ch, auto) 1fr;
+  column-gap: 10px;
+  align-items: baseline;
+}
+
+.satCard__facts strong {
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.satCard__facts strong::after {
+  content: "";
+}
+
+.satModal__footnote {
+  margin: 0;
+  padding: 0 22px 18px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .satModal,
+  .satModal__panel {
+    transition: none !important;
+  }
+  .satModal__panel {
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   Satellite Player (single video)
+   ========================================================= */
+
+.satPlayer {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 260ms var(--ease), visibility 260ms var(--ease);
+}
+
+.satPlayer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.satPlayer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 4, 10, 0.86);
+  backdrop-filter: blur(14px) saturate(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.satPlayer__panel {
+  position: relative;
+  width: min(1180px, calc(100% - 24px));
+  border-radius: 24px;
+  border: 1px solid rgba(154, 208, 255, 0.22);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 42%, rgba(7, 12, 22, 0.65) 100%);
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.78),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 12px rgba(86, 167, 255, 0.05);
+  overflow: hidden;
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transition: transform 360ms var(--ease), opacity 360ms var(--ease);
+}
+
+.satPlayer.is-open .satPlayer__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.satPlayer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.satPlayer__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.95);
+  min-width: 0;
+}
+
+.satPlayer__close {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
+}
+
+.satPlayer__close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(86, 167, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.satPlayer__video {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.satPlayer__videoEl {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: min(78vh, 760px);
+  object-fit: contain;
+  background: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .satPlayer,
+  .satPlayer__panel {
+    transition: none !important;
+  }
+  .satPlayer__panel {
+    transform: none !important;
+  }
 }
 
 .leadModal.is-open {

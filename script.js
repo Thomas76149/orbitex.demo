@@ -18,6 +18,12 @@
   const teamDialog = teamModal?.querySelector(".modal__dialog") ?? null;
   const leadModal = $("#leadModal");
   const leadPanel = leadModal?.querySelector(".leadModal__panel") ?? null;
+  const satModal = $("#satModal");
+  const satPanel = satModal?.querySelector(".satModal__panel") ?? null;
+  const satPlayer = $("#satPlayer");
+  const satPlayerPanel = satPlayer?.querySelector(".satPlayer__panel") ?? null;
+  const satPlayerTitle = $("#satPlayerTitle");
+  const satPlayerVideo = satPlayer?.querySelector(".satPlayer__videoEl") ?? null;
   const leadPhoto = $("#leadModalPhoto");
   const leadName = $("#leadModalName");
   const leadRole = $("#leadModalRole");
@@ -77,7 +83,12 @@
   };
 
   const syncBodyScrollLock = () => {
-    const anyOpen = Boolean(teamModal?.classList.contains("is-open") || leadModal?.classList.contains("is-open"));
+    const anyOpen = Boolean(
+      teamModal?.classList.contains("is-open") ||
+        leadModal?.classList.contains("is-open") ||
+        satModal?.classList.contains("is-open") ||
+        satPlayer?.classList.contains("is-open")
+    );
     document.body.style.overflow = anyOpen ? "hidden" : "";
   };
 
@@ -132,6 +143,7 @@
   const setLeadModalOpen = (open) => {
     if (!leadModal) return;
     if (open && teamModal?.classList.contains("is-open")) setTeamModalOpen(false);
+    if (open && satModal?.classList.contains("is-open")) setSatModalOpen(false);
 
     leadModal.classList.toggle("is-open", open);
     leadModal.setAttribute("aria-hidden", String(!open));
@@ -143,6 +155,77 @@
     } else {
       if (leadLastFocus && typeof leadLastFocus.focus === "function") leadLastFocus.focus();
       leadLastFocus = null;
+    }
+  };
+
+  const setSatModalOpen = (open) => {
+    if (!satModal) return;
+    if (open && teamModal?.classList.contains("is-open")) setTeamModalOpen(false);
+    if (open && leadModal?.classList.contains("is-open")) setLeadModalOpen(false);
+    if (open && satPlayer?.classList.contains("is-open")) setSatPlayerOpen(false);
+
+    satModal.classList.toggle("is-open", open);
+    satModal.setAttribute("aria-hidden", String(!open));
+    syncBodyScrollLock();
+
+    // Stop looping videos when closed (saves CPU)
+    const vids = Array.from(satModal.querySelectorAll("video"));
+    if (open) {
+      vids.forEach((v) => {
+        if (!(v instanceof HTMLVideoElement)) return;
+        const rateAttr = v.getAttribute("data-rate");
+        const rate = rateAttr ? Number(rateAttr) : 1;
+        if (Number.isFinite(rate) && rate > 0) v.playbackRate = rate;
+        v.play?.().catch(() => {});
+      });
+    } else {
+      vids.forEach((v) => {
+        if (v instanceof HTMLVideoElement) {
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+    }
+
+    if (open) {
+      satLastFocus = document.activeElement;
+      setTimeout(() => satPanel?.focus?.(), 0);
+    } else {
+      if (satLastFocus && typeof satLastFocus.focus === "function") satLastFocus.focus();
+      satLastFocus = null;
+    }
+  };
+
+  const setSatPlayerOpen = (open, payload = null) => {
+    if (!satPlayer || !(satPlayerVideo instanceof HTMLVideoElement)) return;
+
+    satPlayer.classList.toggle("is-open", open);
+    satPlayer.setAttribute("aria-hidden", String(!open));
+    syncBodyScrollLock();
+
+    if (open) {
+      // pause thumbnails while in player
+      const vids = Array.from(satModal?.querySelectorAll("video") ?? []);
+      vids.forEach((v) => (v instanceof HTMLVideoElement ? v.pause() : null));
+
+      const title = payload?.title ?? "";
+      const src = payload?.src ?? "";
+      const rate = payload?.rate ?? 1;
+      if (satPlayerTitle) satPlayerTitle.textContent = title;
+      satPlayerVideo.src = src;
+      if (Number.isFinite(rate) && rate > 0) satPlayerVideo.playbackRate = rate;
+      satPlayerVideo.play?.().catch(() => {});
+
+      satPlayerLastFocus = document.activeElement;
+      setTimeout(() => satPlayerPanel?.focus?.(), 0);
+    } else {
+      satPlayerVideo.pause();
+      satPlayerVideo.removeAttribute("src");
+      satPlayerVideo.load();
+      if (satPlayerTitle) satPlayerTitle.textContent = "";
+
+      if (satPlayerLastFocus && typeof satPlayerLastFocus.focus === "function") satPlayerLastFocus.focus();
+      satPlayerLastFocus = null;
     }
   };
 
@@ -216,9 +299,63 @@
     if (target.classList.contains("leadModal__backdrop")) setLeadModalOpen(false);
   });
 
+  // Satellite modal open/close
+  let satLastFocus = null;
+  let satPlayerLastFocus = null;
+  $$("[data-sat-open]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setNavOpen(false);
+      setSatModalOpen(true);
+    });
+  });
+
+  $$("[data-sat-close]").forEach((el) => {
+    el.addEventListener("click", () => setSatModalOpen(false));
+  });
+
+  satModal?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.classList.contains("satModal__backdrop")) setSatModalOpen(false);
+  });
+
+  // Card click → open player with the card's own <video><source>
+  $$("#satModal .satCard[data-sat-play]").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      const t = e.target;
+      // don't trigger when selecting text
+      if (t instanceof HTMLAnchorElement || t instanceof HTMLButtonElement) return;
+      const title = card.querySelector(".satCard__name")?.textContent?.trim() ?? "Video";
+      const src = card.querySelector("video source")?.getAttribute("src") ?? "";
+      const rateAttr = card.querySelector("video")?.getAttribute("data-rate");
+      const rate = rateAttr ? Number(rateAttr) : 1;
+      if (!src) return;
+      setSatPlayerOpen(true, { title, src, rate: Number.isFinite(rate) && rate > 0 ? rate : 1 });
+    });
+  });
+
+  // Player close handlers
+  $$("[data-sat-player-close]").forEach((el) => {
+    el.addEventListener("click", () => setSatPlayerOpen(false));
+  });
+
+  satPlayer?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.classList.contains("satPlayer__backdrop")) setSatPlayerOpen(false);
+  });
+
   // Escape: modals first, then mobile menu
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
+    if (satPlayer?.classList.contains("is-open")) {
+      setSatPlayerOpen(false);
+      return;
+    }
+    if (satModal?.classList.contains("is-open")) {
+      setSatModalOpen(false);
+      return;
+    }
     if (leadModal?.classList.contains("is-open")) {
       setLeadModalOpen(false);
       return;
