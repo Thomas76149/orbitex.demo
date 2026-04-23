@@ -29,6 +29,403 @@
   --hero-image: url("../assets/images/BoosterLandung.jpg");
 }
 
+/* =========================================================
+   Next Launch Countdown (prominent)
+   ========================================================= */
+
+.nextLaunch {
+  position: relative;
+}
+
+.nextLaunch__shell {
+  position: relative;
+  border-radius: calc(var(--radius) + 10px);
+  border: 1px solid rgba(154, 208, 255, 0.28);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02) 45%, rgba(6, 10, 18, 0.65));
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+    0 28px 90px rgba(0, 0, 0, 0.45),
+    0 0 120px rgba(86, 167, 255, 0.12);
+  overflow: hidden;
+  padding: clamp(18px, 2.6vw, 26px);
+}
+
+.nextLaunch__shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background: radial-gradient(110% 80% at 50% 0%, rgba(86, 167, 255, 0.18), transparent 55%);
+  opacity: 0.9;
+}
+
+.nextLaunch__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  font-size: 10px;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nextLaunch__badgeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, #ffb3b3 28%, #ff2f2f 62%, #b10000 100%);
+  box-shadow: 0 0 0 4px rgba(255, 47, 47, 0.16), 0 0 18px rgba(255, 47, 47, 0.55);
+  animation: mcLiveRedBlink 1.15s ease-in-out infinite;
+}
+
+.nextLaunch__head {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 16px;
+  padding-right: 120px; /* keep space for badge */
+}
+
+.nextLaunch__title {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.nextLaunch__meta {
+  margin: 10px 0 0;
+  color: rgba(154, 208, 255, 0.86);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.nextLaunch__hint {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.countdown {
+  position: relative;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.countdown__unit {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.24);
+  padding: 14px 14px 12px;
+  text-align: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+}
+
+.countdown__value {
+  font-size: clamp(26px, 4.6vw, 44px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.97);
+  text-shadow: 0 0 28px rgba(120, 210, 255, 0.22);
+}
+
+.countdown__label {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 700;
+}
+
+.countdown__sep {
+  display: none;
+}
+
+.nextLaunch__sub {
+  position: relative;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .nextLaunch__head {
+    padding-right: 0;
+  }
+  .nextLaunch__badge {
+    position: static;
+    margin-top: 10px;
+  }
+  .countdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   Mission Timeline
+   ========================================================= */
+
+.mcTimeline {
+  list-style: none;
+  margin: clamp(18px, 2.8vw, 28px) 0 0;
+  padding: 0;
+  position: relative;
+  max-width: 62rem;
+}
+
+.mcTimeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(120, 190, 255, 0.7), rgba(86, 167, 255, 0.18));
+  box-shadow: 0 0 22px rgba(86, 167, 255, 0.28);
+}
+
+.mcTimeline__item {
+  position: relative;
+  padding: 0 0 clamp(18px, 2.8vw, 22px) clamp(54px, 7vw, 72px);
+}
+
+.mcTimeline__dot {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 28%, #dff2ff, var(--accent-2) 42%, var(--accent));
+  box-shadow:
+    0 0 0 5px rgba(5, 7, 12, 0.96),
+    0 0 28px rgba(86, 167, 255, 0.55),
+    0 0 50px rgba(86, 167, 255, 0.22);
+}
+
+.mcTimeline__card {
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02) 55%, rgba(6, 12, 24, 0.55));
+  padding: clamp(16px, 2.2vw, 20px) clamp(16px, 2.5vw, 22px);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.24) inset, 0 18px 55px rgba(0, 0, 0, 0.28);
+  transition: transform 320ms var(--ease), border-color 320ms var(--ease), background 320ms var(--ease);
+}
+
+.mcTimeline__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(154, 208, 255, 0.35);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025) 55%, rgba(6, 12, 24, 0.62));
+}
+
+.mcTimeline__year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(86, 167, 255, 0.12);
+  border: 1px solid rgba(154, 208, 255, 0.28);
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.mcTimeline__title {
+  margin: 14px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.mcTimeline__text {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.mcTimeline__item--highlight .mcTimeline__year {
+  background: linear-gradient(145deg, rgba(255, 80, 80, 0.18), rgba(86, 167, 255, 0.12));
+  border-color: rgba(255, 110, 110, 0.22);
+}
+
+@media (min-width: 980px) {
+  .mcTimeline {
+    margin-inline: auto;
+  }
+}
+
+/* =========================================================
+   Join the Mission (jobs)
+   ========================================================= */
+
+.jobGrid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2.4vw, 24px);
+}
+
+@media (min-width: 900px) {
+  .jobGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.jobCard {
+  border-radius: calc(var(--radius) + 8px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02) 52%, rgba(6, 10, 18, 0.6));
+  padding: 20px 20px 22px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.24) inset, 0 24px 70px rgba(0, 0, 0, 0.35);
+  transition: transform 320ms var(--ease), border-color 320ms var(--ease), background 320ms var(--ease);
+}
+
+.jobCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(154, 208, 255, 0.35);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025) 52%, rgba(6, 10, 18, 0.66));
+}
+
+.jobCard__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(86, 167, 255, 0.12);
+  border: 1px solid rgba(154, 208, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22) inset;
+  font-size: 18px;
+}
+
+.jobCard__title {
+  margin: 16px 0 0;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.jobCard__text {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.jobCard__cta {
+  margin-top: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* =========================================================
+   Earth View Widget (footer)
+   ========================================================= */
+
+.earthWidget__text {
+  margin-top: 12px;
+}
+
+.earthWidget__globe {
+  margin-top: 14px;
+  width: 120px;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 1px solid rgba(154, 208, 255, 0.28);
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.0) 42%),
+    radial-gradient(circle at 38% 40%, rgba(90, 185, 255, 0.22), rgba(0, 0, 0, 0.25) 58%, rgba(0, 0, 0, 0.72));
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+    0 18px 60px rgba(0, 0, 0, 0.5),
+    0 0 48px rgba(86, 167, 255, 0.16);
+  overflow: hidden;
+  position: relative;
+}
+
+.earthWidget__globeInner {
+  position: absolute;
+  inset: -18%;
+  width: 200%;
+  border-radius: 999px;
+  background:
+    /* Ocean base + limb shading */
+    radial-gradient(circle at 32% 28%, rgba(140, 220, 255, 0.38), rgba(20, 95, 175, 0.72) 38%, rgba(0, 10, 24, 0.0) 64%),
+    radial-gradient(circle at 70% 55%, rgba(0, 0, 0, 0.0) 35%, rgba(0, 0, 0, 0.46) 72%),
+    /* Continents (stylized blobs) */
+    radial-gradient(28px 20px at 18% 46%, rgba(86, 180, 120, 0.95), rgba(86, 180, 120, 0.0) 70%),
+    radial-gradient(34px 24px at 28% 56%, rgba(104, 198, 132, 0.85), rgba(104, 198, 132, 0.0) 72%),
+    radial-gradient(30px 22px at 36% 44%, rgba(140, 210, 130, 0.75), rgba(140, 210, 130, 0.0) 74%),
+    radial-gradient(30px 18px at 46% 60%, rgba(130, 205, 120, 0.68), rgba(130, 205, 120, 0.0) 76%),
+    radial-gradient(26px 18px at 58% 46%, rgba(186, 210, 150, 0.62), rgba(186, 210, 150, 0.0) 74%),
+    /* Desert-ish highlight */
+    radial-gradient(44px 26px at 42% 52%, rgba(216, 196, 128, 0.32), rgba(216, 196, 128, 0.0) 72%),
+    /* Soft cloud layer */
+    radial-gradient(18px 14px at 26% 34%, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.0) 70%),
+    radial-gradient(26px 16px at 48% 38%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.0) 72%),
+    radial-gradient(20px 14px at 60% 58%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0) 72%),
+    radial-gradient(22px 16px at 34% 68%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.0) 72%);
+  filter: saturate(1.18) contrast(1.14);
+  animation: earthSpin 12.5s linear infinite;
+}
+
+.earthWidget__globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    /* specular highlight */
+    radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.0) 46%),
+    /* terminator shadow */
+    radial-gradient(circle at 68% 58%, rgba(0, 0, 0, 0.0) 34%, rgba(0, 0, 0, 0.72) 74%),
+    /* atmosphere ring */
+    radial-gradient(circle at 50% 50%, rgba(120, 210, 255, 0.20), rgba(120, 210, 255, 0.0) 62%);
+}
+
+.earthWidget__globe::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(120, 210, 255, 0.20), rgba(120, 210, 255, 0.0) 62%);
+  filter: blur(3px);
+  opacity: 0.9;
+}
+
+@keyframes earthSpin {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 *,
 *::before,
 *::after {

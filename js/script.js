@@ -424,6 +424,50 @@
   }
 
   // ------------------------------------------------------------
+  // Next Launch Countdown (15. Mai 2026 – 14:30 Uhr CEST)
+  // ------------------------------------------------------------
+  const countdownRoot = $("#launchCountdown");
+  if (countdownRoot) {
+    const cdDays = countdownRoot.querySelector('[data-cd="days"]');
+    const cdHours = countdownRoot.querySelector('[data-cd="hours"]');
+    const cdMinutes = countdownRoot.querySelector('[data-cd="minutes"]');
+    const cdSeconds = countdownRoot.querySelector('[data-cd="seconds"]');
+
+    // Peenemünde local time (CEST, UTC+2) for the specified date.
+    const target = new Date("2026-05-15T14:30:00+02:00").getTime();
+
+    const pad2 = (n) => String(Math.max(0, Math.floor(n))).padStart(2, "0");
+
+    const tick = () => {
+      const now = Date.now();
+      const diff = target - now;
+
+      if (!(Number.isFinite(diff) && diff > 0)) {
+        if (cdDays) cdDays.textContent = "0";
+        if (cdHours) cdHours.textContent = "00";
+        if (cdMinutes) cdMinutes.textContent = "00";
+        if (cdSeconds) cdSeconds.textContent = "00";
+        countdownRoot.setAttribute("data-state", "launched");
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (cdDays) cdDays.textContent = String(days);
+      if (cdHours) cdHours.textContent = pad2(hours);
+      if (cdMinutes) cdMinutes.textContent = pad2(minutes);
+      if (cdSeconds) cdSeconds.textContent = pad2(seconds);
+    };
+
+    tick();
+    window.setInterval(tick, 1000);
+  }
+
+  // ------------------------------------------------------------
   // Optional hero parallax (subtle)
   // ------------------------------------------------------------
   const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;

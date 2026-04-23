@@ -125,6 +125,58 @@
 
       <!--
         ====================================================================
+        NEXT LAUNCH COUNTDOWN (prominent)
+        ====================================================================
+      -->
+      <section class="section section--thin nextLaunch" id="next-launch" aria-label="Nächster Start">
+        <div class="container">
+          <div class="nextLaunch__shell reveal" data-reveal>
+            <div class="nextLaunch__badge" aria-hidden="true">
+              <span class="nextLaunch__badgeDot"></span>
+              LIVE COUNTDOWN
+            </div>
+
+            <div class="nextLaunch__head">
+              <div>
+                <h2 class="nextLaunch__title">Nächster Start</h2>
+                <p class="nextLaunch__meta">15. Mai 2026 – 14:30 Uhr · Lunar‑Heavy · Peenemünde</p>
+              </div>
+              <div class="nextLaunch__hint" aria-hidden="true">
+                T‑0 wird live aktualisiert
+              </div>
+            </div>
+
+            <div class="countdown" id="launchCountdown" role="timer" aria-live="polite">
+              <div class="countdown__unit">
+                <div class="countdown__value" data-cd="days">—</div>
+                <div class="countdown__label">Tage</div>
+              </div>
+              <div class="countdown__sep" aria-hidden="true"></div>
+              <div class="countdown__unit">
+                <div class="countdown__value" data-cd="hours">—</div>
+                <div class="countdown__label">Stunden</div>
+              </div>
+              <div class="countdown__sep" aria-hidden="true"></div>
+              <div class="countdown__unit">
+                <div class="countdown__value" data-cd="minutes">—</div>
+                <div class="countdown__label">Minuten</div>
+              </div>
+              <div class="countdown__sep" aria-hidden="true"></div>
+              <div class="countdown__unit">
+                <div class="countdown__value" data-cd="seconds">—</div>
+                <div class="countdown__label">Sekunden</div>
+              </div>
+            </div>
+
+            <p class="nextLaunch__sub">
+              Lunar‑Heavy Mission • Pad 1 • 12 Satelliten
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ====================================================================
         MISSIONEN
         - Replace images with your own
         ====================================================================
@@ -718,6 +770,73 @@
 
       <!--
         ====================================================================
+        MISSION TIMELINE (visuell stark)
+        ====================================================================
+      -->
+      <section class="section section--airy section--alt section--stars" id="mission-timeline" aria-label="Mission Timeline">
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <h2 class="section__title">Mission Timeline</h2>
+            <p class="section__lead">
+              Meilensteine von Orbitex — von der Gründung bis zur Mondlandung.
+            </p>
+          </div>
+
+          <ol class="mcTimeline reveal" data-reveal aria-label="Timeline Orbitex">
+            <li class="mcTimeline__item">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">2025</span>
+                <h3 class="mcTimeline__title">Gründung von Orbitex</h3>
+                <p class="mcTimeline__text">Start des Programms, Teamaufbau, erste System- und Simulationsarbeit.</p>
+              </div>
+            </li>
+            <li class="mcTimeline__item">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">2026</span>
+                <h3 class="mcTimeline__title">Bau der Startrampen in Peenemünde</h3>
+                <p class="mcTimeline__text">Range Safety, Bodensegment, Pad‑Infrastruktur und Integrationsfluss.</p>
+              </div>
+            </li>
+            <li class="mcTimeline__item mcTimeline__item--highlight">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">15. Mai 2026</span>
+                <h3 class="mcTimeline__title">Fünfter Start (Lunar‑Heavy)</h3>
+                <p class="mcTimeline__text">5. Mission — Deployment von 12 Satelliten in Low Earth Orbit.</p>
+              </div>
+            </li>
+            <li class="mcTimeline__item">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">2027</span>
+                <h3 class="mcTimeline__title">Erste Satelliten in Low Earth Orbit</h3>
+                <p class="mcTimeline__text">Betrieb, Tracking und In‑Orbit Validierung der Plattformen.</p>
+              </div>
+            </li>
+            <li class="mcTimeline__item">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">2028</span>
+                <h3 class="mcTimeline__title">Erste Wiederverwendung eines Boosters</h3>
+                <p class="mcTimeline__text">Turnaround, Inspektion &amp; Refurbish — Kosten pro Start sinken deutlich.</p>
+              </div>
+            </li>
+            <li class="mcTimeline__item">
+              <span class="mcTimeline__dot" aria-hidden="true"></span>
+              <div class="mcTimeline__card">
+                <span class="mcTimeline__year">2030</span>
+                <h3 class="mcTimeline__title">Geplante Mondlandung</h3>
+                <p class="mcTimeline__text">Cislunar Logistics &amp; Lander‑Demonstration — Europa im Routinebetrieb.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!--
+        ====================================================================
         STANDORTE
         - Two location blocks
         ====================================================================
@@ -1134,6 +1253,51 @@
 
       <!--
         ====================================================================
+        JOIN THE MISSION (Careers teaser)
+        ====================================================================
+      -->
+      <section class="section section--airy section--stars joinMission" id="careers" aria-label="Karriere">
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <h2 class="section__title">Werde Teil von Orbitex</h2>
+            <p class="section__lead">
+              Wir bauen Raumfahrt-Systeme in Europa — schnell, sauber, präzise. Join the mission.
+            </p>
+          </div>
+
+          <div class="jobGrid reveal" data-reveal>
+            <article class="jobCard">
+              <div class="jobCard__icon" aria-hidden="true">🚀</div>
+              <h3 class="jobCard__title">Rocket Engineer</h3>
+              <p class="jobCard__text">Strukturen, Antriebe, Integration — bau mit uns die nächste Trägergeneration.</p>
+              <a class="btn btn--primary jobCard__cta" href="mailto:hello@orbitex.example?subject=Application%20%E2%80%93%20Rocket%20Engineer">
+                Jetzt bewerben
+              </a>
+            </article>
+
+            <article class="jobCard">
+              <div class="jobCard__icon" aria-hidden="true">🛰️</div>
+              <h3 class="jobCard__title">Mission Control Operator</h3>
+              <p class="jobCard__text">Monitoring, Trajectory, Comms — halte Missionen nominal und sicher.</p>
+              <a class="btn btn--primary jobCard__cta" href="mailto:hello@orbitex.example?subject=Application%20%E2%80%93%20Mission%20Control%20Operator">
+                Jetzt bewerben
+              </a>
+            </article>
+
+            <article class="jobCard">
+              <div class="jobCard__icon" aria-hidden="true">📡</div>
+              <h3 class="jobCard__title">Communications &amp; Marketing Specialist</h3>
+              <p class="jobCard__text">Erkläre komplexe Systeme klar — Content, Community, Partnerships.</p>
+              <a class="btn btn--primary jobCard__cta" href="mailto:hello@orbitex.example?subject=Application%20%E2%80%93%20Communications%20%26%20Marketing">
+                Jetzt bewerben
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ====================================================================
         FOOTER / KONTAKT
         ====================================================================
       -->
@@ -1174,6 +1338,15 @@
               <a class="iconBtn" href="#" aria-label="LinkedIn">
                 <span aria-hidden="true">in</span>
               </a>
+            </div>
+          </div>
+
+          <!-- Earth View Widget -->
+          <div class="footer__col reveal earthWidget" data-reveal aria-label="Earth View Widget">
+            <h3 class="footer__title">Earth View</h3>
+            <p class="footer__text earthWidget__text">Aktuell über Europa • 12 Satelliten aktiv</p>
+            <div class="earthWidget__globe" aria-hidden="true">
+              <div class="earthWidget__globeInner"></div>
             </div>
           </div>
         </div>
